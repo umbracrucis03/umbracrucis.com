@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granville Hotel - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #080808; background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); color: #d1b4a3; font-family: 'Georgia', serif; line-height: 1.8; padding-bottom: 40px; }
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 30px; }
+        .story-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; letter-spacing: 2px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.1rem; }
+        .story-content h2 { font-family: 'Cinzel', serif; color: #ff4d4d; font-size: 1.4rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 20px; }
+        .story-content p::first-letter { font-family: 'Cinzel', serif; font-size: 2.2rem; color: #ff3333; float: left; line-height: 1; padding-right: 8px; }
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">Granville Hotel</h1>
+            <p class="story-meta">STORY 1 • ENGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            <p>Radhika was travelling from Lucknow to Kolkata for a new business deal. It had already become quite late at night, and she was extremely tired.</p>
+            <p>So, she turned to her driver, Kotwaal, and said, “Stop the car wherever you find a hotel nearby.”</p>
+            <p>“Yes, madam,” Kotwaal replied.</p>
+            <p>A short while later, Kotwaal stopped the car in front of an old hotel beside the highway.</p>
+            <p>Radhika rolled down the car window and looked at the building.</p>
+            <p>The hotel stood almost in the middle of the highway, surrounded by complete darkness. There was no sign of human life anywhere in sight. No nearby houses, no shops, no passing vehicles—nothing.</p>
+            <p>Radhika was exhausted. Without thinking too much about it, she asked Kotwaal to take the luggage out of the car.</p>
+            <p>Carrying a trolley in one hand and her purse in the other, Radhika entered the hotel.</p>
+            <p>As soon as she reached the reception, she booked a room for four days and quickly completed the check-in formalities.</p>
+            <p>The manager handed her the key to Room Number 336 and said, “Madam, I have one request. Please stay away from Room Number 333, which is directly opposite your room. Have a good night!”</p>
+            <p>Something about his words felt strange to Radhika. But she was far too tired to think about it. She simply nodded and took the lift upstairs.</p>
+            <p>When she reached her room, she unlocked the door, stepped inside, and immediately went to sleep. Meanwhile, driver Kotwaal stayed outside and fell asleep inside the car.</p>
+
+            <h2>The First Glimpse</h2>
+            <p>The next morning, at around 8 a.m., Radhika got ready for her meeting and stepped out of her room.</p>
+            <p>While locking the door, she suddenly remembered the manager's warning about staying away from the room directly opposite hers. But she was already running late for her meeting, so she paid no further attention to it.</p>
+            <p>After the meeting, Radhika returned through the corridor, humming a song to herself. As she approached her room, she noticed Room Number 333 directly opposite it.</p>
+            <p>This time, Radhika walked towards the room. She noticed that its door was extremely old, and three large locks were fastened across it. The locks had been tightly bound together with thick red threads.</p>
+            <p>Seeing all this, Radhika became curious and began staring intently at the door. She wanted to know what could possibly be inside that room that had made the manager specifically warn her to stay away from it.</p>
+            <p>Just then, her eyes fell upon the keyhole. Slowly, she leaned forward and placed one eye against it.</p>
+            <p>Inside, she saw a woman sitting on a chair. Her hair was loose, and she was dressed in a white saree. But Radhika could not see her face because the woman was sitting with her back towards the door.</p>
+            <p>Radhika found it extremely strange. Before she could think any further, she remembered that she had an early meeting the next day. She turned around and went back into her room.</p>
+
+            <h2>3:13 A.M.</h2>
+            <p>The following day, after returning from her meeting, Radhika went straight to bed. She had completely forgotten that she had seen something inside Room Number 333.</p>
+            <p>Then, suddenly, at around 3:13 a.m., Radhika's eyes opened to the sound of a song. She listened carefully. Someone was humming a song in a woman's voice. And in the background, a violin was also playing.</p>
+            <p>“Who could possibly be singing at this hour of the night?” Radhika thought as she got out of bed.</p>
+            <p>The moment she stepped outside her room, she realized that the sound was coming from Room Number 333. She walked closer to the door and looked through the keyhole.</p>
+            <p>Once again, she saw the same woman sitting on the chair with her back towards the door. But this time, the woman was playing a violin and humming a song.</p>
+            <p>Radhika found it deeply unsettling. She decided that she would speak to the hotel manager about it in the morning. Then she went back to sleep.</p>
+
+            <h2>Everything Was Red</h2>
+            <p>The next morning was her last day at the hotel. Radhika packed her belongings and, as soon as she stepped out of her room, she remembered what had happened the previous night.</p>
+            <p>She looked through the keyhole of Room Number 333 one more time. But this time, what she saw was beyond comprehension. There was nothing visible inside the room. Everything appeared completely red.</p>
+            <p>Radhika froze. She could not understand what she was looking at.</p>
+            <p>Furious and confused, she went downstairs to the reception and confronted the manager.</p>
+            <p>“What is inside Room Number 333? You warned me to stay away from it, but one day I looked through the keyhole and saw a woman inside. Last night, she was singing and playing a violin... and today, I can't see anything inside. Everything is red. What exactly is inside that room? And who is that woman? Why is everything red today? What is going on?”</p>
+            <p>The manager looked at her. His expression changed.</p>
+            <p>Then, in a frightened and grave voice, he said, “You are absolutely right, madam. There is the shadow of a witch inside that room.”</p>
+            <p>Radhika stared at him in disbelief.</p>
+            <p>The manager continued, “And today, when you were looking through the keyhole... she was also looking at you from inside with her red eyes.”</p>
+            <p>The moment Radhika heard those words, the ground seemed to disappear beneath her feet. She collapsed heavily onto the floor.</p>
+            <p>Kotwaal came running towards her. But Radhika's body had already turned cold. She was dead.</p>
+            <p>The manager stood silently behind the reception desk. Then, with a faint smile on his face, he opened his register... and quietly crossed another name out of it.</p>
+
+            <a href="english-tales.html" class="back-btn">← Back to English Tales</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

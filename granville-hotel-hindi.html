@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कमरा नंबर 333 - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Georgia', serif; font-weight: bold; font-size: 2.8rem; color: #e60000; letter-spacing: 1px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.15rem; }
+        .story-content h2 { font-family: 'Georgia', serif; color: #ff4d4d; font-size: 1.5rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 15px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">कमरा नंबर 333</h1>
+            <p class="story-meta">STORY 1 • HINDI TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>राधिका अपनी नई बिज़नेस डील के लिए लखनऊ से कोलकाता जा रही थी। रात काफी हो चुकी थी और वह बहुत थक भी गई थी।</p>
+            
+            <p>उसने अपने ड्राइवर कोतवाल से कहा, “पास में जो भी होटल दिखे, वहाँ गाड़ी रोक लेना।”</p>
+
+            <p>“जी मैमसाहब,” कोतवाल ने जवाब दिया।</p>
+
+            <p>कुछ ही देर बाद, कोतवाल ने हाईवे के पास एक पुराने होटल के सामने गाड़ी रोक दी।</p>
+
+            <p>राधिका ने कार का शीशा नीचे किया और होटल को देखा।</p>
+
+            <!-- IMAGE 1: HOTEL EXTERIOR -->
+            <div class="story-image">
+                <img src="granville-1.jpeg" alt="Granville Hotel Exterior">
+            </div>
+
+            <p>होटल हाईवे के बीचों-बीच एक सुनसान जगह पर बना हुआ था। दूर-दूर तक इंसान का कोई नामो-निशान नहीं था। न कोई घर, न कोई दुकान और न ही आसपास किसी इंसान की आहट।</p>
+
+            <p>राधिका बहुत थक चुकी थी। ज्यादा सोचे बिना उसने कोतवाल से गाड़ी से सामान निकालने को कहा।</p>
+
+            <p>एक हाथ में ट्रॉली और दूसरे में पर्स लेकर राधिका होटल के अंदर चली गई।</p>
+
+            <p>रिसेप्शन पर पहुँचते ही उसने चार दिनों के लिए कमरा बुक किया और जल्दी से चेक-इन किया।</p>
+
+            <p>मैनेजर ने उसे कमरा नंबर 336 की चाबी दी और कहा, “मैडम, एक रिक्वेस्ट है। आप अपने ठीक सामने वाले कमरा नंबर 333 से दूर रहिएगा। हैव अ गुड नाइट!”</p>
+
+            <p>मैनेजर की बात राधिका को थोड़ी अजीब लगी। लेकिन वह इतनी थकी हुई थी कि उसने ज्यादा ध्यान नहीं दिया।</p>
+
+            <p>उसने बस हाँ में सिर हिलाया और लिफ्ट से ऊपर चली गई। कमरे के पास पहुँचकर उसने लॉक खोला, अंदर गई और जाते ही सो गई। उधर, ड्राइवर कोतवाल भी बाहर कार में ही सो गया।</p>
+
+            <h2>पहली झलक</h2>
+
+            <p>अगली सुबह करीब 8 बजे राधिका मीटिंग के लिए तैयार हुई और अपने कमरे से बाहर निकली।</p>
+
+            <p>कमरा लॉक करते वक्त उसे अचानक मैनेजर की वह बात याद आ गई—अपने सामने वाले कमरे से दूर रहना। लेकिन वह मीटिंग के लिए पहले ही लेट हो चुकी थी, इसलिए उसने ज्यादा ध्यान नहीं दिया।</p>
+
+            <!-- IMAGE 2: LOCKED DOOR / KEYHOLE -->
+            <div class="story-image">
+                <img src="granville-2.jpeg" alt="Room 333 Door and Locks">
+            </div>
+
+            <p>मीटिंग के बाद राधिका कॉरिडोर से अपने कमरे की तरफ लौट रही थी और धीरे-धीरे एक गाना गुनगुना रही थी। अपने कमरे के पास पहुँचते ही उसकी नजर सामने वाले कमरा नंबर 333 पर पड़ी।</p>
+
+            <p>इस बार राधिका उस कमरे के पास चली गई। उसने देखा कि कमरे का दरवाजा बहुत पुराना था। दरवाजे पर तीन बड़े-बड़े ताले लगे हुए थे। और उन तीनों तालों को मोटे लाल धागों से कसकर बाँधा गया था।</p>
+
+            <p>यह सब देखकर राधिका के अंदर जिज्ञासा जाग उठी। वह गौर से दरवाजे को देखने लगी। आखिर उस कमरे के अंदर ऐसा क्या था, जिसकी वजह से मैनेजर ने उसे उससे दूर रहने के लिए कहा था?</p>
+
+            <p>तभी उसकी नजर की-होल पर पड़ी। राधिका धीरे से झुकी और अपनी एक आँख की-होल से लगा दी।</p>
+
+            <p>अंदर एक औरत कुर्सी पर बैठी हुई थी। उसके बाल खुले हुए थे और उसने सफेद साड़ी पहन रखी थी। लेकिन राधिका उसका चेहरा नहीं देख पा रही थी, क्योंकि वह औरत दरवाजे की तरफ पीठ करके बैठी थी।</p>
+
+            <p>राधिका को यह सब बहुत अजीब लगा। वह कुछ और सोच पाती, उससे पहले उसे याद आया कि अगले दिन उसकी एक और अर्ली मीटिंग थी। वह मुड़ी और अपने कमरे में चली गई।</p>
+
+            <h2>रात के 3:13</h2>
+
+            <p>अगले दिन मीटिंग से लौटने के बाद राधिका सीधे अपने कमरे में गई और सो गई। उसे बिल्कुल याद नहीं था कि उसने कमरा नंबर 333 के अंदर कुछ देखा भी था।</p>
+
+            <p>फिर अचानक रात करीब 3:13 बजे, एक गाने की आवाज से राधिका की आँख खुल गई। उसने ध्यान से सुना। किसी लड़की की आवाज में कोई धीरे-धीरे गाना गुनगुना रहा था। और बैकग्राउंड में वायलिन भी बज रहा था।</p>
+
+            <!-- IMAGE 3: WOMAN PLAYING VIOLIN -->
+            <div class="story-image">
+                <img src="granville-3.jpeg" alt="Woman in white saree playing violin">
+            </div>
+
+            <p>“रात के इस वक्त कौन गाना गा रहा है?” राधिका ने सोचा और बेड से उठ गई।</p>
+
+            <p>जैसे ही वह कमरे से बाहर निकली, उसे महसूस हुआ कि गाने की आवाज कमरा नंबर 333 से आ रही थी। राधिका धीरे-धीरे उस कमरे के पास गई और की-होल से अंदर झाँका।</p>
+
+            <p>एक बार फिर वही औरत कुर्सी पर बैठी हुई थी। उसकी पीठ दरवाजे की तरफ थी। लेकिन इस बार वह औरत वायलिन बजा रही थी और साथ में गाना गुनगुना रही थी।</p>
+
+            <p>राधिका को यह सब बेहद डरावना और अजीब लगा। उसने सोचा कि सुबह होटल मैनेजर से इस बारे में जरूर बात करेगी। फिर वह अपने कमरे में वापस चली गई।</p>
+
+            <h2>सब कुछ लाल था</h2>
+
+            <p>अगली सुबह होटल में राधिका का आखिरी दिन था। उसने अपना सारा सामान पैक किया और जैसे ही कमरे से बाहर निकली, उसे पिछली रात की बात याद आ गई। उसने एक बार फिर कमरा नंबर 333 के की-होल से अंदर झाँका।</p>
+
+            <!-- IMAGE 4: EVERYTHING RED / RED EYE -->
+            <div class="story-image">
+                <img src="granville-4.jpeg" alt="Everything turned red through keyhole">
+            </div>
+
+            <p>लेकिन इस बार उसने जो देखा, वह उसकी समझ से परे था। कमरे के अंदर कुछ भी दिखाई नहीं दे रहा था। हर जगह सिर्फ लाल ही लाल नजर आ रहा था।</p>
+
+            <p>राधिका गुस्से और उलझन में सीधा रिसेप्शन पर मैनेजर के पास पहुँची।</p>
+
+            <p>“कमरा नंबर 333 के अंदर आखिर है क्या? आपने मुझे उसके पास जाने से मना किया था, लेकिन एक दिन मैंने की-होल से देखा तो अंदर एक औरत थी। कल रात वह गाना गा रही थी और वायलिन बजा रही थी... और आज अंदर कुछ भी दिखाई नहीं दे रहा। सब कुछ लाल दिखाई दे रहा है। आखिर उस कमरे में क्या है? और वह औरत कौन है? आज सब कुछ लाल क्यों है? यह क्या हो रहा है?”</p>
+
+            <p>मैनेजर ने राधिका की तरफ देखा। उसके चेहरे पर डर साफ नजर आ रहा था। फिर उसने एक डरी हुई और गंभीर आवाज में कहा, “आप बिल्कुल सही कह रही हैं, मैडम। उस कमरे में एक चुड़ैल का साया है।”</p>
+
+            <p>राधिका चुप रह गई।</p>
+
+            <p>मैनेजर ने आगे कहा, “और आज जब आप की-होल से उसे देख रही थीं... तो वह भी अंदर से अपनी लाल आँखों से आपको देख रही थी।”</p>
+
+            <p>यह सुनते ही राधिका के पैरों तले जमीन खिसक गई। वह जोर से जमीन पर गिर पड़ी। कोतवाल दौड़ता हुआ उसके पास आया। लेकिन राधिका का शरीर ठंडा पड़ चुका था। वह मर चुकी थी।</p>
+
+            <p>मैनेजर रिसेप्शन के पीछे खड़ा उसे देखता रहा। फिर उसने धीरे से अपना रजिस्टर खोला। उसके चेहरे पर एक हल्की-सी मुस्कान आई... और उसने रजिस्टर में से एक और नाम काट दिया।</p>
+
+            <a href="hindi-tales.html" class="back-btn">← Back to Hindi Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

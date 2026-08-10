@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Number 333 - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Georgia', serif; font-weight: bold; font-size: 2.8rem; color: #e60000; letter-spacing: 1px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.15rem; }
+        .story-content h2 { font-family: 'Georgia', serif; color: #ff4d4d; font-size: 1.5rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 15px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">Room Number 333</h1>
+            <p class="story-meta">STORY 1 • HINGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>Radhika apni nayi business deal ke liye Lucknow se Kolkata ja rahi thi. Raat kaafi ho chuki thi aur woh bahut thak bhi gayi thi.</p>
+            
+            <p>Usne apne driver Kotwaal se kaha, “Pass mein jo bhi hotel dikhe, wahan gaadi rok lena.”</p>
+
+            <p>“Ji memsahib,” Kotwaal ne jawab diya.</p>
+
+            <p>Kuch hi der baad, Kotwaal ne highway ke paas ek puraane hotel ke saamne gaadi rok di.</p>
+
+            <p>Radhika ne car ka sheesha neeche kiya aur hotel ko dekha.</p>
+
+            <!-- IMAGE 1: HOTEL EXTERIOR -->
+            <div class="story-image">
+                <img src="granville-1.jpeg" alt="Granville Hotel Exterior">
+            </div>
+
+            <p>Hotel highway ke beechon-beech ek sunsaan jagah par bana hua tha. Door-door tak insaan ka koi naam-o-nishaan nahi tha. Na koi ghar, na koi dukaan aur na hi aas-paas kisi insaan ki aahat.</p>
+
+            <p>Radhika bahut thak chuki thi. Zyada soche bina usne Kotwaal se gaadi se saamaan nikaalne ko kaha.</p>
+
+            <p>Ek haath mein trolley aur doosre mein purse lekar Radhika hotel ke andar chali gayi.</p>
+
+            <p>Reception par pahunchte hi usne chaar din ke liye room book kiya aur jaldi se check-in kiya.</p>
+
+            <p>Manager ne use Room Number 336 ki chaabi di aur kaha, “Madam, ek request hai. Aap apne theek saamne wale Room Number 333 se door rahiyega. Have a good night!”</p>
+
+            <p>Manager ki baat Radhika ko thodi ajeeb lagi. Lekin woh itni thaki hui thi ki usne zyada dhyaan nahi diya.</p>
+
+            <p>Usne bas haan mein sir hilaaya aur lift se upar chali gayi. Room ke paas pahunchkar usne lock khola, andar gayi aur jaate hi so gayi. Udhar, driver Kotwaal bhi bahar car mein hi so gaya.</p>
+
+            <h2>Pehli Jhalak</h2>
+
+            <p>Agli subah kareeb 8 baje Radhika meeting ke liye ready hui aur apne room se bahar nikli.</p>
+
+            <p>Room lock karte waqt use achanak manager ki woh baat yaad aa gayi—apne saamne wale room se door rehna. Lekin woh meeting ke liye pehle hi late ho chuki thi, isliye usne zyada dhyaan nahi diya.</p>
+
+            <!-- IMAGE 2: LOCKED DOOR / KEYHOLE -->
+            <div class="story-image">
+                <img src="granville-2.jpeg" alt="Room 333 Door and Locks">
+            </div>
+
+            <p>Meeting ke baad Radhika corridor se apne room ki taraf laut rahi thi aur dheere-dheere ek gaana gunguna rahi thi. Apne room ke paas pahunchte hi uski nazar saamne wale Room Number 333 par padi.</p>
+
+            <p>Is baar Radhika us room ke paas chali gayi. Usne dekha ki room ka darwaaza bahut puraana tha. Darwaaze par teen bade-bade taale lage hue the. Aur un teeno taalon ko mote laal dhaagon se kas kar baandha gaya tha.</p>
+
+            <p>Yeh sab dekhkar Radhika ke andar curiosity jaag uthi. Woh gaur se darwaaze ko dekhne lagi. Aakhir us room ke andar aisa kya tha, jiski wajah se manager ne use usse door rehne ke liye kaha tha?</p>
+
+            <p>Tabhi uski nazar keyhole par padi. Radhika dheere se jhuki aur apni ek aankh keyhole se laga di.</p>
+
+            <p>Andar ek aurat chair par baithi hui thi. Uske baal khule hue the aur usne safed saari pehni hui thi. Lekin Radhika uska chehra nahi dekh paa rahi thi, kyunki woh aurat darwaaze ki taraf peeth karke baithi thi.</p>
+
+            <p>Radhika ko yeh sab bahut ajeeb laga. Woh kuch aur soch paati, usse pehle use yaad aaya ki agle din uski ek aur early meeting thi. Woh mud gayi aur apne room mein chali gayi.</p>
+
+            <h2>Raat Ke 3:13</h2>
+
+            <p>Agle din meeting se lautne ke baad Radhika seedha apne room mein gayi aur so gayi. Use bilkul yaad nahi tha ki usne Room Number 333 ke andar kuch dekha bhi tha.</p>
+
+            <p>Phir achanak raat kareeb 3:13 baje, ek gaane ki awaaz se Radhika ki aankh khul gayi. Usne dhyaan se suna. Kisi ladki ki awaaz mein koi dheere-dheere gaana gunguna raha tha. Aur background mein violin bhi baj raha tha.</p>
+
+            <!-- IMAGE 3: WOMAN PLAYING VIOLIN -->
+            <div class="story-image">
+                <img src="granville-3.jpeg" alt="Woman in white saree playing violin">
+            </div>
+
+            <p>“Raat ke is waqt kaun gaana gaa raha hai?” Radhika ne socha aur bed se uth gayi.</p>
+
+            <p>Jaise hi woh room se bahar nikli, use mehsoos hua ki gaane ki awaaz Room Number 333 se aa rahi thi. Radhika dheere-dheere us room ke paas gayi aur keyhole se andar jhaanka.</p>
+
+            <p>Ek baar phir wahi aurat chair par baithi hui thi. Uski peeth darwaaze ki taraf thi. Lekin is baar woh aurat violin baja rahi thi aur saath mein gaana gunguna rahi thi.</p>
+
+            <p>Radhika ko yeh sab behad daraavna aur ajeeb laga. Usne socha ki subah hotel manager se is baare mein zaroor baat karegi. Phir woh apne room mein wapas chali gayi.</p>
+
+            <h2>Sab Kuch Laal Tha</h2>
+
+            <p>Agli subah hotel mein Radhika ka aakhri din tha. Usne apna saara saamaan pack kiya aur jaise hi room se bahar nikli, use pichhli raat ki baat yaad aa gayi. Usne ek baar phir Room Number 333 ke keyhole se andar jhaanka.</p>
+
+            <!-- IMAGE 4: EVERYTHING RED / RED EYE -->
+            <div class="story-image">
+                <img src="granville-4.jpeg" alt="Everything turned red through keyhole">
+            </div>
+
+            <p>Lekin is baar usne jo dekha, woh uski samajh se pare tha. Room ke andar kuch bhi dikhai nahi de raha tha. Har jagah sirf laal hi laal nazar aa raha tha.</p>
+
+            <p>Radhika gusse aur confusion mein seedha reception par manager ke paas pahunchi.</p>
+
+            <p>“Room Number 333 ke andar aakhir hai kya? Aapne mujhe uske paas jaane se mana kiya tha, lekin ek din maine keyhole se dekha toh andar ek aurat thi. Kal raat woh gaana gaa rahi thi aur violin baja rahi thi... aur aaj andar kuch bhi dikhai nahi de raha. Sab kuch laal dikh raha hai. Aakhir us room mein kya hai? Aur woh aurat kaun hai? Aaj sab kuch laal kyun hai? Yeh kya ho raha hai?”</p>
+
+            <p>Manager ne Radhika ki taraf dekha. Uske chehre par darr saaf nazar aa raha tha. Phir usne ek dari hui aur gambheer awaaz mein kaha, “Aap bilkul sahi keh rahi hain, madam. Us room mein ek chudail ka saaya hai.”</p>
+
+            <p>Radhika chup reh gayi.</p>
+
+            <p>Manager ne aage kaha, “Aur aaj jab aap keyhole se usse dekh rahi thi... toh woh bhi andar se apni laal aankhon se aapko dekh rahi thi.”</p>
+
+            <p>Yeh sunte hi Radhika ke pairon tale zameen khisak gayi. Woh zor se zameen par gir padi. Kotwaal daudta hua uske paas aaya. Lekin Radhika ka shareer thanda pad chuka tha. Woh mar chuki thi.</p>
+
+            <p>Manager reception ke peeche khada use dekhta raha. Phir usne dheere se apna register khola. Uske chehre par ek halki si muskaan aayi... aur usne register mein se ek aur naam kaat diya.</p>
+
+            <a href="hinglish-tales.html" class="back-btn">← Back to Hinglish Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

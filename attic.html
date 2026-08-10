@@ -105,35 +105,23 @@
             text-shadow: 0 0 10px #990000;
         }
 
-        /* CATEGORY TABS / HEADINGS */
+        /* CATEGORY HEADINGS */
         .category-title {
             font-family: 'Cinzel', serif;
             font-size: 1.5rem;
-            color: #ff4d4d;
             border-bottom: 2px solid #660000;
-            padding-bottom: 5px;
+            padding-bottom: 8px;
             margin: 30px 0 15px 0;
             letter-spacing: 1px;
         }
 
-        /* STORY CARD */
-        .story-card {
-            background-color: rgba(25, 5, 5, 0.6);
-            border: 1px solid #440000;
-            border-radius: 6px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
+        .category-title a {
+            transition: color 0.2s;
         }
 
-        .story-card h3 {
-            font-family: 'Cinzel', serif;
-            color: #e60000;
-            margin-bottom: 8px;
-        }
-
-        .story-card p {
-            font-size: 0.95rem;
-            color: #cccccc;
+        .category-title a:hover {
+            color: #ff0000 !important;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         footer {
@@ -166,27 +154,18 @@
             <h1 class="page-title">Story's Attic</h1>
 
             <!-- 1. ENGLISH SECTION -->
-            <div class="category-title">🇬🇧 English Tales</div>
-            
-            <div class="story-card">
-                <h3>The Whispering Clock</h3>
-                <p>It was always three minutes fast. Every morning, I would correct it. Every evening, it had crept ahead again... <em>(Full story coming soon)</em></p>
+            <div class="category-title">
+                <a href="english-tales.html" style="color: #ff4d4d; text-decoration: none;">🇬🇧 English Tales ➔</a>
             </div>
 
             <!-- 2. HINDI SECTION -->
-            <div class="category-title">🇮🇳 हिंदी कहानियां (Hindi)</div>
-            
-            <div class="story-card">
-                <h3>परछाई का साया</h3>
-                <p>उस हवेली के अंधेरे कोने में कोई खड़ा था... जो मुझसे मेरी ही आवाज़ में बात कर रहा था। <em>(जल्द आ रहा है)</em></p>
+            <div class="category-title">
+                <a href="#" style="color: #ff4d4d; text-decoration: none;">🇮🇳 हिंदी कहानियां (Hindi) ➔</a>
             </div>
 
             <!-- 3. HINGLISH SECTION -->
-            <div class="category-title">💬 Hinglish Stories</div>
-            
-            <div class="story-card">
-                <h3>Raat ke 3 Baje</h3>
-                <p>Us sunsaan sadak par light achanak chali gayi, aur peeche se kisi ke chalne ki aawaz aane lagi... <em>(Coming soon)</em></p>
+            <div class="category-title">
+                <a href="#" style="color: #ff4d4d; text-decoration: none;">💬 Hinglish Stories ➔</a>
             </div>
 
         </section>
@@ -197,6 +176,7 @@
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
+    <!-- JAVASCRIPT FOR TOGGLING MENU -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");

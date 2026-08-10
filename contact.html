@@ -30,7 +30,7 @@
             background-color: rgba(12, 12, 12, 0.85); 
             border: 1px solid #330000; 
             border-radius: 8px; 
-            padding: 40px; 
+            padding: 40px 20px; 
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
             text-align: center; 
         }
@@ -47,7 +47,7 @@
         
         .hook-quote {
             font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: #ff4d4d;
             margin-bottom: 25px;
             font-weight: bold;
@@ -55,7 +55,7 @@
         }
 
         .description {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #cccccc;
             margin-bottom: 20px;
         }
@@ -65,25 +65,30 @@
             background-color: rgba(25, 5, 5, 0.7);
             border: 1px dashed #660000;
             border-radius: 6px;
-            padding: 20px;
+            padding: 20px 15px;
             margin: 30px auto 10px auto;
-            max-width: 500px;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .email-box p {
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #888;
             letter-spacing: 1px;
             margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         .email-box a {
             font-family: 'Georgia', serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: #ff0000;
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
+            word-break: break-all; /* Prevents overflow on narrow screens */
             transition: color 0.2s, text-shadow 0.2s;
         }
 

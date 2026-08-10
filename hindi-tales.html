@@ -15,34 +15,46 @@
             line-height: 1.6;
             padding-bottom: 40px;
         }
+
+        /* NAVIGATION BAR */
         .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
         .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
         .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
         .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
         .nav-links.active { display: flex; }
         .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER */
         .container { width: 90%; max-width: 850px; margin: 20px auto; }
         section { background-color: rgba(12, 12, 12, 0.85); border: 1px solid #330000; border-radius: 8px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); }
-        h1.page-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; text-align: center; letter-spacing: 2px; margin-bottom: 30px; text-shadow: 0 0 10px #990000; }
+        h1.page-title { font-family: 'Georgia', serif; font-size: 2.5rem; color: #e60000; text-align: center; letter-spacing: 1px; margin-bottom: 30px; text-shadow: 0 0 10px #990000; }
         
+        /* STORY CARD */
         .story-card {
             background-color: rgba(25, 5, 5, 0.6);
             border: 1px solid #440000;
             border-radius: 6px;
-            padding: 18px 20px;
+            padding: 20px;
             margin-bottom: 20px;
             transition: transform 0.2s, border-color 0.2s;
         }
         .story-card:hover { border-color: #ff0000; transform: translateY(-2px); }
-        .story-card h3 a { font-family: 'Georgia', serif; color: #e60000; text-decoration: none; font-size: 1.3rem; }
-        .story-card h3 a:hover { color: #ff4d4d; }
-        .story-card p { font-size: 0.95rem; color: #cccccc; margin-top: 6px; }
+        .story-card h3 { margin-bottom: 8px; }
+        .story-card h3 a { font-family: 'Georgia', serif; color: #ff4d4d; text-decoration: none; font-size: 1.35rem; font-weight: bold; }
+        .story-card h3 a:hover { color: #ffffff; text-shadow: 0 0 5px #ff0000; }
+        .story-card p { font-size: 0.95rem; color: #cccccc; line-height: 1.5; }
+
+        /* BACK BUTTON */
         .back-btn { display: inline-block; margin-top: 15px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+
+        /* FOOTER */
         footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 20px; }
     </style>
 </head>
 <body>
 
+    <!-- TOP MENU -->
     <nav class="navbar">
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -58,14 +70,13 @@
         <section>
             <h1 class="page-title">🇮🇳 हिंदी कहानियां</h1>
 
-            <!-- STORY 1 -->
+            <!-- STORY 1 CARD -->
             <div class="story-card">
-                <h3><a href="granville-hotel-hindi.html">कहानी 1 - ग्रैनविले होटल ➔</a></h3>
-                <p>राधिका ने हाईवे पर बने एक सुनसान होटल में कमरा बुक किया। मैनेजर ने सख्त चेतावनी दी: कमरा नंबर 333 से दूर रहना। लेकिन जिज्ञासावश जब उसने चाबी के छेद से देखा...</p>
+                <h3><a href="granville-hotel-hindi.html">कहानी 1 - कमरा नंबर 333 ➔</a></h3>
+                <p>राधिका ने हाईवे के पास एक पुराने होटल में कमरा बुक किया। मैनेजर ने उसे कमरा नंबर 333 से दूर रहने की चेतावनी दी, लेकिन जिज्ञासा के कारण जब उसने चाबी के छेद से अंदर देखा...</p>
             </div>
 
-            <!-- FUTURE HINDI STORIES HERE -->
-
+            <!-- BACK TO ATTIC LINK -->
             <a href="attic.html" class="back-btn">← Back to Story's Attic</a>
         </section>
     </div>

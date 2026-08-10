@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #080808;
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
+            color: #d1b4a3;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            padding-bottom: 40px;
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER */
+        .container { width: 90%; max-width: 800px; margin: 30px auto; }
+        section { 
+            background-color: rgba(12, 12, 12, 0.85); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 40px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
+            text-align: center; 
+        }
+
+        /* HEADINGS & TEXT */
+        h1.page-title { 
+            font-family: 'Creepster', cursive; 
+            font-size: 3rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            text-shadow: 0 0 10px #990000; 
+        }
+        
+        .hook-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: #ff4d4d;
+            margin-bottom: 25px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        /* EMAIL BOX */
+        .email-box {
+            background-color: rgba(25, 5, 5, 0.7);
+            border: 1px dashed #660000;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 30px auto 10px auto;
+            max-width: 500px;
+        }
+
+        .email-box p {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .email-box a {
+            font-family: 'Georgia', serif;
+            font-size: 1.25rem;
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+
+        .email-box a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h1 class="page-title">ENTER THE SHADOWS</h1>
+
+            <p class="hook-quote">"Have you witnessed something that was never meant to be seen?"</p>
+
+            <p class="description">
+                Umbra Crucis welcomes stories from the other side of the ordinary. Send us your fictional nightmares, unsettling encounters, forgotten legends, or experiences rooted in true events.
+            </p>
+
+            <p class="description">
+                Tell us what happened—no matter how strange, disturbing, or impossible it may sound. Some stories are meant to remain buried… but perhaps yours deserves to be brought into the light.
+            </p>
+
+            <!-- EMAIL CALLOUT -->
+            <div class="email-box">
+                <p>WRITE US AT:</p>
+                <a href="mailto:umbracrucis@outlook.com">umbracrucis@outlook.com</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

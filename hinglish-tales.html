@@ -6,7 +6,12 @@
     <title>Hinglish Tales - Umbra Crucis</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: #080808;
             background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
@@ -16,48 +21,186 @@
             padding-bottom: 40px;
         }
 
-        /* NAVIGATION BAR */
-        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
-        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
-        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
-        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
-        .nav-links.active { display: flex; }
-        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
-
-        /* CONTAINER */
-        .container { width: 90%; max-width: 850px; margin: 20px auto; }
-        section { background-color: rgba(12, 12, 12, 0.85); border: 1px solid #330000; border-radius: 8px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); }
-        h1.page-title { font-family: 'Georgia', serif; font-size: 2.5rem; color: #e60000; text-align: center; letter-spacing: 1px; margin-bottom: 30px; text-shadow: 0 0 10px #990000; }
-        
-        /* STORY CARD */
-        .story-card {
-            background-color: rgba(25, 5, 5, 0.6);
-            border: 1px solid #440000;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s, border-color 0.2s;
+        /* TOP NAVIGATION BAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            position: relative;
+            z-index: 100;
         }
-        .story-card:hover { border-color: #ff0000; transform: translateY(-2px); }
-        .story-card h3 { margin-bottom: 8px; }
-        .story-card h3 a { font-family: 'Georgia', serif; color: #ff4d4d; text-decoration: none; font-size: 1.35rem; font-weight: bold; }
-        .story-card h3 a:hover { color: #ffffff; text-shadow: 0 0 5px #ff0000; }
-        .story-card p { font-size: 0.95rem; color: #cccccc; line-height: 1.5; }
 
-        /* BACK BUTTON */
-        .back-btn { display: inline-block; margin-top: 15px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
-        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        /* LOGO PROMINENT SIZING */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            overflow: visible;
+        }
 
-        /* FOOTER */
-        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 20px; }
+        .nav-logo img {
+            height: 80px;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+            transform: scale(2.2);
+            transform-origin: left center;
+            display: block;
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
+        }
+
+        /* HAMBURGER MENU */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .menu-icon span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #e60000;
+            border-radius: 3px;
+            box-shadow: 0 0 5px #ff0000;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 25px;
+            background-color: rgba(15, 0, 0, 0.95);
+            border: 1px solid #660000;
+            border-radius: 5px;
+            flex-direction: column;
+            width: 180px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: #d1b4a3;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-bottom: 1px solid #2a0000;
+            font-family: 'Cinzel', serif;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: #330000;
+            color: #ff4d4d;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin: 20px auto;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-family: 'Creepster', cursive;
+            font-size: 2.8rem;
+            color: #e60000;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #990000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ENTIRE STORY CARD IS A CLICKABLE LINK */
+        a.story-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background-color: rgba(15, 5, 5, 0.85);
+            border: 1px solid #550000;
+            border-radius: 10px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            transition: all 0.25s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
+        a.story-card:hover,
+        a.story-card:active {
+            transform: translateY(-4px);
+            border-color: #ff0000;
+            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
+            background-color: rgba(25, 5, 5, 0.95);
+        }
+
+        .story-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: #ff3333;
+            margin-bottom: 12px;
+        }
+
+        .story-desc {
+            color: #cccccc;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* BACK NAVIGATION LINK */
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ff3333;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #ff6666;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- TOP MENU -->
+    <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Umbra Crucis Logo">
+        </a>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <div class="nav-links" id="navMenu">
             <a href="index.html">About Us</a>
@@ -66,31 +209,39 @@
         </div>
     </nav>
 
+    <!-- CONTENT SECTION -->
     <div class="container">
-        <section>
-            <h1 class="page-title">🗣️ Hinglish Tales</h1>
+        
+        <!-- HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">🗣️ HINGLISH TALES</h1>
+        </div>
 
-            <!-- STORY 1 CARD -->
-            <div class="story-card">
-                <h3><a href="granville-hotel-hinglish.html">Story 1 - Room Number 333 ➔</a></h3>
-                <p>Radhika ne highway ke paas ek puraane hotel mein room book kiya. Manager ne use Room Number 333 se door rehne ki warning di, lekin jab usne keyhole se andar dekha...</p>
-            </div>
+        <!-- STORY 1 CLICKABLE CARD -->
+        <a href="granville-hotel-hinglish.html" class="story-card">
+            <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
+            <p class="story-desc">
+                Radhika ne ek isolated highway hotel mein room book kiya. Manager ne ek strict warning di: Room 333 se door rehna. Lekin curiosity ki वजह se usne keyhole se andar dekha...
+            </p>
+        </a>
 
-            <!-- BACK TO ATTIC LINK -->
-            <a href="attic.html" class="back-btn">← Back to Story's Attic</a>
-        </section>
+        <!-- BACK LINK -->
+        <a href="attic.html" class="back-link">← BACK TO STORY'S ATTIC</a>
+
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
+    <!-- JS SCRIPT -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
     </script>
+
 </body>
 </html>
-

@@ -3,204 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindi Tales - Umbra Crucis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>हिंदी कहानियां - Umbra Crucis</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&family=Yatra+One&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
         }
 
-        body {
-            background-color: #080808;
-            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
-            color: #d1b4a3;
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            padding-bottom: 40px;
+        /* NAVIGATION BAR & HAMBURGER MENU */
+        .navbar { 
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer; 
+        }
+        .menu-icon span { 
+            display: block; 
+            height: 3px; 
+            width: 100%; 
+            background-color: #e60000; 
+            border-radius: 3px; 
+            box-shadow: 0 0 5px #ff0000; 
+        }
+        .nav-links { 
+            display: none; 
+            position: absolute; 
+            top: 60px; 
+            right: 30px; 
+            background-color: rgba(15, 0, 0, 0.95); 
+            border: 1px solid #660000; 
+            border-radius: 5px; 
+            flex-direction: column; 
+            width: 180px; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+        }
+        .nav-links.active { display: flex; }
+        .nav-links a { 
+            color: #d1b4a3; 
+            text-decoration: none; 
+            padding: 12px 20px; 
+            border-bottom: 1px solid #2a0000; 
+            font-family: 'Cinzel', serif; 
         }
 
-        /* TOP NAVIGATION BAR */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            position: relative;
-            z-index: 100;
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        
+        /* DEVANAGARI HORROR FONT HEADING */
+        .story-title { 
+            font-family: 'Yatra One', 'Creepster', cursive; 
+            font-size: 3.2rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 12px #990000, 0 0 5px #ff0000; 
+            text-align: center; 
+            margin-bottom: 15px; 
+        }
+        .story-meta { 
+            font-family: 'Cinzel', serif; 
+            color: #888; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
         }
 
-        /* LOGO PROMINENT SIZING */
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            overflow: visible;
+        /* STORY CONTENT & DROP-CAP */
+        .story-content { 
+            background-color: rgba(12, 12, 12, 0.9); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 35px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
+            font-size: 1.15rem; 
         }
-
-        .nav-logo img {
-            height: 80px;
-            width: auto;
-            max-width: 260px;
-            object-fit: contain;
-            transform: scale(2.2);
-            transform-origin: left center;
-            display: block;
-            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
+        .story-content p { 
+            margin-bottom: 20px; 
         }
-
-        /* HAMBURGER MENU */
-        .menu-icon {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .menu-icon span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: #e60000;
-            border-radius: 3px;
-            box-shadow: 0 0 5px #ff0000;
-        }
-
-        .nav-links {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 25px;
-            background-color: rgba(15, 0, 0, 0.95);
-            border: 1px solid #660000;
-            border-radius: 5px;
-            flex-direction: column;
-            width: 180px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-        }
-
-        .nav-links.active {
-            display: flex;
-        }
-
-        .nav-links a {
-            color: #d1b4a3;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-bottom: 1px solid #2a0000;
-            font-family: 'Cinzel', serif;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .nav-links a:hover {
-            background-color: #330000;
-            color: #ff4d4d;
-        }
-
-        /* MAIN CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 750px;
-            margin: 20px auto;
-        }
-
-        /* PAGE HEADER */
-        .page-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .page-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.8rem;
+        .story-content p::first-letter {
+            font-size: 2.2rem;
+            font-family: 'Yatra One', 'Cinzel', serif;
             color: #e60000;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px #990000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            float: left;
+            line-height: 1;
+            padding-right: 6px;
+            text-shadow: 0 0 5px rgba(230, 0, 0, 0.5);
+        }
+        .story-content h2 { 
+            font-family: 'Yatra One', 'Georgia', serif; 
+            color: #ff4d4d; 
+            font-size: 1.5rem; 
+            margin: 30px 0 15px 0; 
+            border-bottom: 1px solid #440000; 
+            padding-bottom: 5px; 
+            clear: both;
         }
 
-        /* ENTIRE STORY CARD IS A CLICKABLE LINK */
-        a.story-card {
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; clear: both; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* CARD LIST STYLING (FOR TALES PAGES) */
+        .story-card {
             display: block;
-            text-decoration: none;
-            color: inherit;
-            background-color: rgba(15, 5, 5, 0.85);
-            border: 1px solid #550000;
-            border-radius: 10px;
-            padding: 25px 20px;
+            background-color: rgba(12, 12, 12, 0.9);
+            border: 1px solid #330000;
+            border-radius: 8px;
+            padding: 25px;
             margin-bottom: 25px;
-            text-align: left;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            transition: all 0.25s ease-in-out;
-            cursor: pointer;
-        }
-
-        /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
-        a.story-card:hover,
-        a.story-card:active {
-            transform: translateY(-4px);
-            border-color: #ff0000;
-            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
-            background-color: rgba(25, 5, 5, 0.95);
-        }
-
-        .story-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
-            color: #ff3333;
-            margin-bottom: 12px;
-        }
-
-        .story-desc {
-            color: #cccccc;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* BACK NAVIGATION LINK */
-        .back-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #ff3333;
             text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .story-card:hover {
+            border-color: #660000;
+            transform: translateY(-2px);
+        }
+        .story-card h2 {
+            font-family: 'Yatra One', cursive;
+            color: #e60000;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px #800000;
+        }
+        .story-card p {
+            color: #d1b4a3;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        .back-link:hover {
-            color: #ff6666;
-            text-decoration: underline;
+        /* BACK BUTTON & FOOTER */
+        .back-btn { 
+            display: inline-block; 
+            margin-top: 25px; 
+            color: #ff4d4d; 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold; 
+            clear: both;
         }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.85rem;
-            margin-top: 30px;
-        }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <!-- TOP NAVIGATION BAR -->
+    <!-- TOP MENU -->
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">
-            <img src="logo.png" alt="Umbra Crucis Logo">
-        </a>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
         <div class="nav-links" id="navMenu">
             <a href="index.html">About Us</a>
@@ -209,25 +184,18 @@
         </div>
     </nav>
 
-    <!-- CONTENT SECTION -->
     <div class="container">
-        
-        <!-- HEADER -->
-        <div class="page-header">
-            <h1 class="page-title">🇮🇳 हिंदी कहानियां</h1>
+        <div class="story-header">
+            <h1 class="story-title">🇮🇳 हिंदी कहानियां</h1>
         </div>
 
-        <!-- STORY 1 CLICKABLE CARD -->
+        <!-- STORY LIST ITEM -->
         <a href="granville-hotel-hindi.html" class="story-card">
-            <h2 class="story-title">कहानी 1 - ग्रैनविल होटल ➔</h2>
-            <p class="story-desc">
-                राधिका ने एक सुनसान हाईवे होटल में कमरा बुक किया। मैनेजर ने एक सख्त चेतावनी दी: कमरा नंबर 333 से दूर रहना। लेकिन जिज्ञासावश उसने चाबी के छेद से अंदर झांका...
-            </p>
+            <h2>कहानी 1 - ग्रैनविल होटल ➔</h2>
+            <p>राधिका ने एक सुनसान हाईवे होटल में कमरा बुक किया। मैनेजर ने एक सख्त चेतावनी दी: कमरा नंबर 333 से दूर रहना। लेकिन जिज्ञासावश उसने चाबी के छेद से अंदर झांका...</p>
         </a>
 
-        <!-- BACK LINK -->
-        <a href="attic.html" class="back-link">← BACK TO STORY'S ATTIC</a>
-
+        <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
     </div>
 
     <!-- FOOTER -->
@@ -235,13 +203,12 @@
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
-    <!-- JS SCRIPT -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
     </script>
-
 </body>
 </html>
+

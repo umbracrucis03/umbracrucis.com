@@ -31,7 +31,6 @@
             z-index: 100;
         }
 
-        /* LOGO PROMINENT SIZING */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -50,7 +49,6 @@
             filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
-        /* HAMBURGER MENU */
         .menu-icon {
             display: flex;
             flex-direction: column;
@@ -106,28 +104,25 @@
             width: 90%;
             max-width: 750px;
             margin: 20px auto;
-        }
-
-        /* PAGE HEADER */
-        .page-header {
             text-align: center;
-            margin-bottom: 30px;
         }
 
+        /* PAGE HEADING */
         .page-title {
             font-family: 'Creepster', cursive;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: #e60000;
             letter-spacing: 2px;
             text-shadow: 0 0 10px #990000;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 10px;
+            white-space: nowrap; /* Keeps heading on one single line */
         }
 
-        /* ENTIRE STORY CARD IS A CLICKABLE LINK */
+        /* CLICKABLE STORY BOX */
         a.story-card {
             display: block;
             text-decoration: none;
@@ -136,14 +131,13 @@
             border: 1px solid #550000;
             border-radius: 10px;
             padding: 25px 20px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             text-align: left;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: all 0.25s ease-in-out;
             cursor: pointer;
         }
 
-        /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
         a.story-card:hover,
         a.story-card:active {
             transform: translateY(-4px);
@@ -154,7 +148,7 @@
 
         .story-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             color: #ff3333;
             margin-bottom: 12px;
         }
@@ -165,20 +159,32 @@
             line-height: 1.7;
         }
 
-        /* BACK NAVIGATION LINK */
+        /* BACK TO STORY'S ATTIC BUTTON STYLING */
+        .back-container {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
         .back-link {
             display: inline-block;
-            margin-top: 15px;
-            color: #ff3333;
+            color: #e60000;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 10px 18px;
+            border: 1px dashed #660000;
+            border-radius: 6px;
+            background-color: rgba(10, 0, 0, 0.6);
+            transition: all 0.2s ease-in-out;
         }
 
         .back-link:hover {
             color: #ff6666;
-            text-decoration: underline;
+            border-color: #ff0000;
+            background-color: rgba(30, 0, 0, 0.8);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
         footer {
@@ -186,7 +192,7 @@
             padding: 20px;
             color: #666;
             font-size: 0.85rem;
-            margin-top: 30px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -209,15 +215,13 @@
         </div>
     </nav>
 
-    <!-- CONTENT SECTION -->
+    <!-- MAIN CONTENT -->
     <div class="container">
         
-        <!-- HEADER -->
-        <div class="page-header">
-            <h1 class="page-title">🇬🇧 ENGLISH TALES</h1>
-        </div>
+        <!-- HEADING -->
+        <h1 class="page-title">🇬🇧 ENGLISH TALES</h1>
 
-        <!-- STORY 1 CLICKABLE CARD -->
+        <!-- CLICKABLE STORY CARD -->
         <a href="granville-hotel.html" class="story-card">
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
@@ -225,8 +229,10 @@
             </p>
         </a>
 
-        <!-- BACK LINK -->
-        <a href="attic.html" class="back-link">← BACK TO STORY'S ATTIC</a>
+        <!-- BACK LINK SECTION -->
+        <div class="back-container">
+            <a href="attic.html" class="back-link">← BACK TO STORY'S ATTIC</a>
+        </div>
 
     </div>
 
@@ -235,7 +241,6 @@
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
-    <!-- JS SCRIPT -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
@@ -245,3 +250,4 @@
 
 </body>
 </html>
+

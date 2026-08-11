@@ -21,23 +21,25 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 15px 20px; 
+            padding: 10px 20px; 
             position: relative; 
             z-index: 100; 
         }
 
-        /* LOGO AUTO-ADJUSTING STYLES */
+        /* LOGO AUTO-ADJUSTING & ENLARGED */
         .nav-logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            overflow: hidden;
         }
 
         .nav-logo img {
-            height: 38px;          /* Clean scaling height for mobile headers */
-            width: auto;           /* Maintains original aspect ratio */
-            max-width: 220px;      /* Prevents logo from overcrowding mobile screen width */
-            object-fit: contain;   /* Ensures sharp rendering without distortion */
+            height: 90px;          /* Increased height to make text prominent */
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+            margin: -20px 0;       /* Negative margin trims canvas padding automatically */
             display: block;
         }
 
@@ -59,6 +61,7 @@
             border-radius: 8px; 
             border: 1px solid #440000; 
             box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+            display: block;
         }
 
         /* ABOUT US CARD */
@@ -132,7 +135,7 @@
     <div class="container">
         <!-- BANNER IMAGE -->
         <div class="hero-banner">
-            <img src="hero-banner.jpeg" alt="Umbra Crucis Banner">
+            <img src="1786303420654~2.png" alt="Umbra Crucis Banner">
         </div>
 
         <!-- ABOUT US SECTION -->

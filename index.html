@@ -24,28 +24,30 @@
         /* TOP NAVIGATION BAR */
         .navbar {
             display: flex;
-            justify-content: space-between; /* Keeps logo left & menu right */
+            justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 20px 25px;
             position: relative;
             z-index: 100;
         }
 
-        /* LOGO PROMINENT SIZING */
+        /* LOGO FORCE SCALE UP */
         .nav-logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            overflow: visible;
         }
 
         .nav-logo img {
-            height: auto;
-            max-height: 55px;      /* Increases height for better visibility */
+            height: 80px;            /* Forces larger container height */
             width: auto;
-            max-width: 65vw;       /* Allows logo to take up plenty of width on mobile */
+            max-width: 260px;
             object-fit: contain;
+            transform: scale(2.2);  /* Blows up the inner text 2.2x to overcome empty padding */
+            transform-origin: left center;
             display: block;
-            filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5)); /* Adds a red horror glow */
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
         /* 3 HORIZONTAL MENU LINES */
@@ -73,7 +75,7 @@
             display: none;
             position: absolute;
             top: 60px;
-            right: 30px;
+            right: 25px;
             background-color: rgba(15, 0, 0, 0.95);
             border: 1px solid #660000;
             border-radius: 5px;
@@ -104,7 +106,7 @@
         .header-banner {
             width: 100%;
             max-width: 950px;
-            margin: 0 auto 30px auto;
+            margin: 10px auto 30px auto;
             text-align: center;
             padding: 0 15px;
         }
@@ -201,7 +203,7 @@
             
             <div class="disclaimer-box">
                 <p><strong>Disclaimer</strong></p>
-                <p>⚠️ <strong>WARNING:</strong> The stories/ events contains dark themes, psychological tension, and eerie imagery that may be unsettling to some viewers/ readers. Reader and viewer discretion is highly advised. Best experience in the dark. Proceed at your own risk.</p>
+                <p>⚠️ <strong>WARNING:</strong> The stories/ events contains dark themes, psychological tension, and eerie imagery that may be unsettling to some viewers/ readers. Reading and viewer discretion is highly advised. Best experience in the dark. Proceed at your own risk.</p>
             </div>
 
             <p class="about-text">You’ve just stepped into a world where nightmares take shape. This is the official website for "Umbra Crucis", your new home for original, spine-chilling horror stories. From psychological terrors to things that go bump in the night, we turn your worst fears into reality.</p>

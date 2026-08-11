@@ -17,14 +17,16 @@
         }
 
         /* NAVIGATION BAR */
-        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
-        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
-        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
-        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
-        .nav-links.active { display: flex; }
-        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
 
-                /* LOGO PROMINENT SIZING */
+        /* LOGO PROMINENT SIZING */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -33,15 +35,19 @@
         }
 
         .nav-logo img {
-            height: 80px;
+            height: 50px;
             width: auto;
-            max-width: 260px;
+            max-width: 200px;
             object-fit: contain;
-            transform: scale(2.2);
-            transform-origin: left center;
             display: block;
             filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
+
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
         
         /* CONTAINER */
         .container { width: 90%; max-width: 800px; margin: 30px auto; }
@@ -107,7 +113,7 @@
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            word-break: break-all; /* Prevents overflow on narrow screens */
+            word-break: break-all;
             transition: color 0.2s, text-shadow 0.2s;
         }
 
@@ -124,6 +130,9 @@
 
     <!-- TOP MENU -->
     <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Umbra Crucis Logo">
+        </a>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
@@ -150,7 +159,7 @@
 
             <!-- EMAIL CALLOUT -->
             <div class="email-box">
-                <p>SEND YOUR STORY TO OUR EMAIL AND ENTER IT INTO THE SHADOWS.</p>
+                <p>SEND YOUR STORY TO OUR EMAIL AND ENTER INTO THE SHADOWS.</p>
                 <p>WRITE US AT -</p>
                 <a href="mailto:umbracrucis@outlook.com">umbracrucis@outlook.com</a>
             </div>
@@ -169,3 +178,4 @@
     </script>
 </body>
 </html>
+

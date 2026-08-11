@@ -31,7 +31,6 @@
             z-index: 100;
         }
 
-        /* LOGO PROMINENT SIZING */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -50,7 +49,6 @@
             filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
-        /* HAMBURGER MENU */
         .menu-icon {
             display: flex;
             flex-direction: column;
@@ -101,9 +99,9 @@
             color: #ff4d4d;
         }
 
-        /* MAIN CONTAINER */
+        /* MAIN PAGE CONTAINER */
         .container {
-            width: 90%;
+            width: 92%;
             max-width: 750px;
             margin: 20px auto;
             text-align: center;
@@ -111,14 +109,14 @@
 
         .subtitle {
             font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
             color: #888;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
 
-        /* ENTIRE CARD IS CLICKABLE LINK */
+        /* ENTIRE RED BOX IS A CLICKABLE LINK */
         a.language-card {
             display: block;
             text-decoration: none;
@@ -126,37 +124,37 @@
             background-color: rgba(15, 5, 5, 0.85);
             border: 1px solid #550000;
             border-radius: 10px;
-            padding: 25px 20px;
-            margin-bottom: 25px;
+            padding: 22px 18px;
+            margin-bottom: 22px;
             text-align: left;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: all 0.25s ease-in-out;
             cursor: pointer;
         }
 
-        /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
         a.language-card:hover,
         a.language-card:active {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: #ff0000;
-            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
+            box-shadow: 0 0 18px rgba(230, 0, 0, 0.45);
             background-color: rgba(25, 5, 5, 0.95);
         }
 
         .card-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             color: #ff3333;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap; /* Forces titles to stay on 1 line */
         }
 
         .arrow {
             color: #ff3333;
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             display: block;
         }
 
@@ -202,7 +200,7 @@
         <a href="english-tales.html" class="language-card">
             <h2 class="card-title">🇬🇧 ENGLISH TALES</h2>
             <span class="arrow">➔</span>
-            <p class="card-desc">Read chilling horror stories and creepy legends written in English.</p>
+            <p class="card-desc">Read chilling horror stories and creepy legends, written in English.</p>
         </a>
 
         <!-- HINDI BOX -->

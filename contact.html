@@ -24,6 +24,25 @@
         .nav-links.active { display: flex; }
         .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
 
+                /* LOGO PROMINENT SIZING */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            overflow: visible;
+        }
+
+        .nav-logo img {
+            height: 80px;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+            transform: scale(2.2);
+            transform-origin: left center;
+            display: block;
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
+        }
+        
         /* CONTAINER */
         .container { width: 90%; max-width: 800px; margin: 30px auto; }
         section { 

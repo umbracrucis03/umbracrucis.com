@@ -3,162 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The cross casts more than a shadow - Umbra Crucis</title>
+    <title>Umbra Crucis - Where Nightmares Take Shape</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #080808;
             background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
             color: #d1b4a3;
             font-family: 'Georgia', serif;
-            line-height: 1.6;
+            line-height: 1.8;
             padding-bottom: 40px;
         }
 
-        /* TOP NAVIGATION BAR */
-        .navbar {
+        /* NAVIGATION BAR */
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 20px; 
+            position: relative; 
+            z-index: 100; 
+        }
+
+        /* LOGO AUTO-ADJUSTING STYLES */
+        .nav-logo {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
-            padding: 20px 30px;
-            position: relative;
-            z-index: 100;
-        }
-
-        /* 3 HORIZONTAL MENU LINES */
-        .menu-icon {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-        }
-
-        .menu-icon span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: #e60000;
-            border-radius: 3px;
-            box-shadow: 0 0 5px #ff0000;
-        }
-
-        /* DROPDOWN MENU LINKS */
-        .nav-links {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 30px;
-            background-color: rgba(15, 0, 0, 0.95);
-            border: 1px solid #660000;
-            border-radius: 5px;
-            flex-direction: column;
-            width: 180px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-        }
-
-        .nav-links.active {
-            display: flex;
-        }
-
-        .nav-links a {
-            color: #d1b4a3;
             text-decoration: none;
-            padding: 12px 20px;
-            border-bottom: 1px solid #2a0000;
-            font-family: 'Cinzel', serif;
-            transition: background 0.2s, color 0.2s;
         }
 
-        .nav-links a:hover {
-            background-color: #330000;
-            color: #ff4d4d;
+        .nav-logo img {
+            height: 38px;          /* Clean scaling height for mobile headers */
+            width: auto;           /* Maintains original aspect ratio */
+            max-width: 220px;      /* Prevents logo from overcrowding mobile screen width */
+            object-fit: contain;   /* Ensures sharp rendering without distortion */
+            display: block;
         }
 
-        /* BANNER IMAGE CONTAINER */
-        .header-banner {
-            width: 100%;
-            max-width: 950px;
-            margin: 0 auto 30px auto;
-            text-align: center;
-            padding: 0 15px;
+        /* HAMBURGER MENU */
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 20px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* MAIN CONTAINER */
+        .container { width: 90%; max-width: 800px; margin: 10px auto; }
+
+        /* BANNER IMAGE */
+        .hero-banner { text-align: center; margin-bottom: 25px; }
+        .hero-banner img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
         }
 
-        .header-banner img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 0 25px rgba(230, 0, 0, 0.4);
-            border: 1px solid #330000;
+        /* ABOUT US CARD */
+        section.about-section { 
+            background-color: rgba(12, 12, 12, 0.85); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 30px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
         }
 
-        /* CONTENT CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 850px;
-            margin: 0 auto;
+        h1.page-title { 
+            font-family: 'Creepster', cursive; 
+            font-size: 2.8rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            margin-bottom: 20px; 
+            text-shadow: 0 0 10px #990000; 
+            text-align: left;
         }
 
-        section {
-            background-color: rgba(12, 12, 12, 0.85);
-            border: 1px solid #330000;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-        }
-
-        h2.section-heading {
-            font-family: 'Creepster', cursive;
-            font-size: 2.2rem;
-            color: #e60000;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #440000;
-            padding-bottom: 10px;
-            text-shadow: 0 0 8px #990000;
-        }
-
-        /* DISCLAIMER BOX */
+        /* WARNING / DISCLAIMER BOX */
         .disclaimer-box {
-            background-color: rgba(40, 0, 0, 0.6);
-            border-left: 4px solid #ff0000;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            color: #ffcccc;
+            background-color: rgba(20, 0, 0, 0.6);
+            border-left: 4px solid #e60000;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+        }
+        .disclaimer-title {
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .disclaimer-text {
+            color: #d1b4a3;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .about-text {
             font-size: 1.05rem;
+            color: #cccccc;
+            line-height: 1.8;
             margin-bottom: 15px;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.85rem;
-            margin-top: 20px;
-        }
+        /* FOOTER */
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <!-- TOP MENU -->
+    <!-- TOP MENU WITH LOGO -->
     <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Umbra Crucis Logo">
+        </a>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
         <div class="nav-links" id="navMenu">
             <a href="index.html">About Us</a>
@@ -167,27 +129,28 @@
         </div>
     </nav>
 
-    <!-- HEADER IMAGE BANNER -->
-    <div class="header-banner">
-        <img src="1786303420654~2.png" alt="The cross casts more than a shadow - Umbra Crucis">
-    </div>
-
     <div class="container">
+        <!-- BANNER IMAGE -->
+        <div class="hero-banner">
+            <img src="hero-banner.jpeg" alt="Umbra Crucis Banner">
+        </div>
 
-        <!-- SECTION: ABOUT US -->
-        <section id="about">
-            <h2 class="section-heading">About Us</h2>
-            
+        <!-- ABOUT US SECTION -->
+        <section class="about-section">
+            <h1 class="page-title">ABOUT US</h1>
+
+            <!-- DISCLAIMER BOX -->
             <div class="disclaimer-box">
-                <p><strong>Disclaimer</strong></p>
-                <p>⚠️ <strong>WARNING:</strong> The stories/ events contains dark themes, psychological tension, and eerie imagery that may be unsettling to some viewers/ readers. Reading and viewer discretion is highly advised. Best experience in the dark. Proceed at your own risk.</p>
+                <div class="disclaimer-title">Disclaimer</div>
+                <div class="disclaimer-text">
+                    ⚠️ <strong>WARNING:</strong> The stories/ events contains dark themes, psychological tension, and eerie imagery that may be unsettling to some viewers/ readers. Reading and viewer discretion is highly advised. Best experience in the dark. Proceed at your own risk.
+                </div>
             </div>
 
-            <p class="about-text">You’ve just stepped into a world where nightmares take shape. This is the official website for "Umbra Crucis", your new home for original, spine-chilling horror stories. From psychological terrors to things that go bump in the night, we turn your worst fears into reality.</p>
-            
-            <p class="about-text" style="color: #ff3333; font-style: italic;">Turn off the lights if you dare. Read it now... before it gets dark!</p>
+            <p class="about-text">
+                You’ve just stepped into a world where nightmares take shape. This is Umbra Crucis—a dark corner of the internet dedicated to original horror stories, creepy folklore, and psychological thrillers.
+            </p>
         </section>
-
     </div>
 
     <!-- FOOTER -->
@@ -195,13 +158,11 @@
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT FOR TOGGLING MENU -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
     </script>
-
 </body>
 </html>

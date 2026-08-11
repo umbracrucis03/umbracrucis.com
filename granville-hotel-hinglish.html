@@ -8,34 +8,134 @@
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* UPDATE YOUR .story-title CSS CLASS */
-        .story-title {
-            font-family: 'Creepster', cursive;
-            font-size: 2.8rem;
-            color: #e60000;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px #990000;
-            text-align: center;
-            margin-bottom: 10px;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
         }
 
-        /* NAVIGATION BAR */
-        .navbar { display: flex; justify-content: flex-end; align-items: center; }
-        .menu-icon { display: flex; flex-direction: column; }
-        /* ... rest of your CSS rules here ... */
+        /* NAVIGATION BAR & HAMBURGER MENU */
+        .navbar { 
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer; 
+        }
+        .menu-icon span { 
+            display: block; 
+            height: 3px; 
+            width: 100%; 
+            background-color: #e60000; 
+            border-radius: 3px; 
+            box-shadow: 0 0 5px #ff0000; 
+        }
+        .nav-links { 
+            display: none; 
+            position: absolute; 
+            top: 60px; 
+            right: 30px; 
+            background-color: rgba(15, 0, 0, 0.95); 
+            border: 1px solid #660000; 
+            border-radius: 5px; 
+            flex-direction: column; 
+            width: 180px; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+        }
+        .nav-links.active { display: flex; }
+        .nav-links a { 
+            color: #d1b4a3; 
+            text-decoration: none; 
+            padding: 12px 20px; 
+            border-bottom: 1px solid #2a0000; 
+            font-family: 'Cinzel', serif; 
+        }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { 
+            font-family: 'Creepster', cursive; 
+            font-size: 3.2rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 15px #990000, 0 0 5px #ff0000; 
+            text-align: center; 
+            margin-bottom: 15px; 
+        }
+        .story-meta { 
+            font-family: 'Cinzel', serif; 
+            color: #888; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+        }
+
+        /* STORY CONTENT & DROP-CAP */
+        .story-content { 
+            background-color: rgba(12, 12, 12, 0.9); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 35px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
+            font-size: 1.15rem; 
+        }
+        .story-content p { 
+            margin-bottom: 20px; 
+        }
+        .story-content p::first-letter {
+            font-size: 2.2rem;
+            font-family: 'Cinzel', serif;
+            color: #e60000;
+            float: left;
+            line-height: 1;
+            padding-right: 6px;
+            text-shadow: 0 0 5px rgba(230, 0, 0, 0.5);
+        }
+        .story-content h2 { 
+            font-family: 'Georgia', serif; 
+            color: #ff4d4d; 
+            font-size: 1.5rem; 
+            margin: 30px 0 15px 0; 
+            border-bottom: 1px solid #440000; 
+            padding-bottom: 5px; 
+            clear: both;
+        }
 
         /* IMAGE STYLING */
-        .story-image img {
-            width: 100%;
-            max-width: 700px;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid #440000;
-            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35);
+        .story-image { text-align: center; margin: 30px 0; clear: both; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
         }
 
         /* BACK BUTTON & FOOTER */
-        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn { 
+            display: inline-block; 
+            margin-top: 25px; 
+            color: #ff4d4d; 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold; 
+            clear: both;
+        }
         .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
         footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
     </style>
@@ -175,4 +275,3 @@
     </script>
 </body>
 </html>
-

@@ -170,12 +170,12 @@
             text-align: left;
         }
 
+        /* FIXED: CHANGED FROM JUSTIFY TO CENTER TO REMOVE AWKWARD WORD GAPS */
         .description {
             font-size: 1.1rem;
             color: #cccccc;
             margin-bottom: 20px;
-            text-align: justify;
-            text-align-last: center;
+            text-align: center;
         }
 
         /* FEATURE BOXES */
@@ -222,31 +222,32 @@
             letter-spacing: 1px;
         }
 
-        /* CONTINUOUSLY FLASHING BUTTON ANIMATION */
+        /* EXACT ORIGINAL BUTTON STYLING WITH SMOOTH FLASHING GLOW */
         .back-btn { 
             display: inline-block; 
             margin-top: 25px; 
-            color: #ff0000; 
+            color: #ff4d4d; 
             text-decoration: none; 
             font-family: 'Cinzel', serif; 
             font-weight: bold; 
-            font-size: 1.25rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            animation: pulseGlow 1.2s infinite alternate;
+            white-space: nowrap;
+            animation: pulseGlow 1s infinite alternate;
         }
 
         @keyframes pulseGlow {
             0% {
-                color: #ff0000;
-                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-                transform: scale(1);
+                color: #ff4d4d;
+                text-shadow: none;
             }
             100% {
                 color: #ffffff;
-                text-shadow: 0 0 15px #e60000, 0 0 25px #ff0000, 0 0 35px #ff0000;
-                transform: scale(1.08);
+                text-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000;
             }
+        }
+
+        .back-btn:hover { 
+            color: #ffffff; 
+            text-shadow: 0 0 8px #ff0000; 
         }
 
         /* RED CORNER FLASH OVERLAY */
@@ -368,7 +369,7 @@
                 "The shadows don't just watch you... they're waiting for you to breathe."
             </div>
 
-            <p class="description" style="text-align: center; color: #ff4d4d; font-weight: bold;">
+            <p class="description" style="color: #ff4d4d; font-weight: bold;">
                 Get ready, lock the doors, and don't look behind you.
             </p>
 

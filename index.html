@@ -19,6 +19,8 @@
             font-family: 'Georgia', serif;
             line-height: 1.8;
             padding-bottom: 40px;
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* TOP NAVIGATION BAR */
@@ -82,6 +84,7 @@
             flex-direction: column;
             width: 180px;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            z-index: 101;
         }
 
         .nav-links.active {
@@ -219,18 +222,86 @@
             letter-spacing: 1px;
         }
 
+        /* CONTINUOUSLY FLASHING BUTTON ANIMATION */
         .back-btn { 
             display: inline-block; 
             margin-top: 25px; 
-            color: #ff4d4d; 
+            color: #ff0000; 
             text-decoration: none; 
             font-family: 'Cinzel', serif; 
             font-weight: bold; 
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            animation: pulseGlow 1.2s infinite alternate;
         }
-        
-        .back-btn:hover { 
-            color: #ffffff; 
-            text-shadow: 0 0 8px #ff0000; 
+
+        @keyframes pulseGlow {
+            0% {
+                color: #ff0000;
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+                transform: scale(1);
+            }
+            100% {
+                color: #ffffff;
+                text-shadow: 0 0 15px #e60000, 0 0 25px #ff0000, 0 0 35px #ff0000;
+                transform: scale(1.08);
+            }
+        }
+
+        /* RED CORNER FLASH OVERLAY */
+        #red-flash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: inset 0 0 100px 50px rgba(255, 0, 0, 0);
+            transition: box-shadow 0.1s ease-in-out;
+        }
+
+        .flashing-corners {
+            animation: cornerPulse 0.4s infinite alternate;
+        }
+
+        @keyframes cornerPulse {
+            0% {
+                box-shadow: inset 0 0 120px 60px rgba(255, 0, 0, 0.9);
+                background-color: rgba(150, 0, 0, 0.15);
+            }
+            100% {
+                box-shadow: inset 0 0 50px 20px rgba(100, 0, 0, 0.3);
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
+        /* FLYING BATS */
+        .bat {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: 10000;
+            pointer-events: none;
+            user-select: none;
+            animation: flyAcross 3s linear forwards;
+        }
+
+        @keyframes flyAcross {
+            0% {
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy)) scale(1.5) rotate(var(--rot));
+                opacity: 0;
+            }
         }
 
         footer {
@@ -243,6 +314,9 @@
     </style>
 </head>
 <body>
+
+    <!-- OVERLAY FOR RED CORNER FLASH EFFECT -->
+    <div id="red-flash-overlay"></div>
 
     <!-- TOP MENU -->
     <nav class="navbar">
@@ -268,7 +342,7 @@
     <div class="container">
 
         <!-- MERGED MAIN SECTION -->
-            <section>
+        <section>
             <div class="disclaimer-box">
                 <p><strong>DISCLAIMER</strong></p>
                 <p>⚠️ <strong>WARNING:</strong> The stories/ events contain dark themes, psychological tension, and eerie imagery that may be unsettling to some viewers/ readers. Reader discretion is highly advised. Best experienced in the dark. Proceed at your own risk.</p>
@@ -302,7 +376,7 @@
                 Turn off the lights if you dare. Read it now... before it gets dark!
             </p>
 
-            <a href="attic.html" class="back-btn"> 《ENTER STORY'S ATTIC》</a>
+            <a href="attic.html" class="back-btn" onclick="triggerHauntedEffect(event)"> 《ENTER STORY'S ATTIC》</a>
         </section>
 
     </div>
@@ -312,13 +386,61 @@
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT FOR TOGGLING MENU -->
+    <!-- JAVASCRIPT FOR TOGGLING MENU & HAUNTED EFFECT -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
+
+        function triggerHauntedEffect(event) {
+            // Pause immediate navigation
+            event.preventDefault();
+            var targetUrl = event.currentTarget.getAttribute("href");
+
+            // 1. Activate Red Corner Flashing
+            var overlay = document.getElementById("red-flash-overlay");
+            overlay.classList.add("flashing-corners");
+
+            // 2. Spawn Swarm of Flying Bats
+            var batCount = 20;
+            for (var i = 0; i < batCount; i++) {
+                createBat();
+            }
+
+            // 3. Redirect to Story's Attic after 3 seconds
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 3000);
+        }
+
+        function createBat() {
+            var bat = document.createElement("div");
+            bat.className = "bat";
+            bat.innerHTML = "🦇";
+
+            // Random screen start positions
+            var startX = Math.random() * window.innerWidth;
+            var startY = Math.random() * window.innerHeight;
+
+            // Random trajectory & angle
+            var dx = (Math.random() - 0.5) * 1200 + "px";
+            var dy = (Math.random() - 0.5) * 1200 + "px";
+            var rot = (Math.random() - 0.5) * 360 + "deg";
+
+            bat.style.left = startX + "px";
+            bat.style.top = startY + "px";
+            bat.style.setProperty("--dx", dx);
+            bat.style.setProperty("--dy", dy);
+            bat.style.setProperty("--rot", rot);
+
+            // Stagger spawn delay slightly
+            bat.style.animationDelay = (Math.random() * 0.8) + "s";
+
+            document.body.appendChild(bat);
+        }
     </script>
 
 </body>
 </html>
+

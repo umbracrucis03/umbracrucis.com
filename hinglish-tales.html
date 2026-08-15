@@ -19,6 +19,43 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
             padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
+        /* ------------------------------------------------------------- */
+        #spooky-side-glow {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999999;
+            box-shadow: 
+                inset 0 0 100px #000000, 
+                inset 0 0 150px #ff0000, 
+                inset 0 0 250px #880000;
+            animation: full4SideGlow 0.35s infinite alternate ease-in-out;
+        }
+
+        @keyframes full4SideGlow {
+            0% {
+                box-shadow: 
+                    inset 0 0 80px #000000, 
+                    inset 0 0 120px #cc0000, 
+                    inset 0 0 180px #440000;
+                opacity: 0.8;
+            }
+            100% {
+                box-shadow: 
+                    inset 0 0 130px #000000, 
+                    inset 0 0 220px #ff0000, 
+                    inset 0 0 320px #aa0000;
+                opacity: 1;
+            }
         }
 
         /* TOP NAVIGATION BAR */
@@ -127,9 +164,12 @@
             flex-wrap: wrap;
         }
 
-        /* ENTIRE STORY CARD IS A CLICKABLE LINK */
+        /* ------------------------------------------------------------- */
+        /* STORY CARD & LARGE LOCK OVERLAY                               */
+        /* ------------------------------------------------------------- */
         a.story-card {
             display: block;
+            position: relative;
             text-decoration: none;
             color: inherit;
             background-color: rgba(15, 5, 5, 0.85);
@@ -141,6 +181,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: all 0.25s ease-in-out;
             cursor: pointer;
+            overflow: hidden;
+            min-height: 200px;
         }
 
         /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
@@ -163,6 +205,51 @@
             color: #cccccc;
             font-size: 0.95rem;
             line-height: 1.7;
+        }
+
+        /* IMAGE OVERLAY WRAPPER */
+        .lock-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .lock-half {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 220%;
+            transform: translate(-50%, -50%);
+            background-image: url('lock-chains.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
+        }
+
+        /* SPLIT CLIPPING FOR BREAKING ANIMATION */
+        .lock-left {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+
+        .lock-right {
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        }
+
+        /* ANIMATION TRIGGERS ON CLICK */
+        .story-card.unlocked .lock-left {
+            transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
+            opacity: 0;
+        }
+
+        .story-card.unlocked .lock-right {
+            transform: translate(-50%, -50%) translateX(220px) translateY(300px) rotate(45deg);
+            opacity: 0;
         }
 
         /* BACK NAVIGATION LINK */
@@ -192,6 +279,12 @@
 </head>
 <body>
 
+    <!-- AUDIO ELEMENT -->
+    <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
+
+    <!-- FULL 4-SIDE RED AND BLACK GLOW OVERLAY -->
+    <div id="spooky-side-glow"></div>
+
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo">
@@ -217,8 +310,15 @@
             <h1 class="page-title">🗣️ HINGLISH TALES</h1>
         </div>
 
-        <!-- STORY 1 CLICKABLE CARD -->
-        <a href="granville-hotel-hinglish.html" class="story-card">
+        <!-- STORY CARD -->
+        <a href="granville-hotel-hinglish.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
+            
+            <!-- REALISTIC IMAGE OVERLAY -->
+            <div class="lock-container">
+                <div class="lock-half lock-left"></div>
+                <div class="lock-half lock-right"></div>
+            </div>
+
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
                 Radhika ne ek isolated highway hotel mein room book kiya. Manager ne ek strict warning di: Room 333 se door rehna. Lekin curiosity ki wajah se usne keyhole se andar dekha...
@@ -241,7 +341,36 @@
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
+
+        function startHorrorEffect(event, storyUrl, cardId) {
+            event.preventDefault();
+
+            // 1. Break the lock/chain image down the middle and drop both halves downward
+            var card = document.getElementById(cardId);
+            if (card) {
+                card.classList.add("unlocked");
+            }
+
+            // 2. Play scream.mp3 audio
+            var audio = document.getElementById("horrorScream");
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(function(err) { console.log(err); });
+            }
+
+            // 3. Display the 4-side red and black pulsating glow
+            var sideGlow = document.getElementById("spooky-side-glow");
+            if (sideGlow) {
+                sideGlow.style.display = "block";
+            }
+
+            // 4. Redirect precisely after 7 seconds
+            setTimeout(function() {
+                window.location.href = storyUrl;
+            }, 7000);
+        }
     </script>
 
 </body>
 </html>
+

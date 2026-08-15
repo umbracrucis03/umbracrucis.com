@@ -19,9 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ------------------------------------------------------------- */
-        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
-        /* ------------------------------------------------------------- */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY */
         #spooky-side-glow {
             display: none;
             position: fixed;
@@ -55,14 +53,32 @@
             }
         }
 
-        /* TOP NAVIGATION BAR */
+        /* TOP NAVIGATION BAR WITH LOGO SUPPORT */
         .navbar { 
             display: flex; 
-            justify-content: flex-end; 
+            justify-content: space-between; 
             align-items: center; 
-            padding: 20px 30px; 
+            padding: 20px 25px; 
             position: relative; 
             z-index: 100; 
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            overflow: visible;
+        }
+
+        .nav-logo img {
+            height: 80px;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+            transform: scale(2.2);
+            transform-origin: left center;
+            display: block;
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
         .menu-icon { 
@@ -86,7 +102,7 @@
             display: none; 
             position: absolute; 
             top: 60px; 
-            right: 30px; 
+            right: 25px; 
             background-color: rgba(15, 0, 0, 0.95); 
             border: 1px solid #660000; 
             border-radius: 5px; 
@@ -122,9 +138,7 @@
             margin-bottom: 15px; 
         }
 
-        /* ------------------------------------------------------------- */
-        /* STORY CARD & LOCK OVERLAY                                     */
-        /* ------------------------------------------------------------- */
+        /* STORY CARD & LOCK OVERLAY */
         a.story-card {
             display: block;
             position: relative;
@@ -148,13 +162,13 @@
         .story-card h2 {
             font-family: 'Cinzel', serif;
             color: #e60000;
-            font-size: 1.35rem; /* Adjusted down to match English size */
+            font-size: 1.35rem;
             margin-bottom: 10px;
             text-shadow: 0 0 8px #800000;
         }
         .story-card p {
             color: #d1b4a3;
-            font-size: 0.95rem; /* Adjusted down to match English size */
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
@@ -183,7 +197,6 @@
             transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
         }
 
-        /* SPLIT CLIPPING FOR BREAKING ANIMATION */
         .lock-left {
             clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
         }
@@ -192,7 +205,6 @@
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
 
-        /* ANIMATION TRIGGERS ON CLICK */
         .story-card.unlocked .lock-left {
             transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
             opacity: 0;
@@ -228,6 +240,9 @@
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Umbra Crucis Logo">
+        </a>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -247,8 +262,6 @@
 
         <!-- STORY CARD WITH LOCK EFFECT -->
         <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
-            
-            <!-- REALISTIC LOCK OVERLAY -->
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
                 <div class="lock-half lock-right"></div>
@@ -276,26 +289,22 @@
         function startHorrorEffect(event, storyUrl, cardId) {
             event.preventDefault();
 
-            // 1. Break the lock/chain image down the middle and drop both halves downward
             var card = document.getElementById(cardId);
             if (card) {
                 card.classList.add("unlocked");
             }
 
-            // 2. Play scream.mp3 audio
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 3. Display the 4-side red and black pulsating glow
             var sideGlow = document.getElementById("spooky-side-glow");
             if (sideGlow) {
                 sideGlow.style.display = "block";
             }
 
-            // 4. Redirect precisely after 7 seconds
             setTimeout(function() {
                 window.location.href = storyUrl;
             }, 7000);

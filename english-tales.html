@@ -23,7 +23,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* RED & BLACK SIDE GLOW OVERLAY                                 */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
         /* ------------------------------------------------------------- */
         #spooky-side-glow {
             display: none;
@@ -34,32 +34,27 @@
             height: 100vh;
             pointer-events: none;
             z-index: 999999;
+            /* Inset box-shadow covers top, bottom, left, and right edges simultaneously */
             box-shadow: 
-                inset 90px 0 100px #000000, 
-                inset -90px 0 100px #000000, 
-                inset 140px 0 160px #ff0000, 
-                inset -140px 0 160px #ff0000, 
-                inset 0 0 180px #440000;
-            animation: sideGlowPulse 0.4s infinite alternate ease-in-out;
+                inset 0 0 100px #000000, 
+                inset 0 0 150px #ff0000, 
+                inset 0 0 250px #880000;
+            animation: full4SideGlow 0.35s infinite alternate ease-in-out;
         }
 
-        @keyframes sideGlowPulse {
+        @keyframes full4SideGlow {
             0% {
                 box-shadow: 
-                    inset 70px 0 80px #000000, 
-                    inset -70px 0 80px #000000, 
-                    inset 100px 0 120px #bb0000, 
-                    inset -100px 0 120px #bb0000, 
-                    inset 0 0 140px #220000;
+                    inset 0 0 80px #000000, 
+                    inset 0 0 120px #cc0000, 
+                    inset 0 0 180px #440000;
                 opacity: 0.8;
             }
             100% {
                 box-shadow: 
-                    inset 110px 0 120px #000000, 
-                    inset -110px 0 120px #000000, 
-                    inset 160px 0 200px #ff0000, 
-                    inset -160px 0 200px #ff0000, 
-                    inset 0 0 220px #660000;
+                    inset 0 0 130px #000000, 
+                    inset 0 0 220px #ff0000, 
+                    inset 0 0 320px #aa0000;
                 opacity: 1;
             }
         }
@@ -168,7 +163,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* STORY CARD WITH CHAIN & LOCK OVERLAY                         */
+        /* STORY CARD & REALISTIC IMAGE OVERLAY                          */
         /* ------------------------------------------------------------- */
         a.story-card {
             display: block;
@@ -185,6 +180,7 @@
             transition: all 0.25s ease-in-out;
             cursor: pointer;
             overflow: hidden;
+            min-height: 180px;
         }
 
         a.story-card:hover {
@@ -207,8 +203,8 @@
             line-height: 1.7;
         }
 
-        /* CHAIN OVERLAY ELEMENTS */
-        .chain-overlay {
+        /* IMAGE OVERLAY WRAPPER */
+        .lock-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -218,60 +214,38 @@
             z-index: 50;
         }
 
-        .chain-left, .chain-right {
+        .lock-half {
             position: absolute;
-            top: 50%;
-            width: 55%;
-            height: 12px;
-            background: repeating-linear-gradient(90deg, #444 0px, #888 6px, #222 12px);
-            border-top: 2px solid #111;
-            border-bottom: 2px solid #111;
-            box-shadow: 0 0 8px rgba(0,0,0,0.9);
-            transition: transform 0.6s ease-in;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('lock-chains.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
         }
 
-        .chain-left {
-            left: -5%;
-            transform: translateY(-50%) rotate(-12deg);
-            transform-origin: left center;
+        /* EXACT SPLIT FOR BREAKING ANIMATION */
+        .lock-left {
+            left: 0;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
         }
 
-        .chain-right {
-            right: -5%;
-            transform: translateY(-50%) rotate(-12deg);
-            transform-origin: right center;
+        .lock-right {
+            left: 0;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
 
-        .padlock {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 42px;
-            height: 50px;
-            z-index: 60;
-            filter: drop-shadow(0 0 6px #000);
-            transition: transform 0.7s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.5s ease;
-        }
-
-        /* UNLOCK ANIMATION STATES */
-        .story-card.unlocked .chain-left {
-            transform: translateY(-50%) rotate(-45deg) translateX(-100px);
+        /* TRIGGERED ANIMATION STATES */
+        .story-card.unlocked .lock-left {
+            transform: translateX(-160px) translateY(240px) rotate(-45deg);
             opacity: 0;
         }
 
-        .story-card.unlocked .chain-right {
-            transform: translateY(-50%) rotate(45deg) translateX(100px);
+        .story-card.unlocked .lock-right {
+            transform: translateX(160px) translateY(240px) rotate(45deg);
             opacity: 0;
-        }
-
-        .story-card.unlocked .padlock {
-            transform: translate(-50%, 250px) rotate(30deg);
-            opacity: 0;
-        }
-
-        .story-card.unlocked .shackle {
-            transform: translateY(-6px);
         }
 
         /* BACK NAVIGATION LINK */
@@ -304,7 +278,7 @@
     <!-- AUDIO ELEMENT -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
 
-    <!-- RED AND BLACK SIDE GLOW OVERLAY -->
+    <!-- FULL 4-SIDE RED AND BLACK GLOW OVERLAY -->
     <div id="spooky-side-glow"></div>
 
     <!-- TOP NAVIGATION BAR -->
@@ -332,19 +306,13 @@
             <h1 class="page-title">🇬🇧 ENGLISH TALES</h1>
         </div>
 
-        <!-- STORY 1 CLICKABLE CARD WITH LOCK & CHAINS -->
+        <!-- STORY CARD -->
         <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
             
-            <!-- VISUAL CHAIN & PADLOCK -->
-            <div class="chain-overlay">
-                <div class="chain-left"></div>
-                <div class="chain-right"></div>
-                <svg class="padlock" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="shackle" d="M6 10V7A6 6 0 1 1 18 7V10" stroke="#888888" stroke-width="2.5" stroke-linecap="round"/>
-                    <rect x="4" y="10" width="16" height="12" rx="2" fill="#222222" stroke="#660000" stroke-width="2"/>
-                    <circle cx="12" cy="15" r="1.5" fill="#ff0000"/>
-                    <path d="M12 16.5V19" stroke="#ff0000" stroke-width="1.5"/>
-                </svg>
+            <!-- REALISTIC IMAGE OVERLAY -->
+            <div class="lock-container">
+                <div class="lock-half lock-left"></div>
+                <div class="lock-half lock-right"></div>
             </div>
 
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
@@ -373,26 +341,26 @@
         function startHorrorEffect(event, storyUrl, cardId) {
             event.preventDefault();
 
-            // 1. Break Chain & Drop Lock Animation
+            // 1. Break the lock/chain image down the middle and drop both halves downward
             var card = document.getElementById(cardId);
             if (card) {
                 card.classList.add("unlocked");
             }
 
-            // 2. Play scream.mp3
+            // 2. Play scream.mp3 audio
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 3. Display red and black glowing side edges
+            // 3. Display the 4-side red and black pulsating glow
             var sideGlow = document.getElementById("spooky-side-glow");
             if (sideGlow) {
                 sideGlow.style.display = "block";
             }
 
-            // 4. Exact 7-second delay before redirection
+            // 4. Redirect precisely after 7 seconds
             setTimeout(function() {
                 window.location.href = storyUrl;
             }, 7000);
@@ -401,4 +369,3 @@
 
 </body>
 </html>
-

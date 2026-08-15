@@ -19,6 +19,63 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
             padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* PERMANENT SPOOKY CORNER GLOW (BLACK & BLOOD RED)               */
+        /* ------------------------------------------------------------- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 
+                inset 0 0 120px #000000,
+                inset 0 0 180px rgba(180, 0, 0, 0.8),
+                inset 0 0 250px rgba(60, 0, 0, 0.9);
+            animation: atmosphericPulse 3.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes atmosphericPulse {
+            0% {
+                box-shadow: 
+                    inset 0 0 100px #000000,
+                    inset 0 0 140px rgba(140, 0, 0, 0.6),
+                    inset 0 0 200px rgba(40, 0, 0, 0.8);
+            }
+            100% {
+                box-shadow: 
+                    inset 0 0 150px #000000,
+                    inset 0 0 220px rgba(255, 0, 0, 0.95),
+                    inset 0 0 300px rgba(90, 0, 0, 1);
+            }
+        }
+
+        /* INTENSE CORNER FLASH ON CLICK */
+        #flash-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 10000;
+            box-shadow: 
+                inset 0 0 180px #000000,
+                inset 0 0 300px #ff0000,
+                inset 0 0 400px #880000;
+            animation: violentGlow 0.15s infinite alternate ease-in-out;
+        }
+
+        @keyframes violentGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
 
         /* TOP NAVIGATION BAR */
@@ -47,7 +104,7 @@
             transform: scale(2.2);
             transform-origin: left center;
             display: block;
-            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
         }
 
         /* HAMBURGER MENU */
@@ -67,7 +124,7 @@
             width: 100%;
             background-color: #e60000;
             border-radius: 3px;
-            box-shadow: 0 0 5px #ff0000;
+            box-shadow: 0 0 8px #ff0000;
         }
 
         .nav-links {
@@ -75,12 +132,12 @@
             position: absolute;
             top: 60px;
             right: 25px;
-            background-color: rgba(15, 0, 0, 0.95);
-            border: 1px solid #660000;
+            background-color: rgba(10, 0, 0, 0.98);
+            border: 1px solid #880000;
             border-radius: 5px;
             flex-direction: column;
             width: 180px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
         }
 
         .nav-links.active {
@@ -91,13 +148,13 @@
             color: #d1b4a3;
             text-decoration: none;
             padding: 12px 20px;
-            border-bottom: 1px solid #2a0000;
+            border-bottom: 1px solid #3a0000;
             font-family: 'Cinzel', serif;
             transition: background 0.2s, color 0.2s;
         }
 
         .nav-links a:hover {
-            background-color: #330000;
+            background-color: #440000;
             color: #ff4d4d;
         }
 
@@ -106,6 +163,8 @@
             width: 90%;
             max-width: 750px;
             margin: 20px auto;
+            position: relative;
+            z-index: 10;
         }
 
         /* PAGE HEADER */
@@ -119,7 +178,7 @@
             font-size: 2.8rem;
             color: #e60000;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px #990000;
+            text-shadow: 0 0 12px #ff0000, 0 0 25px #660000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -132,13 +191,13 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            background-color: rgba(15, 5, 5, 0.85);
-            border: 1px solid #550000;
+            background-color: rgba(12, 3, 3, 0.9);
+            border: 1px solid #660000;
             border-radius: 10px;
             padding: 25px 20px;
             margin-bottom: 25px;
             text-align: left;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(255, 0, 0, 0.05);
             transition: all 0.25s ease-in-out;
             cursor: pointer;
         }
@@ -148,8 +207,8 @@
         a.story-card:active {
             transform: translateY(-4px);
             border-color: #ff0000;
-            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
-            background-color: rgba(25, 5, 5, 0.95);
+            box-shadow: 0 0 25px rgba(230, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
+            background-color: rgba(22, 4, 4, 0.95);
         }
 
         .story-title {
@@ -157,6 +216,7 @@
             font-size: 1.35rem;
             color: #ff3333;
             margin-bottom: 12px;
+            text-shadow: 0 0 5px #aa0000;
         }
 
         .story-desc {
@@ -173,11 +233,12 @@
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: color 0.2s, text-shadow 0.2s;
         }
 
         .back-link:hover {
             color: #ff6666;
+            text-shadow: 0 0 8px #ff0000;
             text-decoration: underline;
         }
 
@@ -187,60 +248,18 @@
             color: #666;
             font-size: 0.85rem;
             margin-top: 30px;
-        }
-
-        /* ------------------------------------------------------------- */
-        /* SPOOKY BLACK & RED VIGNETTE / EDGE GLOW                       */
-        /* ------------------------------------------------------------- */
-        #spooky-glow-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 999997;
-            box-shadow: inset 0 0 100px #000000, inset 0 0 180px #ff0000, inset 0 0 250px #440000;
-            animation: violentPulse 0.4s infinite alternate ease-in-out;
-        }
-
-        @keyframes violentPulse {
-            0% { 
-                box-shadow: inset 0 0 80px #000000, inset 0 0 140px #aa0000, inset 0 0 200px #330000;
-                opacity: 0.75;
-            }
-            100% { 
-                box-shadow: inset 0 0 120px #000000, inset 0 0 220px #ff0000, inset 0 0 300px #660000;
-                opacity: 1;
-            }
-        }
-
-        /* ------------------------------------------------------------- */
-        /* FULLSCREEN CANVAS FOR GREEN SCREEN OVERLAY                    */
-        /* ------------------------------------------------------------- */
-        #jumpscare-canvas {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 999999;
-            object-fit: cover;
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <!-- AUDIO & HIDDEN GREEN SCREEN VIDEO -->
+    <!-- AUDIO SOURCE -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
-    <video id="greenVideo" src="YouCut_20260815_172154660.mp4" preload="auto" muted playsinline style="display:none;"></video>
 
-    <!-- HORROR EFFECT LAYERS -->
-    <div id="spooky-glow-overlay"></div>
-    <canvas id="jumpscare-canvas"></canvas>
+    <!-- INTENSE CLICK FLASH LAYER -->
+    <div id="flash-overlay"></div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -268,7 +287,7 @@
         </div>
 
         <!-- STORY 1 CLICKABLE CARD -->
-        <a href="granville-hotel.html" class="story-card" onclick="triggerGhoulJumpscare(event, this.href)">
+        <a href="granville-hotel.html" class="story-card" onclick="triggerTransition(event, this.href)">
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
                 Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...
@@ -292,62 +311,26 @@
             menu.classList.toggle("active");
         }
 
-        function triggerGhoulJumpscare(event, storyUrl) {
+        function triggerTransition(event, storyUrl) {
             event.preventDefault();
 
-            var video = document.getElementById("greenVideo");
-            var canvas = document.getElementById("jumpscare-canvas");
-            var glowOverlay = document.getElementById("spooky-glow-overlay");
-            var ctx = canvas.getContext("2d", { willReadFrequently: true });
-
-            // 1. Play Scream Sound
+            // 1. Play Audio
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 2. Activate Black & Red Glow and Canvas Overlay
-            glowOverlay.style.display = "block";
-            canvas.style.display = "block";
-            video.currentTime = 0;
-            video.play();
-
-            // 3. Real-time Green Screen Extraction
-            function renderFrame() {
-                if (video.paused || video.ended) return;
-
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-
-                // Draw video scaled to fill screen
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-                // Process canvas pixels to strip green channel
-                var frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                var totalPixels = frame.data.length / 4;
-
-                for (var i = 0; i < totalPixels; i++) {
-                    var r = frame.data[i * 4 + 0];
-                    var g = frame.data[i * 4 + 1];
-                    var b = frame.data[i * 4 + 2];
-
-                    // Identify and remove bright green screen background pixels
-                    if (g > 85 && g > r * 1.3 && g > b * 1.3) {
-                        frame.data[i * 4 + 3] = 0; // Set Alpha to completely transparent
-                    }
-                }
-
-                ctx.putImageData(frame, 0, 0);
-                requestAnimationFrame(renderFrame);
+            // 2. Flash Corners Violently
+            var flash = document.getElementById("flash-overlay");
+            if (flash) {
+                flash.style.display = "block";
             }
 
-            video.addEventListener("play", renderFrame);
-
-            // 4. Smooth Redirect after video finishes (6.5s)
+            // 3. Clean Redirect
             setTimeout(function() {
                 window.location.href = storyUrl;
-            }, 6400);
+            }, 2500);
         }
     </script>
 

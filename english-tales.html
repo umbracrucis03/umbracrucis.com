@@ -162,7 +162,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* STORY CARD & LARGE LOCK OVERLAY                               */
+        /* STORY CARD & CROSS-DEVICE FULL-SIZE LOCK                      */
         /* ------------------------------------------------------------- */
         a.story-card {
             display: block;
@@ -179,7 +179,7 @@
             transition: all 0.25s ease-in-out;
             cursor: pointer;
             overflow: hidden;
-            min-height: 200px;
+            min-height: 220px;
         }
 
         a.story-card:hover {
@@ -202,7 +202,7 @@
             line-height: 1.7;
         }
 
-        /* IMAGE OVERLAY WRAPPER */
+        /* OVERLAY CONTAINER */
         .lock-container {
             position: absolute;
             top: 0;
@@ -213,18 +213,20 @@
             z-index: 50;
         }
 
+        /* RESPONSIVE SCALING (MOBILE AND DESKTOP CONSISTENCY) */
         .lock-half {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 120%;
-            height: 220%;
+            width: 110%;
+            height: 180%;
             transform: translate(-50%, -50%);
             background-image: url('lock-chains.png');
-            background-size: contain;
+            background-size: 110% auto;
             background-position: center;
             background-repeat: no-repeat;
             transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.95));
         }
 
         /* SPLIT CLIPPING FOR BREAKING ANIMATION */
@@ -238,13 +240,22 @@
 
         /* ANIMATION TRIGGERS ON CLICK */
         .story-card.unlocked .lock-left {
-            transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
+            transform: translate(-50%, -50%) translateX(-250px) translateY(350px) rotate(-45deg);
             opacity: 0;
         }
 
         .story-card.unlocked .lock-right {
-            transform: translate(-50%, -50%) translateX(220px) translateY(300px) rotate(45deg);
+            transform: translate(-50%, -50%) translateX(250px) translateY(350px) rotate(45deg);
             opacity: 0;
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .lock-half {
+                width: 125%;
+                height: 200%;
+                background-size: 120% auto;
+            }
         }
 
         /* BACK NAVIGATION LINK */

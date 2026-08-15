@@ -189,9 +189,7 @@
             margin-top: 30px;
         }
 
-        /* ------------------------------------------------------------- */
-        /* BLOOD DRIP OVERLAY & ANIMATION                                 */
-        /* ------------------------------------------------------------- */
+        /* SMOOTH BLOOD CURTAIN OVERLAY */
         #blood-overlay {
             display: none;
             position: fixed;
@@ -201,29 +199,25 @@
             height: 100vh;
             pointer-events: none;
             z-index: 999999;
-            overflow: hidden;
-        }
-
-        /* SVG BLOOD CURTAIN ANIMATION */
-        .blood-curtain {
-            width: 100%;
-            height: 100%;
-            fill: #800000;
-            filter: drop-shadow(0 10px 15px #ff0000);
+            background: linear-gradient(to bottom, #4a0000 0%, #1a0000 80%, #000000 100%);
+            box-shadow: inset 0 -20px 30px #ff0000;
             transform: translateY(-100%);
-            animation: dripDown 7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation: slideBlood 7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        @keyframes dripDown {
-            0% {
-                transform: translateY(-100%);
+        @keyframes slideBlood {
+            0% { 
+                transform: translateY(-100%); 
+                opacity: 0.9; 
             }
-            70% {
-                transform: translateY(-10%);
+            70% { 
+                transform: translateY(-15%); 
+                opacity: 0.95; 
             }
-            100% {
-                transform: translateY(0%);
-                fill: #330000;
+            100% { 
+                transform: translateY(0%); 
+                opacity: 1; 
+                background: #000000; 
             }
         }
     </style>
@@ -233,23 +227,8 @@
     <!-- AUDIO ELEMENT -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
 
-    <!-- BLOOD DRIPPING OVERLAY -->
-    <div id="blood-overlay">
-        <svg class="blood-curtain" viewBox="0 0 1440 800" preserveAspectRatio="none">
-            <path d="M0,0 
-                     L1440,0 
-                     L1440,50 
-                     C1380,120 1320,40 1260,180 
-                     C1200,320 1140,80 1080,260 
-                     C1020,440 960,100 900,380 
-                     C840,560 780,140 720,480 
-                     C660,620 600,160 540,420 
-                     C480,580 420,120 360,340 
-                     C300,460 240,90 180,220 
-                     C120,300 60,60 0,140 
-                     Z"></path>
-        </svg>
-    </div>
+    <!-- BLOOD OVERLAY -->
+    <div id="blood-overlay"></div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -277,7 +256,7 @@
         </div>
 
         <!-- STORY 1 CLICKABLE CARD -->
-        <a href="granville-hotel.html" class="story-card" onclick="triggerBloodDrip(event, this.href)">
+        <a href="granville-hotel.html" class="story-card" onclick="trigger7SecHorror(event, this.href)">
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
                 Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...
@@ -301,23 +280,20 @@
             menu.classList.toggle("active");
         }
 
-        function triggerBloodDrip(event, storyUrl) {
+        function trigger7SecHorror(event, storyUrl) {
             event.preventDefault();
 
-            // Play the invocation + scream audio
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) {
-                    console.log("Audio play error: ", err);
+                    console.log("Audio play blocked/error: ", err);
                 });
             }
 
-            // Display overlay and trigger the 7-second blood drip animation
             var overlay = document.getElementById("blood-overlay");
             overlay.style.display = "block";
 
-            // Redirect after 7 seconds (7000ms)
             setTimeout(function() {
                 window.location.href = storyUrl;
             }, 7000);

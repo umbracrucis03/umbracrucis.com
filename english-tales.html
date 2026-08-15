@@ -190,90 +190,46 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* HORROR EFFECT OVERLAY & DEMONIC SIGIL STYLES                  */
+        /* SCREEN SHAKE & RED CORNER FLASH EFFECT                        */
         /* ------------------------------------------------------------- */
-        #horror-overlay {
+        
+        /* OVERLAY FOR PULSATING RED CORNERS */
+        #red-corner-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #050000;
-            z-index: 999999;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* INTENSE PULSATING RED GLOWING CORNERS */
-        .red-vignette {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             pointer-events: none;
-            box-shadow: inset 0 0 120px 60px #ff0000;
-            animation: intenseRedPulse 0.4s infinite alternate;
+            z-index: 999999;
+            box-shadow: inset 0 0 150px 70px #ff0000;
+            animation: redCornerPulse 0.25s infinite alternate;
         }
 
-        @keyframes intenseRedPulse {
+        @keyframes redCornerPulse {
             0% {
-                box-shadow: inset 0 0 80px 40px rgba(150, 0, 0, 0.8);
-                background-color: rgba(30, 0, 0, 0.4);
+                box-shadow: inset 0 0 100px 50px rgba(180, 0, 0, 0.9);
+                background-color: rgba(40, 0, 0, 0.3);
             }
             100% {
-                box-shadow: inset 0 0 160px 80px rgba(255, 0, 0, 1);
-                background-color: rgba(80, 0, 0, 0.7);
+                box-shadow: inset 0 0 200px 90px rgba(255, 0, 0, 1);
+                background-color: rgba(100, 0, 0, 0.6);
             }
         }
 
-        /* DEMONIC SIGN CONTAINER */
-        .demonic-container {
-            position: relative;
-            z-index: 1000000;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* ANIMATION CLASS TO SHAKE THE ENTIRE BODY */
+        .shake-screen {
+            animation: violentShake 0.1s infinite;
         }
 
-        /* ANIMATED DEMONIC SIGIL */
-        .demonic-sigil {
-            width: 320px;
-            height: 320px;
-            filter: drop-shadow(0 0 25px #ff0000) drop-shadow(0 0 40px #800000);
-            animation: rotateSigil 7s linear forwards, flickerSigil 0.15s infinite alternate;
-        }
-
-        @keyframes rotateSigil {
-            0% { transform: scale(0.6) rotate(0deg); opacity: 0; }
-            15% { transform: scale(1.1) rotate(45deg); opacity: 1; }
-            50% { transform: scale(1) rotate(180deg); }
-            85% { transform: scale(1.2) rotate(315deg); opacity: 1; }
-            100% { transform: scale(1.8) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes flickerSigil {
-            0% { opacity: 0.7; filter: drop-shadow(0 0 10px #ff0000); }
-            100% { opacity: 1; filter: drop-shadow(0 0 35px #ff0000); }
-        }
-
-        .sigil-text {
-            font-family: 'Cinzel', serif;
-            color: #ff3333;
-            font-size: 1.4rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-top: 25px;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #800000;
-            animation: pulseText 0.5s infinite alternate;
-        }
-
-        @keyframes pulseText {
-            0% { color: #ff3333; opacity: 0.5; }
-            100% { color: #ffffff; opacity: 1; }
+        @keyframes violentShake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(-10px, 8px) rotate(-1deg); }
+            40% { transform: translate(12px, -8px) rotate(1deg); }
+            60% { transform: translate(-12px, -5px) rotate(-1.5deg); }
+            80% { transform: translate(10px, 10px) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
     </style>
 </head>
@@ -282,21 +238,8 @@
     <!-- SCREAM AUDIO ELEMENT -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
 
-    <!-- 7-SECOND HORROR EFFECT OVERLAY -->
-    <div id="horror-overlay">
-        <div class="red-vignette"></div>
-        <div class="demonic-container">
-            <svg class="demonic-sigil" viewBox="0 0 500 500">
-                <circle cx="250" cy="250" r="230" stroke="#800000" stroke-width="4" fill="none" />
-                <circle cx="250" cy="250" r="215" stroke="#ff0000" stroke-dasharray="10 5" stroke-width="2" fill="none" />
-                <polygon points="250,450 110,130 430,320 70,320 390,130" stroke="#ff0000" stroke-width="5" fill="none" />
-                <circle cx="250" cy="250" r="50" stroke="#ff0000" stroke-width="3" fill="#1a0000" />
-                <circle cx="250" cy="250" r="15" fill="#ff0000" />
-                <path d="M 250,20 L 250,50 M 250,450 L 250,480 M 20,250 L 50,250 M 450,250 L 480,250" stroke="#ff0000" stroke-width="4" />
-            </svg>
-            <div class="sigil-text">CURSED KNOWLEDGE AWAITS...</div>
-        </div>
-    </div>
+    <!-- RED CORNERS FLASH OVERLAY -->
+    <div id="red-corner-overlay"></div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -323,7 +266,7 @@
             <h1 class="page-title">🇬🇧 ENGLISH TALES</h1>
         </div>
 
-        <!-- STORY 1 CLICKABLE CARD WITH HORROR TRIGGER -->
+        <!-- STORY 1 CLICKABLE CARD WITH SHAKE & RED LIGHT EFFECT -->
         <a href="granville-hotel.html" class="story-card" onclick="trigger7SecHorror(event, this.href)">
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
@@ -361,11 +304,14 @@
                 });
             }
 
-            // Show horror effect overlay
-            var overlay = document.getElementById("horror-overlay");
-            overlay.style.display = "flex";
+            // 1. Activate Red Flashing Corners Overlay
+            var overlay = document.getElementById("red-corner-overlay");
+            overlay.style.display = "block";
 
-            // Redirect after 7 seconds (7000ms)
+            // 2. Add violent shaking class to the whole screen
+            document.body.classList.add("shake-screen");
+
+            // 3. Redirect after 7 seconds (7000ms)
             setTimeout(function() {
                 window.location.href = storyUrl;
             }, 7000);
@@ -374,4 +320,3 @@
 
 </body>
 </html>
-

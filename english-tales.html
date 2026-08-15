@@ -23,41 +23,9 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* PERMANENT SPOOKY CORNER GLOW (BLACK & BLOOD RED)               */
+        /* RED & BLACK SIDE GLOW OVERLAY                                 */
         /* ------------------------------------------------------------- */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 
-                inset 0 0 120px #000000,
-                inset 0 0 180px rgba(180, 0, 0, 0.8),
-                inset 0 0 250px rgba(60, 0, 0, 0.9);
-            animation: atmosphericPulse 3.5s infinite alternate ease-in-out;
-        }
-
-        @keyframes atmosphericPulse {
-            0% {
-                box-shadow: 
-                    inset 0 0 100px #000000,
-                    inset 0 0 140px rgba(140, 0, 0, 0.6),
-                    inset 0 0 200px rgba(40, 0, 0, 0.8);
-            }
-            100% {
-                box-shadow: 
-                    inset 0 0 150px #000000,
-                    inset 0 0 220px rgba(255, 0, 0, 0.95),
-                    inset 0 0 300px rgba(90, 0, 0, 1);
-            }
-        }
-
-        /* INTENSE CORNER FLASH ON CLICK */
-        #flash-overlay {
+        #spooky-side-glow {
             display: none;
             position: fixed;
             top: 0;
@@ -65,17 +33,35 @@
             width: 100vw;
             height: 100vh;
             pointer-events: none;
-            z-index: 10000;
+            z-index: 999999;
             box-shadow: 
-                inset 0 0 180px #000000,
-                inset 0 0 300px #ff0000,
-                inset 0 0 400px #880000;
-            animation: violentGlow 0.15s infinite alternate ease-in-out;
+                inset 90px 0 100px #000000, 
+                inset -90px 0 100px #000000, 
+                inset 140px 0 160px #ff0000, 
+                inset -140px 0 160px #ff0000, 
+                inset 0 0 180px #440000;
+            animation: sideGlowPulse 0.4s infinite alternate ease-in-out;
         }
 
-        @keyframes violentGlow {
-            0% { opacity: 0.6; }
-            100% { opacity: 1; }
+        @keyframes sideGlowPulse {
+            0% {
+                box-shadow: 
+                    inset 70px 0 80px #000000, 
+                    inset -70px 0 80px #000000, 
+                    inset 100px 0 120px #bb0000, 
+                    inset -100px 0 120px #bb0000, 
+                    inset 0 0 140px #220000;
+                opacity: 0.8;
+            }
+            100% {
+                box-shadow: 
+                    inset 110px 0 120px #000000, 
+                    inset -110px 0 120px #000000, 
+                    inset 160px 0 200px #ff0000, 
+                    inset -160px 0 200px #ff0000, 
+                    inset 0 0 220px #660000;
+                opacity: 1;
+            }
         }
 
         /* TOP NAVIGATION BAR */
@@ -88,7 +74,6 @@
             z-index: 100;
         }
 
-        /* LOGO PROMINENT SIZING */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -104,10 +89,9 @@
             transform: scale(2.2);
             transform-origin: left center;
             display: block;
-            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
-        /* HAMBURGER MENU */
         .menu-icon {
             display: flex;
             flex-direction: column;
@@ -124,7 +108,7 @@
             width: 100%;
             background-color: #e60000;
             border-radius: 3px;
-            box-shadow: 0 0 8px #ff0000;
+            box-shadow: 0 0 5px #ff0000;
         }
 
         .nav-links {
@@ -132,12 +116,12 @@
             position: absolute;
             top: 60px;
             right: 25px;
-            background-color: rgba(10, 0, 0, 0.98);
-            border: 1px solid #880000;
+            background-color: rgba(15, 0, 0, 0.95);
+            border: 1px solid #660000;
             border-radius: 5px;
             flex-direction: column;
             width: 180px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
         }
 
         .nav-links.active {
@@ -148,13 +132,13 @@
             color: #d1b4a3;
             text-decoration: none;
             padding: 12px 20px;
-            border-bottom: 1px solid #3a0000;
+            border-bottom: 1px solid #2a0000;
             font-family: 'Cinzel', serif;
             transition: background 0.2s, color 0.2s;
         }
 
         .nav-links a:hover {
-            background-color: #440000;
+            background-color: #330000;
             color: #ff4d4d;
         }
 
@@ -163,11 +147,8 @@
             width: 90%;
             max-width: 750px;
             margin: 20px auto;
-            position: relative;
-            z-index: 10;
         }
 
-        /* PAGE HEADER */
         .page-header {
             text-align: center;
             margin-bottom: 30px;
@@ -178,7 +159,7 @@
             font-size: 2.8rem;
             color: #e60000;
             letter-spacing: 2px;
-            text-shadow: 0 0 12px #ff0000, 0 0 25px #660000;
+            text-shadow: 0 0 10px #990000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -186,29 +167,31 @@
             flex-wrap: wrap;
         }
 
-        /* ENTIRE STORY CARD IS A CLICKABLE LINK */
+        /* ------------------------------------------------------------- */
+        /* STORY CARD WITH CHAIN & LOCK OVERLAY                         */
+        /* ------------------------------------------------------------- */
         a.story-card {
             display: block;
+            position: relative;
             text-decoration: none;
             color: inherit;
-            background-color: rgba(12, 3, 3, 0.9);
-            border: 1px solid #660000;
+            background-color: rgba(15, 5, 5, 0.85);
+            border: 1px solid #550000;
             border-radius: 10px;
             padding: 25px 20px;
             margin-bottom: 25px;
             text-align: left;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(255, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: all 0.25s ease-in-out;
             cursor: pointer;
+            overflow: hidden;
         }
 
-        /* HOVER & TOUCH GLOW EFFECT ON ENTIRE RED BOX */
-        a.story-card:hover,
-        a.story-card:active {
+        a.story-card:hover {
             transform: translateY(-4px);
             border-color: #ff0000;
-            box-shadow: 0 0 25px rgba(230, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
-            background-color: rgba(22, 4, 4, 0.95);
+            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
+            background-color: rgba(25, 5, 5, 0.95);
         }
 
         .story-title {
@@ -216,13 +199,79 @@
             font-size: 1.35rem;
             color: #ff3333;
             margin-bottom: 12px;
-            text-shadow: 0 0 5px #aa0000;
         }
 
         .story-desc {
             color: #cccccc;
             font-size: 0.95rem;
             line-height: 1.7;
+        }
+
+        /* CHAIN OVERLAY ELEMENTS */
+        .chain-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .chain-left, .chain-right {
+            position: absolute;
+            top: 50%;
+            width: 55%;
+            height: 12px;
+            background: repeating-linear-gradient(90deg, #444 0px, #888 6px, #222 12px);
+            border-top: 2px solid #111;
+            border-bottom: 2px solid #111;
+            box-shadow: 0 0 8px rgba(0,0,0,0.9);
+            transition: transform 0.6s ease-in;
+        }
+
+        .chain-left {
+            left: -5%;
+            transform: translateY(-50%) rotate(-12deg);
+            transform-origin: left center;
+        }
+
+        .chain-right {
+            right: -5%;
+            transform: translateY(-50%) rotate(-12deg);
+            transform-origin: right center;
+        }
+
+        .padlock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px;
+            height: 50px;
+            z-index: 60;
+            filter: drop-shadow(0 0 6px #000);
+            transition: transform 0.7s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.5s ease;
+        }
+
+        /* UNLOCK ANIMATION STATES */
+        .story-card.unlocked .chain-left {
+            transform: translateY(-50%) rotate(-45deg) translateX(-100px);
+            opacity: 0;
+        }
+
+        .story-card.unlocked .chain-right {
+            transform: translateY(-50%) rotate(45deg) translateX(100px);
+            opacity: 0;
+        }
+
+        .story-card.unlocked .padlock {
+            transform: translate(-50%, 250px) rotate(30deg);
+            opacity: 0;
+        }
+
+        .story-card.unlocked .shackle {
+            transform: translateY(-6px);
         }
 
         /* BACK NAVIGATION LINK */
@@ -233,12 +282,11 @@
             text-decoration: none;
             font-family: 'Cinzel', serif;
             font-size: 0.95rem;
-            transition: color 0.2s, text-shadow 0.2s;
+            transition: color 0.2s;
         }
 
         .back-link:hover {
             color: #ff6666;
-            text-shadow: 0 0 8px #ff0000;
             text-decoration: underline;
         }
 
@@ -248,18 +296,16 @@
             color: #666;
             font-size: 0.85rem;
             margin-top: 30px;
-            position: relative;
-            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <!-- AUDIO SOURCE -->
+    <!-- AUDIO ELEMENT -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
 
-    <!-- INTENSE CLICK FLASH LAYER -->
-    <div id="flash-overlay"></div>
+    <!-- RED AND BLACK SIDE GLOW OVERLAY -->
+    <div id="spooky-side-glow"></div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -286,8 +332,21 @@
             <h1 class="page-title">🇬🇧 ENGLISH TALES</h1>
         </div>
 
-        <!-- STORY 1 CLICKABLE CARD -->
-        <a href="granville-hotel.html" class="story-card" onclick="triggerTransition(event, this.href)">
+        <!-- STORY 1 CLICKABLE CARD WITH LOCK & CHAINS -->
+        <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
+            
+            <!-- VISUAL CHAIN & PADLOCK -->
+            <div class="chain-overlay">
+                <div class="chain-left"></div>
+                <div class="chain-right"></div>
+                <svg class="padlock" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shackle" d="M6 10V7A6 6 0 1 1 18 7V10" stroke="#888888" stroke-width="2.5" stroke-linecap="round"/>
+                    <rect x="4" y="10" width="16" height="12" rx="2" fill="#222222" stroke="#660000" stroke-width="2"/>
+                    <circle cx="12" cy="15" r="1.5" fill="#ff0000"/>
+                    <path d="M12 16.5V19" stroke="#ff0000" stroke-width="1.5"/>
+                </svg>
+            </div>
+
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
                 Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...
@@ -311,26 +370,32 @@
             menu.classList.toggle("active");
         }
 
-        function triggerTransition(event, storyUrl) {
+        function startHorrorEffect(event, storyUrl, cardId) {
             event.preventDefault();
 
-            // 1. Play Audio
+            // 1. Break Chain & Drop Lock Animation
+            var card = document.getElementById(cardId);
+            if (card) {
+                card.classList.add("unlocked");
+            }
+
+            // 2. Play scream.mp3
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 2. Flash Corners Violently
-            var flash = document.getElementById("flash-overlay");
-            if (flash) {
-                flash.style.display = "block";
+            // 3. Display red and black glowing side edges
+            var sideGlow = document.getElementById("spooky-side-glow");
+            if (sideGlow) {
+                sideGlow.style.display = "block";
             }
 
-            // 3. Clean Redirect
+            // 4. Exact 7-second delay before redirection
             setTimeout(function() {
                 window.location.href = storyUrl;
-            }, 2500);
+            }, 7000);
         }
     </script>
 

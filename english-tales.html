@@ -23,7 +23,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* STRICT 4-CORNER ONLY RED GLOW OVERLAY                         */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
         /* ------------------------------------------------------------- */
         #spooky-side-glow {
             display: none;
@@ -34,20 +34,26 @@
             height: 100vh;
             pointer-events: none;
             z-index: 999999;
-            /* Tightly bounded gradients ONLY at the 4 extreme corners */
-            background: 
-                radial-gradient(circle 120px at top left, rgba(255, 0, 0, 0.95), transparent 100%),
-                radial-gradient(circle 120px at top right, rgba(255, 0, 0, 0.95), transparent 100%),
-                radial-gradient(circle 120px at bottom left, rgba(255, 0, 0, 0.95), transparent 100%),
-                radial-gradient(circle 120px at bottom right, rgba(255, 0, 0, 0.95), transparent 100%);
-            animation: strictCornersPulse 0.35s infinite alternate ease-in-out;
+            box-shadow: 
+                inset 0 0 100px #000000, 
+                inset 0 0 150px #ff0000, 
+                inset 0 0 250px #880000;
+            animation: full4SideGlow 0.35s infinite alternate ease-in-out;
         }
 
-        @keyframes strictCornersPulse {
+        @keyframes full4SideGlow {
             0% {
-                opacity: 0.6;
+                box-shadow: 
+                    inset 0 0 80px #000000, 
+                    inset 0 0 120px #cc0000, 
+                    inset 0 0 180px #440000;
+                opacity: 0.8;
             }
             100% {
+                box-shadow: 
+                    inset 0 0 130px #000000, 
+                    inset 0 0 220px #ff0000, 
+                    inset 0 0 320px #aa0000;
                 opacity: 1;
             }
         }
@@ -156,7 +162,7 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* STORY CARD & LOCK OVERLAY FIXED SIZE                          */
+        /* STORY CARD & LARGE LOCK OVERLAY                               */
         /* ------------------------------------------------------------- */
         a.story-card {
             display: block;
@@ -211,8 +217,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 65%;
-            height: 100%;
+            width: 120%;
+            height: 220%;
             transform: translate(-50%, -50%);
             background-image: url('lock-chains.png');
             background-size: contain;
@@ -271,7 +277,7 @@
     <!-- AUDIO ELEMENT -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
 
-    <!-- STRICT 4-CORNER RED GLOW OVERLAY -->
+    <!-- FULL 4-SIDE RED AND BLACK GLOW OVERLAY -->
     <div id="spooky-side-glow"></div>
 
     <!-- TOP NAVIGATION BAR -->
@@ -347,7 +353,7 @@
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 3. Display the 4-corner red pulsating glow
+            // 3. Display the 4-side red and black pulsating glow
             var sideGlow = document.getElementById("spooky-side-glow");
             if (sideGlow) {
                 sideGlow.style.display = "block";

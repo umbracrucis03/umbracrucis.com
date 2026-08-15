@@ -190,11 +190,9 @@
         }
 
         /* ------------------------------------------------------------- */
-        /* DEMONIC SIGILS & GLOWING SCREEN EDGES OVERLAY                 */
+        /* SPOOKY BLACK & RED VIGNETTE / EDGE GLOW                       */
         /* ------------------------------------------------------------- */
-
-        /* INTENSE RED EDGE GLOW */
-        #edge-glow-overlay {
+        #spooky-glow-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -202,18 +200,26 @@
             width: 100vw;
             height: 100vh;
             pointer-events: none;
-            z-index: 999998;
-            box-shadow: inset 0 0 60px #ff0000, inset 0 0 120px #880000;
-            animation: pulseGlow 1.5s infinite alternate ease-in-out;
+            z-index: 999997;
+            box-shadow: inset 0 0 100px #000000, inset 0 0 180px #ff0000, inset 0 0 250px #440000;
+            animation: violentPulse 0.4s infinite alternate ease-in-out;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: inset 0 0 40px #aa0000, inset 0 0 80px #660000; opacity: 0.7; }
-            100% { box-shadow: inset 0 0 90px #ff0000, inset 0 0 160px #cc0000; opacity: 1; }
+        @keyframes violentPulse {
+            0% { 
+                box-shadow: inset 0 0 80px #000000, inset 0 0 140px #aa0000, inset 0 0 200px #330000;
+                opacity: 0.75;
+            }
+            100% { 
+                box-shadow: inset 0 0 120px #000000, inset 0 0 220px #ff0000, inset 0 0 300px #660000;
+                opacity: 1;
+            }
         }
 
-        /* DEMONIC SIGILS CANVAS */
-        #sigil-canvas {
+        /* ------------------------------------------------------------- */
+        /* FULLSCREEN CANVAS FOR GREEN SCREEN OVERLAY                    */
+        /* ------------------------------------------------------------- */
+        #jumpscare-canvas {
             display: none;
             position: fixed;
             top: 0;
@@ -222,17 +228,19 @@
             height: 100vh;
             pointer-events: none;
             z-index: 999999;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
 
-    <!-- AUDIO ELEMENT -->
+    <!-- AUDIO & HIDDEN GREEN SCREEN VIDEO -->
     <audio id="horrorScream" src="scream.mp3" preload="auto"></audio>
+    <video id="greenVideo" src="YouCut_20260815_172154660.mp4" preload="auto" muted playsinline style="display:none;"></video>
 
-    <!-- HORROR EFFECT OVERLAYS -->
-    <div id="edge-glow-overlay"></div>
-    <canvas id="sigil-canvas"></canvas>
+    <!-- HORROR EFFECT LAYERS -->
+    <div id="spooky-glow-overlay"></div>
+    <canvas id="jumpscare-canvas"></canvas>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -260,7 +268,7 @@
         </div>
 
         <!-- STORY 1 CLICKABLE CARD -->
-        <a href="granville-hotel.html" class="story-card" onclick="triggerDemonicEffect(event, this.href)">
+        <a href="granville-hotel.html" class="story-card" onclick="triggerGhoulJumpscare(event, this.href)">
             <h2 class="story-title">STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p class="story-desc">
                 Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...
@@ -284,76 +292,62 @@
             menu.classList.toggle("active");
         }
 
-        function triggerDemonicEffect(event, storyUrl) {
+        function triggerGhoulJumpscare(event, storyUrl) {
             event.preventDefault();
 
-            // 1. Play Audio
+            var video = document.getElementById("greenVideo");
+            var canvas = document.getElementById("jumpscare-canvas");
+            var glowOverlay = document.getElementById("spooky-glow-overlay");
+            var ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+            // 1. Play Scream Sound
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 2. Enable Glowing Edges
-            document.getElementById("edge-glow-overlay").style.display = "block";
-
-            // 3. Render Demonic Sigils across the screen
-            var canvas = document.getElementById("sigil-canvas");
-            var ctx = canvas.getContext("2d");
+            // 2. Activate Black & Red Glow and Canvas Overlay
+            glowOverlay.style.display = "block";
             canvas.style.display = "block";
+            video.currentTime = 0;
+            video.play();
 
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            // 3. Real-time Green Screen Extraction
+            function renderFrame() {
+                if (video.paused || video.ended) return;
 
-            // Occult & Demonic symbols (Pentagram, Alchemy, Runes, Cross of Leviathan, etc.)
-            var sigilChars = ["⛧", "⸸", "🜏", "🜞", "🜔", "🝓", "🝔", "☠", "🔮", "⚡", "🩸", "👁"];
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
 
-            var sigils = [];
-            var totalSigils = 150; // Generates 100+ demonic symbols randomly
+                // Draw video scaled to fill screen
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            for (var i = 0; i < totalSigils; i++) {
-                sigils.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 32 + 18,
-                    char: sigilChars[Math.floor(Math.random() * sigilChars.length)],
-                    color: Math.random() > 0.4 ? "#ff0000" : (Math.random() > 0.5 ? "#000000" : "#880000"),
-                    glow: Math.random() > 0.3 ? "#ff0000" : "#000000",
-                    opacity: 0,
-                    fadeSpeed: Math.random() * 0.03 + 0.01
-                });
-            }
+                // Process canvas pixels to strip green channel
+                var frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var totalPixels = frame.data.length / 4;
 
-            var startTime = performance.now();
+                for (var i = 0; i < totalPixels; i++) {
+                    var r = frame.data[i * 4 + 0];
+                    var g = frame.data[i * 4 + 1];
+                    var b = frame.data[i * 4 + 2];
 
-            function animateSigils(now) {
-                var elapsed = now - startTime;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                sigils.forEach(function(s) {
-                    if (s.opacity < 1) s.opacity += s.fadeSpeed;
-
-                    ctx.save();
-                    ctx.globalAlpha = s.opacity;
-                    ctx.font = s.size + "px serif";
-                    ctx.fillStyle = s.color;
-                    ctx.shadowColor = s.glow;
-                    ctx.shadowBlur = 12;
-                    ctx.fillText(s.char, s.x, s.y);
-                    ctx.restore();
-                });
-
-                if (elapsed < 7000) {
-                    requestAnimationFrame(animateSigils);
+                    // Identify and remove bright green screen background pixels
+                    if (g > 85 && g > r * 1.3 && g > b * 1.3) {
+                        frame.data[i * 4 + 3] = 0; // Set Alpha to completely transparent
+                    }
                 }
+
+                ctx.putImageData(frame, 0, 0);
+                requestAnimationFrame(renderFrame);
             }
 
-            requestAnimationFrame(animateSigils);
+            video.addEventListener("play", renderFrame);
 
-            // 4. Redirect after 7 seconds
+            // 4. Smooth Redirect after video finishes (6.5s)
             setTimeout(function() {
                 window.location.href = storyUrl;
-            }, 7000);
+            }, 6400);
         }
     </script>
 

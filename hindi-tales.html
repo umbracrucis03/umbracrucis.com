@@ -19,9 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ------------------------------------------------------------- */
-        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
-        /* ------------------------------------------------------------- */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY */
         #spooky-side-glow {
             display: none;
             position: fixed;
@@ -140,10 +138,8 @@
             margin-bottom: 15px; 
         }
 
-        /* ------------------------------------------------------------- */
-        /* STORY CARD & LARGE LOCK OVERLAY                               */
-        /* ------------------------------------------------------------- */
-        a.story-card {
+        /* STORY CARD & LOCK OVERLAY */
+        .story-card {
             display: block;
             position: relative;
             background-color: rgba(12, 12, 12, 0.9);
@@ -158,7 +154,7 @@
             overflow: hidden;
             min-height: 200px;
         }
-        a.story-card:hover {
+        .story-card:hover {
             border-color: #660000;
             transform: translateY(-4px);
             box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
@@ -202,7 +198,6 @@
             transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
         }
 
-        /* SPLIT CLIPPING FOR BREAKING ANIMATION */
         .lock-left {
             clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
         }
@@ -211,7 +206,6 @@
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
 
-        /* ANIMATION TRIGGERS ON CLICK */
         .story-card.unlocked .lock-left {
             transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
             opacity: 0;
@@ -222,10 +216,47 @@
             opacity: 0;
         }
 
+        /* DROPDOWN PARTS STYLING FOR HINDI */
+        .story-parts-dropdown {
+            display: none;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #440000;
+            position: relative;
+            z-index: 60;
+        }
+        .story-parts-dropdown.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .part-link {
+            display: block;
+            background-color: rgba(20, 0, 0, 0.8);
+            border: 1px solid #660000;
+            border-radius: 5px;
+            padding: 12px 18px;
+            margin-top: 10px;
+            color: #d1b4a3;
+            text-decoration: none;
+            font-family: 'Yatra One', cursive;
+            font-size: 1rem;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .part-link:hover {
+            background-color: #440000;
+            color: #ffffff;
+            border-color: #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+
         /* BACK BUTTON & FOOTER */
         .back-btn { 
             display: inline-block; 
-            margin-top: 15px; 
+            margin-top: 25px; 
             color: #ff4d4d; 
             text-decoration: none; 
             font-family: 'Cinzel', serif; 
@@ -267,25 +298,36 @@
             <h1 class="story-title-page">🇮🇳 हिंदी कहानियां</h1>
         </div>
 
-        <!-- STORY CARD 1 WITH LOCK EFFECT -->
+        <!-- STORY 1 CARD WITH LOCK EFFECT -->
         <a href="granville-hotel-hindi.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
                 <div class="lock-half lock-right"></div>
             </div>
+
             <h2>कहानी 1 - ग्रैनविल होटल ➔</h2>
             <p>राधिका ने एक सुनसान हाईवे होटल में कमरा बुक किया। मैनेजर ने एक सख्त चेतावनी दी: कमरा नंबर 333 से दूर रहना। लेकिन जिज्ञासावश उसने चाबी के छेद से अंदर झांका...</p>
         </a>
 
-        <!-- STORY CARD 2 WITH LOCK EFFECT -->
-        <a href="blind-witch-part1-hindi.html" class="story-card" id="card2" onclick="startHorrorEffect(event, this.href, 'card2')">
+        <!-- STORY 2 CARD WITH DROPDOWN PARTS (HINDI) -->
+        <div class="story-card" id="card2" onclick="toggleStoryParts(event, 'card2')">
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
                 <div class="lock-half lock-right"></div>
             </div>
-            <h2>कहानी 2 - द ब्लाइंड विच ऑफ ब्रुकलाइन (भाग 1) ➔</h2>
-            <p>1996 में ब्रुकलाइन के एक सुनसान घर में रहने वाली माया को अंधे होने का नाटक करने की आदत थी। लेकिन अमावस्या की रात एक भयानक हादसे के बाद, उसका यह मज़ाक एक खूनी दुस्वप्न में बदल गया...</p>
-        </a>
+
+            <h2>कहानी 2 - द ब्लाइंड विच ऑफ ब्रुकलाइन ▾</h2>
+            <p>माया को मजाक में अंधे होने का नाटक करना पसंद था—जब तक कि एक अमावस्या की रात छत की सीढ़ियों से गिरकर उसका यह नाटक एक भयानक दुस्वप्न में नहीं बदल गया...</p>
+
+            <div class="story-parts-dropdown" id="dropdown-card2">
+                <a href="blind-witch-part1-hindi.html" class="part-link" onclick="event.stopPropagation();">
+                    भाग 1 — वह लड़की जो देख नहीं सकती थी ➔
+                </a>
+                <a href="blind-witch-part2-hindi.html" class="part-link" onclick="event.stopPropagation();">
+                    भाग 2 — जल्द ही आ रहा है... ➔
+                </a>
+            </div>
+        </div>
 
         <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
     </div>
@@ -302,32 +344,49 @@
             menu.classList.toggle("active");
         }
 
+        /* Direct redirect effect for single-part story cards */
         function startHorrorEffect(event, storyUrl, cardId) {
             event.preventDefault();
 
-            // 1. Break the lock/chain image down the middle and drop both halves downward
             var card = document.getElementById(cardId);
             if (card) {
                 card.classList.add("unlocked");
             }
 
-            // 2. Play scream.mp3 audio
+            playEffects();
+
+            setTimeout(function() {
+                window.location.href = storyUrl;
+            }, 7000);
+        }
+
+        /* Toggle dropdown effect for multi-part stories */
+        function toggleStoryParts(event, cardId) {
+            var card = document.getElementById(cardId);
+            var dropdown = document.getElementById("dropdown-" + cardId);
+
+            if (card && !card.classList.contains("unlocked")) {
+                card.classList.add("unlocked");
+                playEffects();
+                setTimeout(function() {
+                    if (dropdown) dropdown.classList.add("active");
+                }, 800);
+            } else if (dropdown) {
+                dropdown.classList.toggle("active");
+            }
+        }
+
+        function playEffects() {
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
                 audio.play().catch(function(err) { console.log(err); });
             }
 
-            // 3. Display the 4-side red and black pulsating glow
             var sideGlow = document.getElementById("spooky-side-glow");
             if (sideGlow) {
                 sideGlow.style.display = "block";
             }
-
-            // 4. Redirect precisely after 7 seconds
-            setTimeout(function() {
-                window.location.href = storyUrl;
-            }, 7000);
         }
     </script>
 </body>

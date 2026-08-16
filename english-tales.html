@@ -139,7 +139,7 @@
         }
 
         /* STORY CARD & LOCK OVERLAY */
-        a.story-card {
+        .story-card {
             display: block;
             position: relative;
             background-color: rgba(12, 12, 12, 0.9);
@@ -154,7 +154,7 @@
             overflow: hidden;
             min-height: 200px;
         }
-        a.story-card:hover {
+        .story-card:hover {
             border-color: #660000;
             transform: translateY(-2px);
             box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
@@ -215,6 +215,44 @@
             opacity: 0;
         }
 
+        /* DROPDOWN PARTS STYLING */
+        .story-parts-dropdown {
+            display: none;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #440000;
+            position: relative;
+            z-index: 60;
+        }
+        .story-parts-dropdown.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .part-link {
+            display: block;
+            background-color: rgba(20, 0, 0, 0.8);
+            border: 1px solid #660000;
+            border-radius: 5px;
+            padding: 12px 18px;
+            margin-top: 10px;
+            color: #d1b4a3;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .part-link:hover {
+            background-color: #440000;
+            color: #ffffff;
+            border-color: #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+
         /* BACK BUTTON & FOOTER */
         .back-btn { 
             display: inline-block; 
@@ -260,7 +298,7 @@
             <h1 class="story-title-page">🇬🇧 ENGLISH TALES</h1>
         </div>
 
-        <!-- STORY CARD WITH LOCK EFFECT -->
+        <!-- STORY 1 CARD WITH LOCK EFFECT -->
         <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
@@ -270,6 +308,26 @@
             <h2>STORY 1 - GRANVILLE HOTEL ➔</h2>
             <p>Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...</p>
         </a>
+
+        <!-- STORY 2 CARD WITH DROPDOWN PARTS -->
+        <div class="story-card" id="card2" onclick="toggleStoryParts(event, 'card2')">
+            <div class="lock-container">
+                <div class="lock-half lock-left"></div>
+                <div class="lock-half lock-right"></div>
+            </div>
+
+            <h2>STORY 2 - THE BLIND WITCH OF BROOKLINE ▾</h2>
+            <p>Maya loved pretending to be blind as a joke—until a horrifying fall down the rooftop stairs on a new moon night turned her fake blindness into a deadly reality stalking her family...</p>
+
+            <div class="story-parts-dropdown" id="dropdown-card2">
+                <a href="blind-witch-part1.html" class="part-link" onclick="event.stopPropagation();">
+                    PART 1 — THE GIRL WHO COULDN’T SEE ➔
+                </a>
+                <a href="blind-witch-part2.html" class="part-link" onclick="event.stopPropagation();">
+                    PART 2 — COMING SOON... ➔
+                </a>
+            </div>
+        </div>
 
         <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
     </div>
@@ -286,6 +344,7 @@
             menu.classList.toggle("active");
         }
 
+        /* Direct redirect effect for single-part story cards */
         function startHorrorEffect(event, storyUrl, cardId) {
             event.preventDefault();
 
@@ -294,6 +353,30 @@
                 card.classList.add("unlocked");
             }
 
+            playEffects();
+
+            setTimeout(function() {
+                window.location.href = storyUrl;
+            }, 7000);
+        }
+
+        /* Toggle dropdown effect for multi-part stories */
+        function toggleStoryParts(event, cardId) {
+            var card = document.getElementById(cardId);
+            var dropdown = document.getElementById("dropdown-" + cardId);
+
+            if (card && !card.classList.contains("unlocked")) {
+                card.classList.add("unlocked");
+                playEffects();
+                setTimeout(function() {
+                    if (dropdown) dropdown.classList.add("active");
+                }, 800);
+            } else if (dropdown) {
+                dropdown.classList.toggle("active");
+            }
+        }
+
+        function playEffects() {
             var audio = document.getElementById("horrorScream");
             if (audio) {
                 audio.currentTime = 0;
@@ -304,11 +387,8 @@
             if (sideGlow) {
                 sideGlow.style.display = "block";
             }
-
-            setTimeout(function() {
-                window.location.href = storyUrl;
-            }, 7000);
         }
     </script>
 </body>
 </html>
+

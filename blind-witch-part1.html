@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blind Witch of Brookline - Part 1 - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; letter-spacing: 2px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.1rem; }
+        .story-content h2 { font-family: 'Cinzel', serif; color: #ff4d4d; font-size: 1.4rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 20px; }
+        .story-content p::first-letter { font-family: 'Cinzel', serif; font-size: 2.2rem; color: #ff3333; float: left; line-height: 1; padding-right: 8px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">The Blind Witch of Brookline</h1>
+            <p class="story-meta">PART 1 — THE GIRL WHO COULDN’T SEE • ENGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>In the summer of 1996, on the wooded outskirts of Brookline, Massachusetts, stood an old, sprawling house surrounded by tall trees, narrow roads, and dense patches of forest. An Indian-American family had lived there for years, sharing the large house with its central courtyard, long galleries, several bedrooms, an inner courtyard, and a staircase leading to the flat rooftop. Almost the entire family lived together, including parents, uncles, aunts, brothers, sisters, and cousins.</p>
+
+            <!-- IMAGE 1: BROOKLINE HOUSE -->
+            <div class="story-image">
+                <img src="brookline-house.jpg" alt="Old sprawling house surrounded by dense woods in Brookline">
+            </div>
+
+            <p>Among them was twenty-two-year-old Maya, a cheerful and mischievous girl who had always loved playing pranks. Her favorite prank was pretending to be blind. She would suddenly cover her eyes and cry, “Mom, I can't see anything!” At first, everyone used to panic, but after hearing the same joke countless times, nobody took her seriously anymore. It had become Maya's signature prank, especially whenever someone unfamiliar visited the house.</p>
+
+            <p>Then came the night of the new moon.</p>
+
+            <p>It was a warm summer night, and the house was unusually stuffy. After dinner, the entire family gathered on the flat rooftop, where they often spent summer evenings escaping the heat inside the house. They talked, laughed, and shared stories about a recent wedding. Around midnight, everyone began going downstairs. Maya was coming down with her younger sister, Anika, when she suddenly started her usual act. “Anika, I can't see. I'm going to fall!” Everyone assumed she was pretending again. Someone even laughed and told her to go ahead and fall. They continued downstairs, leaving Maya behind for a moment.</p>
+
+            <p>Then came a terrible crash.</p>
+
+            <!-- IMAGE 2: ROOFTOP STAIRS FALL -->
+            <div class="story-image">
+                <img src="rooftop-stairs-fall.jpg" alt="Dark rooftop staircase where the fall took place">
+            </div>
+
+            <p>Maya had actually fallen down the stairs. Her head was badly injured, and blood was running down her face. Her arm and leg were also hurt. The family rushed her to a nearby doctor in their car, where her injuries were treated, but Maya remained unconscious throughout the night.</p>
+
+            <p>The next morning, when she finally woke up, everyone asked what had happened. Maya simply said, “I don't know. I couldn't see anything. I couldn't see, and then I fell.” She never admitted that she had been joking. Instead, she became strangely quiet. The girl who was normally full of laughter and mischief now sat silently for hours, barely speaking. Her family assumed she was traumatized by the accident and upset because nobody had believed her.</p>
+
+            <h2>The Sightless Shadow</h2>
+
+            <p>That night, heavy rain covered the outskirts of Brookline, and the family decided to sleep inside rather than on the rooftop or in the courtyard. Sometime after midnight, the electricity went out. The house fell into darkness. Someone lit a few candles while the older members searched for the battery-powered flashlights they kept around the house. Around four in the morning, Maya's brother Rohan woke up thirsty and walked into the inner courtyard to get some water.</p>
+
+            <p>As he placed the glass down, he suddenly felt someone standing behind him.</p>
+
+            <p>He could feel their breath against his neck.</p>
+
+            <p>Slowly, Rohan turned around.</p>
+
+            <p>Maya was standing there.</p>
+
+            <!-- IMAGE 3: WHITE EYED MAYA -->
+            <div class="story-image">
+                <img src="white-eyed-maya.jpg" alt="Maya standing in the dark with completely white eyes">
+            </div>
+
+            <p>Her hair, which she had tied before sleeping, was completely loose. Her eyes were entirely white. There were no pupils at all. She stood motionless, as though she could not see him, sensing his presence only through sound and smell.</p>
+
+            <p>Rohan froze. Then he tried to run.</p>
+
+            <p>Maya grabbed him from behind and locked her hands around his neck. Both of them crashed to the floor, and the noise woke the entire family. When everyone rushed into the courtyard with candles and flashlights, they found Rohan unconscious beside Maya.</p>
+
+            <p>The next morning, Rohan regained consciousness, but the upper part of his body was partially paralyzed. He could barely speak. His terrified expression suggested that he had seen something far more horrifying than anyone could imagine, but he was unable to explain what had happened.</p>
+
+            <p>Maya only repeated the same words: “I couldn't see.”</p>
+
+            <h2>Knocks Beneath the Floor</h2>
+
+            <p>The family prayed, visited their temple, and wondered whether someone had cast an evil eye on them. They believed Maya might herself be a victim of something supernatural. Nobody suspected that she might actually be the source of the horror.</p>
+
+            <p>The following night, around three in the morning, Maya's older brother Arjun felt something tickling his foot. He pulled his leg away and assumed Rohan was teasing him. A few minutes later, it happened again. “Rohan, stop it,” Arjun whispered, but then he remembered that Rohan was partially paralyzed.</p>
+
+            <p>He turned toward the bed. Rohan was gone. Maya was gone too.</p>
+
+            <p>The family searched the entire house, the courtyard, the galleries, the rooftop, and the surrounding woods. The main gate was still locked from inside, and nobody had heard it open. There were no mobile phones to call each other with, and no security cameras watching the property. Arjun used the house's landline to call a nearby relative, but before he could explain what had happened, they heard a sound.</p>
+
+            <p>Knock. Knock. Knock.</p>
+
+            <p>It was coming from underneath one of the beds.</p>
+
+            <!-- IMAGE 4: UNDER THE BED -->
+            <div class="story-image">
+                <img src="under-the-bed.jpg" alt="Maya and Rohan lying underneath the bed in the dark">
+            </div>
+
+            <p>Nobody wanted to look. Finally, Maya's mother and Arjun crouched down and looked underneath. Maya was lying there. Beside her was Rohan. His body was trembling violently, his eyes were rolled upward, and deep scratches covered his throat. Maya's hands were near his neck. They dragged both of them out, terrified that Rohan might die.</p>
+
+            <p>Maya woke about an hour later and again said, “I couldn't see. I don't know how I got there.” Rohan remained badly injured. The family decided they would take both of them to a proper hospital as soon as morning came. But before dawn, Maya disappeared again.</p>
+
+            <h2>The Unnatural Hunt</h2>
+
+            <p>Her mother woke around five-thirty and immediately noticed that Maya was missing from the cot beside her. Everyone rushed to search the house. Arjun grabbed a battery-powered flashlight and ran through the gallery toward the rooftop.</p>
+
+            <p>Maya was walking along the narrow edge of the terrace wall. Her hair was completely loose. Her eyes were white. And in her hand was the largest kitchen knife in the house. She was humming softly, almost like a child, while balancing on the edge as though she could see perfectly.</p>
+
+            <!-- IMAGE 5: TERRACE WALL KNIFE -->
+            <div class="story-image">
+                <img src="terrace-wall-knife.jpg" alt="Maya balancing on the terrace wall edge with a knife">
+            </div>
+
+            <p>Arjun shouted, “Maya! What are you doing up there? Get down!” She turned toward his voice. For the first time, Arjun saw her face clearly. Her pupils were gone, her hair covered half her face, and a strange smile stretched across her lips. There was blood around her mouth.</p>
+
+            <p>Then she jumped.</p>
+
+            <p>Arjun caught her before she hit the ground. The knife cut his hand, but he managed to hold her. Maya fought violently, trying to stab him. Arjun shouted at her, demanding to know what was wrong. Then something impossible happened. Maya's head slowly turned almost 180 degrees while her body remained facing him.</p>
+
+            <p>Arjun froze. Maya smiled. Her eyes were completely white.</p>
+
+            <p>Arjun threw her away and ran. Maya immediately chased him through the gallery with the knife. Arjun turned into another corridor, but Maya followed the sound of his footsteps and crashed straight into a wall. She immediately stood up and began feeling around with her hands. Arjun understood—she really was blind. She was following sound.</p>
+
+            <p>He warned everyone to remain silent. The family scattered through the rooms and courtyard while Maya slowly moved through the darkness, listening for them. Finally, Arjun and two cousins managed to grab her from behind. But Maya's strength was terrifying. Three grown men struggled to control her. During the fight, she stabbed one of them. Blood spilled across the floor.</p>
+
+            <p>Maya stopped. She bent down and began licking the blood.</p>
+
+            <p>The family ran into a room and locked the door. Through the gap beneath it, Arjun watched Maya crawling across the floor, licking every drop of blood from the tiles as if it were something precious.</p>
+
+            <p>They eventually managed to overpower her, take the knife away, and tie her tightly with rope. Maya was dragged into a separate room and locked inside. For the first time, everyone thought the nightmare had been contained.</p>
+
+            <p>Then Maya began screaming. But the voice coming from behind the locked door was no longer Maya's. It was the voice of a grown woman. And whatever was inside that room was no longer pretending to be blind. It was waiting.</p>
+
+            <a href="english-tales.html" class="back-btn">← Back to English Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

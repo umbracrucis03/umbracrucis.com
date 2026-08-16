@@ -9,11 +9,17 @@
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html {
+            background: #050000;
+        }
+
         body { 
-            background-color: #080808; 
-            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
-            color: #d1b4a3; 
-            font-family: 'Georgia', serif; 
+            min-height: 100vh;
+            background-color: #050000; 
+            background-image: radial-gradient(circle at 50% 40%, rgba(80, 0, 0, 0.16), transparent 45%); 
+            color: #d8c9c0; 
+            font-family: Georgia, "Times New Roman", serif; 
             line-height: 1.8; 
             padding-bottom: 40px; 
             overflow-x: hidden;
@@ -53,14 +59,15 @@
             }
         }
 
-        /* TOP NAVIGATION BAR WITH LOGO SUPPORT */
+        /* TOP NAVIGATION BAR */
         .navbar { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 20px 25px; 
+            padding: 45px 8% 25px; 
             position: relative; 
             z-index: 100; 
+            width: 100%;
         }
 
         .nav-logo {
@@ -85,24 +92,24 @@
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            width: 30px; 
-            height: 21px; 
+            width: 55px; 
+            gap: 8px;
             cursor: pointer; 
             flex-shrink: 0;
         }
         .menu-icon span { 
             display: block; 
-            height: 3px; 
+            height: 6px; 
             width: 100%; 
-            background-color: #e60000; 
-            border-radius: 3px; 
-            box-shadow: 0 0 5px #ff0000; 
+            background: red; 
+            border-radius: 10px; 
+            box-shadow: 0 0 8px red, 0 0 18px rgba(255, 0, 0, 0.6); 
         }
         .nav-links { 
             display: none; 
             position: absolute; 
-            top: 60px; 
-            right: 25px; 
+            top: 100px; 
+            right: 8%; 
             background-color: rgba(15, 0, 0, 0.95); 
             border: 1px solid #660000; 
             border-radius: 5px; 
@@ -124,110 +131,232 @@
             color: #ff4d4d;
         }
 
-        /* CONTAINER & HEADER */
-        .container { width: 90%; max-width: 800px; margin: 20px auto; }
-        .story-header { text-align: center; margin-bottom: 25px; }
-        
-        .story-title-page { 
-            font-family: 'Creepster', cursive; 
-            font-size: 2.8rem; 
-            color: #e60000; 
-            letter-spacing: 2px; 
-            text-shadow: 0 0 12px #990000, 0 0 5px #ff0000; 
-            text-align: center; 
-            margin-bottom: 15px; 
+        /* PAGE TITLE */
+        .page-title {
+            margin: 40px auto 55px;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            text-align: center;
         }
 
-        /* STORY CARD & LOCK OVERLAY */
-        a.story-card {
-            display: block;
+        .flag {
+            font-size: clamp(40px, 10vw, 75px);
+            filter: drop-shadow(0 0 7px red) drop-shadow(0 0 12px rgba(255, 0, 0, 0.5));
+        }
+
+        .page-title h1 {
+            font-size: clamp(35px, 9vw, 70px);
+            color: #ff1111;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px rgba(255, 0, 0, 0.5);
+            font-family: 'Creepster', cursive;
+        }
+
+        /* MAIN & STORY CARD CONTAINER */
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-card {
             position: relative;
-            background-color: rgba(12, 12, 12, 0.9);
-            border: 1px solid #330000;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
+            width: 88%;
+            max-width: 850px;
+            min-height: 500px;
+            border: 2px solid #780000;
+            border-radius: 20px;
             overflow: hidden;
-            min-height: 200px;
-        }
-        a.story-card:hover {
-            border-color: #660000;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(230, 0, 0, 0.45);
-        }
-        .story-card h2 {
-            font-family: 'Cinzel', serif;
-            color: #e60000;
-            font-size: 1.35rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 8px #800000;
-        }
-        .story-card p {
-            color: #d1b4a3;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            background: 
+                radial-gradient(circle at 80% 80%, rgba(80, 0, 0, 0.3), transparent 35%),
+                linear-gradient(145deg, #100707, #080303);
+            box-shadow: inset 0 0 50px rgba(120, 0, 0, 0.15), 0 0 15px rgba(100, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* IMAGE OVERLAY WRAPPER */
-        .lock-container {
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: inset 0 0 50px rgba(150, 0, 0, 0.2), 0 0 25px rgba(180, 0, 0, 0.3);
+        }
+
+        /* STORY CONTENT */
+        .story-content {
+            position: relative;
+            z-index: 5;
+            padding: 55px 55px 70px;
+            min-height: 500px;
+        }
+
+        .story-content h2 {
+            color: #ff1515;
+            font-size: clamp(28px, 6vw, 48px);
+            line-height: 1.4;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+        }
+
+        .ornament {
+            width: 75%;
+            height: 1px;
+            margin: 35px 0;
+            background: #6f1515;
+            position: relative;
+        }
+
+        .ornament::after {
+            content: "✣";
             position: absolute;
-            top: 0;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #100707;
+            padding: 0 10px;
+            color: #8b1a1a;
+        }
+
+        .story-content p {
+            width: 65%;
+            font-size: clamp(18px, 3vw, 27px);
+            line-height: 1.8;
+            color: #d5c7bd;
+        }
+
+        /* KEYHOLE */
+        .keyhole {
+            position: absolute;
+            right: 8%;
+            bottom: 55px;
+            width: 90px;
+            height: 135px;
+            border: 4px solid #8b0000;
+            border-radius: 50% 50% 25% 25%;
+            box-shadow: 0 0 10px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6);
+            opacity: 0.9;
+        }
+
+        .keyhole::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #050000;
+            border: 4px solid #8b0000;
+            top: -22px;
+            left: 21px;
+            box-shadow: 0 0 10px red;
+        }
+
+        .keyhole::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 65px;
+            background: #050000;
+            left: 32px;
+            top: 20px;
+        }
+
+        /* BLOOD LAYER */
+        .blood-layer {
+            position: absolute;
+            z-index: 10;
+            top: -110%;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 210%;
             pointer-events: none;
-            z-index: 50;
+            background:
+                radial-gradient(ellipse at 15% 0%, #7d0000 0%, #350000 35%, transparent 65%),
+                radial-gradient(ellipse at 45% 0%, #ff0808 0%, #550000 30%, transparent 65%),
+                radial-gradient(ellipse at 75% 0%, #8d0000 0%, #350000 30%, transparent 65%),
+                linear-gradient(to bottom, #180000, #090000);
+            opacity: 0;
+            transform: translateY(0);
+            transition: none;
         }
 
-        .lock-half {
+        .blood-layer::before,
+        .blood-layer::after {
+            content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120%;
-            height: 220%;
-            transform: translate(-50%, -50%);
-            background-image: url('lock-chains.png');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
+            top: 0;
+            width: 25px;
+            height: 150px;
+            background: #650000;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
         }
 
-        .lock-left {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        .blood-layer::before { left: 20%; height: 230px; }
+        .blood-layer::after { right: 25%; height: 180px; }
+
+        /* ACTIVE BLOOD ANIMATION */
+        .story-card.blood-active {
+            cursor: default;
+            animation: horrorShake 0.12s infinite;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7), inset 0 0 60px rgba(100, 0, 0, 0.7);
         }
 
-        .lock-right {
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        .story-card.blood-active .blood-layer {
+            opacity: 0.97;
+            animation: bloodFlow 7s cubic-bezier(0.45, 0, 0.55, 1) forwards;
         }
 
-        .story-card.unlocked .lock-left {
-            transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
-            opacity: 0;
+        @keyframes bloodFlow {
+            0% { transform: translateY(-35%) scaleY(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            30% { transform: translateY(-15%) scaleY(1); }
+            60% { transform: translateY(20%) scaleY(1.05); }
+            85% { transform: translateY(50%) scaleY(1.1); }
+            100% { transform: translateY(65%) scaleY(1.15); opacity: 1; }
         }
 
-        .story-card.unlocked .lock-right {
-            transform: translate(-50%, -50%) translateX(220px) translateY(300px) rotate(45deg);
-            opacity: 0;
+        @keyframes horrorShake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-1px, 1px); }
+            50% { transform: translate(1px, -1px); }
+            75% { transform: translate(-1px, -1px); }
+            100% { transform: translate(0); }
         }
 
-        /* BACK BUTTON & FOOTER */
-        .back-btn { 
-            display: inline-block; 
-            margin-top: 25px; 
-            color: #ff4d4d; 
-            text-decoration: none; 
-            font-family: 'Cinzel', serif; 
-            font-weight: bold; 
-            clear: both;
+        /* BACK LINK & FOOTER */
+        .back-link {
+            display: block;
+            width: 88%;
+            max-width: 850px;
+            margin: 60px auto 0;
+            color: #e00000;
+            text-decoration: none;
+            font-size: clamp(20px, 5vw, 32px);
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
             transition: color 0.2s;
         }
-        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
-        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+        .back-link:hover { color: #ffffff; text-shadow: 0 0 12px #ff0000; }
+
+        footer {
+            text-align: center;
+            margin: 100px 20px 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .navbar { padding: 35px 8% 15px; }
+            .page-title { margin-top: 40px; flex-direction: column; gap: 10px; }
+            .story-content { padding: 45px 35px 60px; }
+            .story-content p { width: 100%; }
+            .keyhole { right: 7%; bottom: 35px; transform: scale(0.65); transform-origin: bottom right; opacity: 0.8; }
+            .ornament { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -255,31 +384,36 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="story-header">
-            <h1 class="story-title-page">🇬🇧 ENGLISH TALES</h1>
-        </div>
+    <!-- PAGE TITLE HEADER -->
+    <div class="page-title">
+        <span class="flag">🇬🇧</span>
+        <h1>ENGLISH TALES</h1>
+    </div>
 
-        <!-- STORY CARD WITH LOCK EFFECT -->
+    <!-- MAIN STORY SECTION -->
+    <main>
         <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
-            <div class="lock-container">
-                <div class="lock-half lock-left"></div>
-                <div class="lock-half lock-right"></div>
+            <div class="blood-layer"></div>
+            
+            <div class="story-content">
+                <h2>STORY 1 - GRANVILLE HOTEL ➔</h2>
+                <div class="ornament"></div>
+                <p>Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...</p>
             </div>
 
-            <h2>STORY 1 - GRANVILLE HOTEL ➔</h2>
-            <p>Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...</p>
+            <div class="keyhole"></div>
         </a>
+    </main>
 
-        <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
-    </div>
+    <!-- BACK TO ATTIC LINK -->
+    <a href="attic.html" class="back-link">← BACK TO STORY'S ATTIC</a>
 
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
     </footer>
 
-    <!-- JS SCRIPT -->
+    <!-- JAVASCRIPT -->
     <script>
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
@@ -291,7 +425,7 @@
 
             var card = document.getElementById(cardId);
             if (card) {
-                card.classList.add("unlocked");
+                card.classList.add("blood-active");
             }
 
             var audio = document.getElementById("horrorScream");

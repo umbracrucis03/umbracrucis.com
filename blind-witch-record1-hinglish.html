@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLIND WITCH OF BROOKLINE - Record 1 - Umbra Crucis</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR & HAMBURGER MENU */
+        .navbar { 
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer; 
+        }
+        .menu-icon span { 
+            display: block; 
+            height: 3px; 
+            width: 100%; 
+            background-color: #e60000; 
+            border-radius: 3px; 
+            box-shadow: 0 0 5px #ff0000; 
+        }
+        .nav-links { 
+            display: none; 
+            position: absolute; 
+            top: 60px; 
+            right: 30px; 
+            background-color: rgba(15, 0, 0, 0.95); 
+            border: 1px solid #660000; 
+            border-radius: 5px; 
+            flex-direction: column; 
+            width: 180px; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+        }
+        .nav-links.active { display: flex; }
+        .nav-links a { 
+            color: #d1b4a3; 
+            text-decoration: none; 
+            padding: 12px 20px; 
+            border-bottom: 1px solid #2a0000; 
+            font-family: 'Cinzel', serif; 
+        }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { 
+            font-family: 'Creepster', cursive; 
+            font-size: 3.2rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 15px #990000, 0 0 5px #ff0000; 
+            text-align: center; 
+            margin-bottom: 15px; 
+        }
+        .story-meta { 
+            font-family: 'Cinzel', serif; 
+            color: #888; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+        }
+
+        /* STORY CONTENT & DROP-CAP */
+        .story-content { 
+            background-color: rgba(12, 12, 12, 0.9); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 35px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
+            font-size: 1.15rem; 
+        }
+        .story-content p { 
+            margin-bottom: 20px; 
+        }
+        .story-content p::first-letter {
+            font-size: 2.2rem;
+            font-family: 'Cinzel', serif;
+            color: #e60000;
+            float: left;
+            line-height: 1;
+            padding-right: 6px;
+            text-shadow: 0 0 5px rgba(230, 0, 0, 0.5);
+        }
+        .story-content h2 { 
+            font-family: 'Georgia', serif; 
+            color: #ff4d4d; 
+            font-size: 1.5rem; 
+            margin: 30px 0 15px 0; 
+            border-bottom: 1px solid #440000; 
+            padding-bottom: 5px; 
+            clear: both;
+        }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; clear: both; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { 
+            display: inline-block; 
+            margin-top: 25px; 
+            color: #ff4d4d; 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold; 
+            clear: both;
+        }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">THE BLIND WITCH OF BROOKLINE</h1>
+            <p class="story-meta">RECORD 1 — WOH LADKI JO DEKH NHI SAKTI • HINGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>Saal 1996 tha. Brookline, Massachusetts ke bahari ilaake mein, ghane pedon, sunsaan sadkon aur andhere jangalon ke beech ek bahut bada aur purana family house tha. Is ghar mein ek Indian-American parivaar kai saalon se saath rehta tha. Ghar ka banaav kuch alag tha—beech mein bada sa aangan, uske chaaron taraf lambi galeriyan, kai kamre, ek andar ka aangan aur ek seedhi jo seedhe chhat tak jaati thi. Maa-baap, chacha-chachi, bhai-behen aur kai rishtedaar—parivaar ke lagbhag sabhi log ek hi chhat ke neeche rehte the.</p>
+
+            <!-- IMAGE 1: BROOKLINE HOUSE -->
+            <div class="story-image">
+                <img src="blind-witch-1.jpeg" alt="Old Family House in Brookline 1996">
+            </div>
+
+            <p>Unhi mein se ek thi bais saal ki Maya. Maya bahut hansmukh aur sharaarati ladki thi. Bachpan se hi logon ke saath mazaak karna uski aadat thi. Uska sabse pasandida mazaak tha andhi hone ka naatak karna. Woh achanak apni aankhon par haath rakh kar chillati, “Maa, mujhe kuch dikhai nahi de raha! Main andhi ho gayi hoon!” Shuru mein gharwale sach mein ghabra jaate the, lekin saalon tak wahi mazaak dekhne ke baad kisi ne uski baat ko gambhirta se lena band kar diya tha. Jab bhi ghar mein koi naya mehmaan aata, Maya aksar uske saamne bhi yahi mazaak karti.</p>
+
+            <p>Lekin phir aayi amavasya ki woh raat.</p>
+
+            <p>Us raat parivaar chhat par baitha tha. Sab haal hi mein hui ek shaadi ko lekar baatein kar rahe the, hans rahe the aur purani yaadein taaza kar rahe the. Raat ke kareeb baarah baje sab log neeche jaane lage. Maya apni chhoti behen Anika ke saath seedhiyon se neeche utar rahi thi, tabhi usne achanak apna wahi purana mazaak shuru kar diya. “Anika, mujhe kuch dikhai nahi de raha. Main gir jaungi!” Sabko laga ki woh phir mazaak kar rahi hai. Kisi ne hanskar kaha, “Theek hai, phir gir jao.” Aur sab log neeche chale gaye.</p>
+
+            <p>Agle hi pal peeche se ek bhayanak dhamaake ki awaaz aayi.</p>
+
+            <p>Maya sach mein seedhiyon se gir chuki thi. Uske sir par gehri chot lagi thi aur chehre se khoon beh raha tha. Uske haath aur pair par bhi chot lagi thi. Parivaar use turant doctor ke paas le gaya. Uski choton ka ilaaj kiya gaya, lekin Maya poori raat behosh rahi.</p>
+
+            <p>Agli subah jab Maya ko hosh aaya, toh sabne usse poocha ki aakhir hua kya tha. Maya ne bas itna kaha, “Mujhe nahi pata. Mujhe kuch dikhai nahi de raha tha. Main dekh nahi paa rahi thi aur phir main gir gayi.” Usne kabhi nahi bataya ki woh pehle mazaak kar rahi thi. Lekin us din ke baad Maya mein ek ajeeb badlaav aa gaya. Jo ladki hamesha hansti, mazaak karti aur sabko pareshan karti thi, woh ab ghanton chupchaap baithi rehti. Parivaar ne socha ki haadse ke baad woh sadme mein hai aur is baat se dukhi hai ki kisi ne uski baat par yakeen nahi kiya.</p>
+
+            <p>Us raat Brookline ke bahari ilaake mein tez baarish ho rahi thi, isliye parivaar ne chhat ya aangan mein sone ke bajay ghar ke andar hi sone ka faisla kiya. Aadhi raat ke baad achanak bijli chali gayi. Poora ghar andhere mein doob gaya. Khidkiyon se aati halki roshni ke alawa kuch dikhai nahi de raha tha. Subah ke kareeb chaar baje Maya ka bhai Rohan pyaas lagne par utha aur paani lene andar wale aangan mein chala gaya.</p>
+
+            <p>Jaise hi usne gilaas neeche rakha, use achanak mehsoos hua ki uske peeche koi khada hai.</p>
+
+            <p>Uski gardan ke bilkul paas kisi ki saans chal rahi thi.</p>
+
+            <p>Rohan ne dheere se mudkar dekha.</p>
+
+            <p>Maya wahan khadi thi.</p>
+
+            <!-- IMAGE 2: MAYA WITH WHITE EYES -->
+            <div class="story-image">
+                <img src="blind-witch-2.jpeg" alt="Maya standing in dark with white eyes">
+            </div>
+
+            <p>Uske baal, jo sone se pehle bandhe hue the, poori tarah khule the. Lekin sabse khaufnaak cheez uski aankhen thi. Dono aankhen poori tarah safed thi. Unmein putliyan tak nahi thi. Woh bilkul sthir khadi thi, jaise use Rohan dikhai hi nahi de raha tha. Jaise woh sirf uski saans aur halki si aahat se uski maujoodgi mehsoos kar rahi ho.</p>
+
+            <p>Rohan dar ke maare jam gaya.</p>
+
+            <p>Phir usne bhaagne ki koshish ki.</p>
+
+            <p>Maya ne peeche se use pakad liya aur dono haathon se uski gardan kas di. Dono zameen par gir pade. Unki awaaz se poora parivaar jaag gaya. Jab sab log haath mein torch lekar aangan mein pahunche, Rohan behosh pada tha aur Maya uske paas khadi thi.</p>
+
+            <p>Agli subah Rohan ko hosh aaya, lekin uske sharir ka upar ka hissa lagbhag lakve ka shikaar ho chuka tha. Woh mushkil se bol paa raha tha. Parivaar baar-baar poochta raha ki usne kya dekha tha, lekin Rohan kuch bata nahi pa raha tha. Uske chehre par chhaya dar bata raha tha ki usne kuch aisa dekha tha jise shabdon mein bayan karna mushkil tha.</p>
+
+            <p>Aur Maya?</p>
+
+            <p>Woh bas ek hi baat dohrati rahi.</p>
+
+            <p>“Main dekh nahi paa rahi thi.”</p>
+
+            <p>Parivaar ne pooja ki, mandir gaya aur socha ki shayad kisi ki buri nazar unke ghar par pad gayi hai. Unhe laga ki Maya khud kisi alaukik shakti ki shikaar ho sakti hai.</p>
+
+            <p>Lekin kisi ko nahi pata tha ki khauf unke ghar ke bahar nahi tha.</p>
+
+            <p>Woh Maya ke andar tha.</p>
+
+            <p>Agli raat kareeb teen baje Maya ke bade bhai Arjun ko apne pair par kuch gudgudi hoti mehsoos hui. Usne pair peeche kheench liya aur socha ki shayad Rohan mazaak kar raha hai. Kuch der baad phir wahi ehsaas hua. “Rohan, band karo,” Arjun ne dheere se kaha. Phir use yaad aaya ki Rohan toh theek se hil bhi nahi sakta tha.</p>
+
+            <p>Arjun ne bistar ki taraf dekha.</p>
+
+            <p>Rohan gayab tha.</p>
+
+            <p>Maya bhi gayab thi.</p>
+
+            <p>Parivaar ne poora ghar chhaan maara. Kamre, galeriyan, aangan aur chhat—sab jagah dekha gaya. Mukhya darwaza andar se band tha aur kisi ne use khulte hue nahi suna tha. Unhone ghar ke bahar jangal aur aas-paas ki sadkon tak talaash ki, lekin dono ka koi pata nahi chala.</p>
+
+            <p>Thak-haar kar jab sab log ghar laut aaye, tabhi ek awaaz sunai di.</p>
+
+            <p>Thak... Thak... Thak...</p>
+
+            <p>Awaaz ek bistar ke neeche se aa rahi thi.</p>
+
+            <p>Kisi ki himmat nahi ho rahi thi ki neeche jhaank kar dekhe.</p>
+
+            <p>Aakhir Arjun aur uske pita neeche jhuke.</p>
+
+            <p>Maya wahan leti hui thi.</p>
+
+            <p>Aur uske paas Rohan tha.</p>
+
+            <p>Rohan ka poora sharir buri tarah kaanp raha tha. Uski aankhen upar ki taraf palti hui thi aur gardan par gehri kharonchein thi. Maya ke haath uski gardan ke paas the. Parivaar ne dono ko bahar nikala aur Rohan ko bachane ki koshish ki.</p>
+
+            <p>Lagbhag ek ghante baad Maya ko hosh aaya aur usne phir wahi kaha, “Main dekh nahi paa rahi thi. Mujhe nahi pata main yahan kaise aayi.”</p>
+
+            <p>Parivaar ne tay kiya ki subah hote hi dono ko bade aspataal le jaaya jayega.</p>
+
+            <p>Lekin subah hone se pehle hi Maya phir gayab ho gayi.</p>
+
+            <p>Kareeb saadhe paanch baje uski maa ki aankh khuli aur unhone dekha ki Maya apni khat par nahi thi. Parivaar dobara use dhoondhne laga. Arjun gallery se hote hue aangan mein gaya aur usne upar chhat ki taraf dekha.</p>
+
+            <p>Maya chhat ki patli si deewar ke kinare par chal rahi thi.</p>
+
+            <!-- IMAGE 3: MAYA ON ROOF WITH KNIFE -->
+            <div class="story-image">
+                <img src="blind-witch-3.jpeg" alt="Maya walking on roof boundary with knife">
+            </div>
+
+            <p>Uske baal khule hue the.</p>
+
+            <p>Uski aankhen safed thi.</p>
+
+            <p>Aur uske haath mein ghar ka sabse bada rasoi ka chaaku tha.</p>
+
+            <p>Woh kinare par aise chal rahi thi jaise use sab kuch saaf dikhai de raha ho.</p>
+
+            <p>Arjun ne chillakar kaha, “Maya! Tum wahan kya kar rahi ho? Neeche aao!”</p>
+
+            <p>Maya ne uski awaaz ki taraf apna chehra ghumaya.</p>
+
+            <p>Arjun ne pehli baar uska chehra saaf dekha. Uski aankhon mein putliyan nahi thi. Baalon ke beech se uska chehra ajeeb lag raha tha. Honthon par ek daraavni muskaan thi aur muh ke aas-paas khoon laga hua tha.</p>
+
+            <p>Phir Maya ne chhalang laga di.</p>
+
+            <p>Arjun ne use zameen par girne se pehle pakad liya. Chaaku se uske haath par gehra kat laga, lekin usne Maya ko nahi chhoda. Maya poori taakat se chhutne aur Arjun par chaaku se vaar karne ki koshish kar rahi thi.</p>
+
+            <p>Tabhi kuch aisa hua jo Arjun zindagi bhar nahi bhool saka.</p>
+
+            <p>Maya ka sir dheere-dheere ghoomne laga.</p>
+
+            <!-- IMAGE 4: HEAD ROTATED 180 DEGREES -->
+            <div class="story-image">
+                <img src="blind-witch-4.jpeg" alt="Maya smiling with head turned 180 degrees">
+            </div>
+
+            <p>Uska sharir bilkul sthir raha.</p>
+
+            <p>Uska sir lagbhag 180 degree tak ghoom gaya.</p>
+
+            <p>Arjun ki saans ruk gayi.</p>
+
+            <p>Maya muskurayi.</p>
+
+            <p>Uski aankhen poori tarah safed thi.</p>
+
+            <p>Arjun ne use zor se door dhakka diya aur bhaag gaya.</p>
+
+            <p>Maya chaaku lekar uske peeche daud padi.</p>
+
+            <p>Arjun gallery ke ek kone par muda. Maya uske kadmon ki awaaz ka peecha karte hue uske peeche aayi, lekin mod par pahunchte hi seedhe deewar se ja takraayi.</p>
+
+            <p>Woh ruk gayi.</p>
+
+            <p>Phir apne haathon se aas-paas tatolne lagi.</p>
+
+            <p>Arjun samajh gaya.</p>
+
+            <p>Maya sach mein andhi thi.</p>
+
+            <p>Woh sirf awaaz ka peecha kar rahi thi.</p>
+
+            <p>Arjun ne parivaar ko ishara kiya ki koi awaaz na kare. Sab alag-alag kamron aur aangan mein chhup gaye. Maya dheere-dheere andhere mein aage badhne lagi, har chhoti si aahat ko sunne ki koshish karte hue.</p>
+
+            <p>Aakhir Arjun aur uske do chachere bhai uske peeche pahunchne mein safal hue aur unhone Maya ko pakad liya.</p>
+
+            <p>Lekin Maya ki taakat insaani nahi thi.</p>
+
+            <p>Teen jawaan aadmi bhi use theek se kaabu mein nahi kar paa rahe the. Jaddojahad ke beech Maya ne ek chachere bhai ko chaaku maar diya. Zameen par khoon phail gaya.</p>
+
+            <p>Maya achanak ruk gayi.</p>
+
+            <p>Woh neeche jhuki.</p>
+
+            <p>Aur khoon ko chaatne lagi.</p>
+
+            <p>Parivaar ek kamre ke andar bhaag gaya aur darwaza band kar liya. Arjun ne darwaze ke neeche ki chhoti si jagah se dekha. Maya zameen par reng rahi thi aur farsh par gira hua khoon is tarah chaat rahi thi, jaise woh uske liye duniya ki sabse keemti cheez ho.</p>
+
+            <p>Aakhir parivaar ne Maya ko kaabu mein kar liya, chaaku cheen liya aur uske haath-pair moti rassi se kas kar baandh diye. Use ek alag kamre mein band kar diya gaya.</p>
+
+            <p>Pehli baar sabko laga ki yeh khaufnaak silsila ab ruk gaya hai.</p>
+
+            <p>Phir Maya cheekhne lagi.</p>
+
+            <p>Lekin kamre ke andar se jo awaaz aa rahi thi...</p>
+
+            <p>woh Maya ki awaaz nahi thi.</p>
+
+            <p>Woh ek jawaan aurat ki awaaz thi.</p>
+
+            <p>Aur kamre ke andar jo cheez thi, woh ab andhi hone ka naatak nahi kar rahi thi.</p>
+
+            <p>Woh intezaar kar rahi thi.</p>
+
+            <a href="hinglish-tales.html" class="back-btn">← Back to Hinglish Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

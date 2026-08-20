@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLIND WITCH OF BROOKLINE - Record 2 - Umbra Crucis</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR & HAMBURGER MENU */
+        .navbar { 
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer; 
+        }
+        .menu-icon span { 
+            display: block; 
+            height: 3px; 
+            width: 100%; 
+            background-color: #e60000; 
+            border-radius: 3px; 
+            box-shadow: 0 0 5px #ff0000; 
+        }
+        .nav-links { 
+            display: none; 
+            position: absolute; 
+            top: 60px; 
+            right: 30px; 
+            background-color: rgba(15, 0, 0, 0.95); 
+            border: 1px solid #660000; 
+            border-radius: 5px; 
+            flex-direction: column; 
+            width: 180px; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+        }
+        .nav-links.active { display: flex; }
+        .nav-links a { 
+            color: #d1b4a3; 
+            text-decoration: none; 
+            padding: 12px 20px; 
+            border-bottom: 1px solid #2a0000; 
+            font-family: 'Cinzel', serif; 
+        }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { 
+            font-family: 'Creepster', cursive; 
+            font-size: 3.2rem; 
+            color: #e60000; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 15px #990000, 0 0 5px #ff0000; 
+            text-align: center; 
+            margin-bottom: 15px; 
+        }
+        .story-meta { 
+            font-family: 'Cinzel', serif; 
+            color: #888; 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+        }
+
+        /* STORY CONTENT & DROP-CAP */
+        .story-content { 
+            background-color: rgba(12, 12, 12, 0.9); 
+            border: 1px solid #330000; 
+            border-radius: 8px; 
+            padding: 35px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
+            font-size: 1.15rem; 
+        }
+        .story-content p { 
+            margin-bottom: 20px; 
+        }
+        .story-content p::first-letter {
+            font-size: 2.2rem;
+            font-family: 'Cinzel', serif;
+            color: #e60000;
+            float: left;
+            line-height: 1;
+            padding-right: 6px;
+            text-shadow: 0 0 5px rgba(230, 0, 0, 0.5);
+        }
+        .story-content h2 { 
+            font-family: 'Georgia', serif; 
+            color: #ff4d4d; 
+            font-size: 1.5rem; 
+            margin: 30px 0 15px 0; 
+            border-bottom: 1px solid #440000; 
+            padding-bottom: 5px; 
+            clear: both;
+        }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; clear: both; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { 
+            display: inline-block; 
+            margin-top: 25px; 
+            color: #ff4d4d; 
+            text-decoration: none; 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold; 
+            clear: both;
+        }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">THE BLIND WITCH OF BROOKLINE</h1>
+            <p class="story-meta">RECORD 2 — ANDHI CHUDAIL • HINGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>Parivaar ne turant landline se call kiya aur ek pujari ko bulaya. Us pandit ne apne guru, kai saalon se tantr-mantr aur adhyatmik saadhna karne wale ek anubhavi pujari Pandit Shankar Joshi ko bulaya, jo kaafi kasbe door rehte the. Subah hone se pehle hi Pandit Shankar ghar pahunch gaye. Jaise hi unhone ghar ke andar kadam rakha, Maya band kamre ke darwaze par zor-zor se haath maarne lagi.</p>
+
+            <p>“Main tum sabko maar daalungi! Main tumhara khoon pee jaungi!”</p>
+
+            <p>Awaaz ek aurat ki thi, lekin woh Maya ke sharir se aa rahi thi.</p>
+
+            <!-- IMAGE 1: SACRED FIRE RITUAL -->
+            <div class="story-image">
+                <img src="image1.jpg" alt="Pandit Shankar Joshi performing sacred fire ritual">
+            </div>
+
+            <p>Pandit Shankar samajh gaye ki yeh koi saamanya maamla nahi tha. Unhone parivaar ko ek shaktishaali anushthaan ki taiyaari karne ko kaha aur apne kuch shishyon ko bhi bulaya. Beech ke aangan mein pavitra agni jalaayi gayi aur mantrochchaar shuru hua. Jaise-jaise mantrochchaar tez hota gaya, Maya ki cheekhein aur bhi bhayankar hoti gayi.</p>
+
+            <p>Aakhir Pandit Shankar band kamre ke bahar khade hue aur poocha, “Tum kaun ho?”</p>
+
+            <p>Kuch pal tak koi jawab nahi aaya.</p>
+
+            <p>Phir darwaza zor-zor se hilne laga.</p>
+
+            <p>Andar se ek aurat ki awaaz cheekhi, “Main tum sabko kaat daalungi. Main tumhara khoon pee jaungi.”</p>
+
+            <p>Pandit Shankar shaant rahe. Unhone poocha, “Tum chahti kya ho?”</p>
+
+            <p>Awaaz aayi, “Mujhe woh ladki chahiye. Main ise apne saath le jaungi.”</p>
+
+            <p>Pandit Shankar ko samajh aa gaya ki koi buri aatma Maya ke sharir ko apne vaahan ki tarah istemaal kar rahi thi. Unhone parivaar ko bataya ki yeh ek purani sthaniya dantkatha se judi shakti thi—ek andhi chudail, jiske baare mein kaha jaata tha ki kai dashak pehle woh is ilaake mein logon ko daraati thi. Woh dekh nahi sakti thi. Sirf awaaz ka peecha kar sakti thi. Aur use khoon ki bhook thi.</p>
+
+            <p>Tabhi darwaze ke neeche se ek haath bahar nikla aur Pandit Shankar ka takhna pakad liya.</p>
+
+            <p>Uski ungliyan asamaanya roop se lambi thi. Chamdi kaali aur jhurriyon se bhari thi, aur naakhun itne lambe the ki woh kisi insaan ke nahi lag rahe the. Pandit Shankar ghaayal hue, lekin unhone anushthaan nahi roka.</p>
+
+            <p>Shaam hone lagi. Mantrochchaar aur tez hota gaya. Maya kabhi cheekhti, kabhi roti, kabhi parivaar ko dhamkaati aur kabhi darwaza kholne ke liye gidgidaati.</p>
+
+            <p>Phir ek bhayanak dhamaaka hua.</p>
+
+            <p>Chhat ki taraf jaane wala darwaza toot chuka tha.</p>
+
+            <p>Parivaar samajh gaya ki Maya bhaag chuki hai.</p>
+
+            <p>Kuch hi pal baad woh chhat par dikhai di.</p>
+
+            <p>Phir usne chhalang laga di.</p>
+
+            <p>Uska sharir zameen se zor se takraya, lekin kuch hi pal baad woh dheere-dheere uthne lagi. Uski haddiyan chatakhne lagi, haath-pair aswaabhavik tareeke se mud gaye aur uska sir ek namumkin kone par jhuk gaya.</p>
+
+            <p>Phir woh parivaar ki taraf daud padi.</p>
+
+            <p>Woh seedhe Pandit Shankar ki taraf badhi, lekin pavitra anushthaan ke ghere ke paas pahunchte hi achanak ruk gayi. Pandit Shankar mantrochchaar karte rahe, jabki unke shishyon ne Maya ko chaaron taraf se gher liya. Kai logon ne use pakadne ki koshish ki, lekin Maya mein insaan se pare taakat thi. Woh jawaan aadmiyon ko bhi aasaani se door phek rahi thi.</p>
+
+            <p>Aakhirkaar ve Maya ko chaawal aur sindoor se banaye gaye pavitra ghere ke andar kheench laaye.</p>
+
+            <p>Jaise hi Maya ghere ke andar gayi, woh behosh hokar gir padi.</p>
+
+            <p>Sabne rahat ki saans li.</p>
+
+            <!-- IMAGE 2: POSSESSED AUNT ATTACK -->
+            <div class="story-image">
+                <img src="image2.jpg" alt="Possessed aunt standing over her husband with blood on her face">
+            </div>
+
+            <p>Lekin khauf abhi khatam nahi hua tha.</p>
+
+            <p>Bahar ke aangan se achanak ek cheekh sunai di.</p>
+
+            <p>Maya ki chachi apne pati ke upar khadi thi. Uske baal khule hue the. Uski aankhen poori tarah khuli hui thi. Aur uske muh par khoon laga tha. Chudail ab uske andar ja chuki thi.</p>
+
+            <p>Usne apne pati par hamla kar diya. Uske lambe, aswaabhavik naakhunon ne uski gardan par gehri kharonchein daal di aur woh uske ghaavon se nikalta khoon chaatne lagi. Pandit Shankar ke shishyon ne turant use pakad liya. Kuch hi der baad woh bhi behosh hokar gir padi.</p>
+
+            <p>Parivaar ko laga ki aatma ne Maya ko chhod diya hai.</p>
+
+            <p>Maya abhi bhi pavitra ghere ke andar behosh thi.</p>
+
+            <p>Raat ke aakhri pehar Arjun apni behen ko dekhne gaya. Maya hosh mein thi. Uski aankhon mein aansu the.</p>
+
+            <p>“Arjun... mere saath kya ho raha hai?”</p>
+
+            <p>Uski awaaz bilkul saamanya thi. Uski aankhen bhi saamanya thi. Kai dinon mein pehli baar woh bilkul apni purani Maya jaisi lag rahi thi.</p>
+
+            <p>Arjun ne use kas kar gale laga liya. “Dar mat. Main yahin hoon. Sab khatam ho gaya.”</p>
+
+            <!-- IMAGE 3: TOWERING SHADOW -->
+            <div class="story-image">
+                <img src="image3.jpg" alt="A massive female shadow looming down the gallery corridor">
+            </div>
+
+            <p>Tabhi Arjun ki nazar gallery ki taraf gayi. Wahan ek bahut badi parchai hil rahi thi. Ek aurat ki parchai. Lekin wahan koi aurat khadi nahi thi. Parchai dheere-dheere unki taraf badhne lagi.</p>
+
+            <p>Arjun wahi jam gaya.</p>
+
+            <p>Maya ne dheere se uske kaan ke paas kaha, “Tum mujhe dhoondh rahe the?”</p>
+
+            <p>Arjun ne uski taraf dekha. Uski muskaan badal chuki thi. Chudail wapas aa gayi thi. Asal mein, woh kabhi gayi hi nahi thi.</p>
+
+            <p>Maya ne Arjun par hamla kar diya. Uske naakhun Arjun ki chamdi mein dhans gaye, lekin Arjun ne use nahi chhoda. Maya ki taakat lagataar badhti ja rahi thi, phir bhi Arjun apni behen ko pakde raha.</p>
+
+            <p>Pandit Shankar mantrochchaar karte rahe. Unke shishya Arjun ki taraf daude aur Maya ke chaaron taraf ek aur pavitra ghera bana diya. Kai log use kaabu mein karne ki koshish karte rahe, lekin Maya ne kuch logon ko door phek diya. Arjun ne phir bhi use nahi chhoda.</p>
+
+            <p>Aakhir Pandit Shankar pavitra agni ke paas gaye aur wahan se pavitra bhasm uthakar Maya ke sir par laga di.</p>
+
+            <p>Maya ne ek bhayanak cheekh maari. Uska poora sharir buri tarah kaanpne laga. Phir woh behosh hokar gir gayi. Is baar woh bilkul shaant thi.</p>
+
+            <p>Pandit Shankar ne parivaar ko bataya ki woh aatma bahut shaktishaali thi. Agar Maya us ghar se bahar nikal jaati, toh shayad parivaar use dobara kabhi nahi dhoondh paata. Unhone yeh bhi bataya ki kai dashak pehle isi ilaake mein ek aisi hi andhi chudail ke logon ko maarne ki kahaniyaan sunne ko milti thi.</p>
+
+            <p>Arjun ke saahas ne Maya ki jaan bacha li thi.</p>
+
+            <p>Lekin anushthaan abhi poora nahi hua tha.</p>
+
+            <p>Subah kareeb chaar baje Maya ko aangan ke beech doodh aur Ganga jal ke mishran se snaan karaya gaya. Use saaf kapde pehnaye gaye aur sula diya gaya. Pandit Shankar poori raat ghar mein rahe aur parivaar ko use surakshit rakhne ke nirdesh diye.</p>
+
+            <p>Dopahar tak Maya ne aankhen kholi. Woh phir se khud thi. Uski aankhen saamanya thi. Uski awaaz saamanya thi. Woh ajeeb maujoodgi ja chuki thi.</p>
+
+            <p>Ghanton tak cheekhne ki वजह se uska gala buri tarah zakhmi ho gaya tha, lekin woh zinda thi. Pandit Shankar ne uski kalaiyon aur takhnon par raksha ke pavitra dhaage baandhe aur chetavani di ki unhe chhe mahine tak nahi utaarna hai. Jaane se pehle unhone poore ghar aur uski seemaon ko aashirvaad diya.</p>
+
+            <!-- IMAGE 4: DARK WOODED OUTSKIRTS -->
+            <div class="story-image">
+                <img src="image4.jpg" alt="The dark, dense woods on the outskirts of Brookline">
+            </div>
+
+            <p>Chudail chali gayi thi. Lekin woh gayi kahan? Kisi ko nahi pata.</p>
+
+            <p>Maya dheere-dheere poori tarah theek ho gayi, haalaanki us raat ka sadma kai mahino tak uske saath raha. Saal beet gaye aur woh ek saamanya zindagi jeene lagi. Parivaar ne bhi dheere-dheere us raat ke baare mein baat karna band kar diya.</p>
+
+            <p>Lekin ek baat woh kabhi nahi bhool sake.</p>
+
+            <p>Maya saalon se andhi hone ka mazaak karti aa rahi thi. Lekin 1996 ki amavasya ki us raat, woh sach mein andhi ho gayi thi. Aur jo aatma uske sharir mein aayi thi, woh achhi tarah jaanti thi ki us andhepan ka istemaal kaise karna hai.</p>
+
+            <p>Woh dekh nahi sakti thi. Woh sirf sun sakti thi.</p>
+
+            <p>Aur Brookline ke un andhere, ghane jangalon ke paar, shayad woh andhi chudail aaj bhi raat ke sannate mein bhatak rahi hai... Kisi aur insaani awaaz ko sunne ka intezaar kar rahi hai.</p>
+
+            <p>Bas is intezaar mein... ki koi usse jawab de.</p>
+
+            <a href="hinglish-tales.html" class="back-btn">← Back to Hinglish Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

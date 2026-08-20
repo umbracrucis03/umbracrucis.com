@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blind Witch of Brookline - Part 2 - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; letter-spacing: 2px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.1rem; }
+        .story-content h2 { font-family: 'Cinzel', serif; color: #ff4d4d; font-size: 1.4rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 20px; }
+        .story-content p::first-letter { font-family: 'Cinzel', serif; font-size: 2.2rem; color: #ff3333; float: left; line-height: 1; padding-right: 8px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">The Blind Witch of Brookline</h1>
+            <p class="story-meta">PART 2 — THE BLIND WITCH • ENGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>The family immediately contacted a priest using their landline. He called his own teacher, an older and more experienced priest named Pandit Shankar Joshi, who lived several towns away. Before sunrise, Pandit Shankar arrived at the house. The moment he stepped inside, Maya began violently pounding against the locked door.</p>
+
+            <p>“I'll kill all of you! I'll drink your blood!”</p>
+
+            <p>The voice was that of a woman, but it was coming from Maya.</p>
+
+            <!-- IMAGE 1 -->
+            <div class="story-image">
+                <img src="image1.jpg" alt="Pandit Shankar performing a sacred ritual near the fire">
+            </div>
+
+            <p>Pandit Shankar understood that something paranormal had entered the house. He ordered the family to prepare everything required for a powerful ritual and summoned several disciples. A sacred fire was prepared in the central courtyard, and the chanting continued for hours while Maya screamed from inside the locked room.</p>
+
+            <p>Finally, the priest stood outside her door and asked, “Who are you?”</p>
+
+            <p>For several minutes, there was no answer.</p>
+
+            <p>Then the door shook violently.</p>
+
+            <p>A woman's voice screamed, “I'll cut you all open. I'll drink your blood.”</p>
+
+            <p>Pandit Shankar remained calm. “What do you want?”</p>
+
+            <p>“I want her,” the voice replied. “I will take this girl.”</p>
+
+            <p>The priest eventually realized what they were dealing with. The entity was an old spirit connected to a terrifying local legend—the blind witch, a blood-hungry spirit believed to have haunted the area decades earlier. She could not see. She could only hear, follow voices, and sense the presence of blood.</p>
+
+            <p>Suddenly, a hand reached beneath the door and grabbed the priest's ankle.</p>
+
+            <p>Its fingers were unnaturally long. The skin was dark and wrinkled, and the nails were far too long to belong to Maya. The priest was injured, but he refused to stop the ritual.</p>
+
+            <p>As evening arrived, the chanting grew louder. Maya's screams became more violent. She begged, threatened, cried, and laughed, trying to convince the family to open the door.</p>
+
+            <p>Then came a violent crash.</p>
+
+            <p>The door leading to the rooftop had broken.</p>
+
+            <p>The family realized that Maya had escaped.</p>
+
+            <p>Seconds later, she appeared on the terrace.</p>
+
+            <p>Then she jumped.</p>
+
+            <p>Her body struck the ground hard, but instead of remaining still, she slowly began to rise. Her bones cracked, her limbs twisted unnaturally, and her head hung at an impossible angle.</p>
+
+            <p>Then she charged toward the family.</p>
+
+            <p>She ran directly toward Pandit Shankar but suddenly stopped at the edge of the sacred ritual area. The priest continued chanting while his disciples surrounded her. Several men tried to restrain her, but Maya possessed unbelievable strength. She threw grown men aside as though they were children.</p>
+
+            <p>Finally, they managed to drag her into a sacred circle made from rice and vermilion.</p>
+
+            <p>The moment she entered it, Maya collapsed unconscious.</p>
+
+            <p>Everyone breathed again.</p>
+
+            <!-- IMAGE 2 -->
+            <div class="story-image">
+                <img src="image2.jpg" alt="Maya's possessed aunt standing over her husband">
+            </div>
+
+            <p>But the horror was not over.</p>
+
+            <p>A scream came from the outer courtyard.</p>
+
+            <p>Maya's aunt was standing over her husband.</p>
+
+            <p>Her hair was loose. Her eyes were wide. Blood covered her mouth.</p>
+
+            <p>The witch had moved into her.</p>
+
+            <p>She attacked her husband with unnaturally long nails, scratching his throat and licking the blood from his wounds. Pandit Shankar's disciples rushed forward and restrained her.</p>
+
+            <p>She collapsed.</p>
+
+            <p>For a moment, everyone believed the entity had finally been defeated.</p>
+
+            <p>Maya remained unconscious inside the sacred circle.</p>
+
+            <p>Arjun went to check on her.</p>
+
+            <p>She was awake. She was crying.</p>
+
+            <p>“Arjun, what is happening to me?”</p>
+
+            <p>Her voice was normal. Her eyes were normal.</p>
+
+            <p>For the first time in days, she looked like his sister again.</p>
+
+            <p>Arjun hugged her tightly. “Don't worry. I'm here. It's over.”</p>
+
+            <!-- IMAGE 3 -->
+            <div class="story-image">
+                <img src="image3.jpg" alt="A towering shadow moving slowly down the dark corridor">
+            </div>
+
+            <p>Then he noticed something moving through the gallery.</p>
+
+            <p>A huge shadow. The shadow of a woman.</p>
+
+            <p>But there was no woman standing there.</p>
+
+            <p>The shadow slowly moved toward them.</p>
+
+            <p>Arjun froze.</p>
+
+            <p>Maya whispered, “Were you looking for me?”</p>
+
+            <p>He looked at her.</p>
+
+            <p>The witch had returned. It had never truly left.</p>
+
+            <p>Maya attacked him. Her nails tore into his skin, but Arjun refused to release her. Even when her strength became unnatural, he held onto his sister.</p>
+
+            <p>Pandit Shankar continued chanting.</p>
+
+            <p>His disciples rushed toward them and formed another sacred circle around Maya. Several men struggled to restrain her, but she threw some of them aside.</p>
+
+            <p>Arjun still refused to let go.</p>
+
+            <p>Finally, Pandit Shankar took sacred ash from the fire and placed it on Maya's head.</p>
+
+            <p>She screamed. Her entire body convulsed. Then she collapsed.</p>
+
+            <p>This time, she remained completely still.</p>
+
+            <p>Pandit Shankar told the family that the spirit had been extremely powerful. If Maya had escaped the house, they might never have found her again. He also revealed that a similar blind witch had supposedly taken several lives in the area decades earlier.</p>
+
+            <p>Arjun's courage had saved his sister.</p>
+
+            <p>But the ritual was not yet complete.</p>
+
+            <p>Around four in the morning, Maya was bathed in a mixture of milk and Ganges water in the center of the courtyard. She was cleaned, dressed in fresh clothes, and put to sleep. Pandit Shankar remained in the house throughout the night and instructed the family to keep her protected.</p>
+
+            <p>By noon, Maya opened her eyes.</p>
+
+            <p>She was herself again. Her eyes were normal. Her voice was normal.</p>
+
+            <p>The strange presence was gone.</p>
+
+            <p>Her throat was badly damaged from hours of screaming, but otherwise she was alive. Pandit Shankar tied protective sacred threads around her wrists and ankles and warned the family not to remove them for six months. Before daylight fully returned, he blessed the house and sealed its boundaries with sacred protection.</p>
+
+            <!-- IMAGE 4 -->
+            <div class="story-image">
+                <img src="image4.jpg" alt="The dark outskirts of Brookline beyond the forest">
+            </div>
+
+            <p>The witch was gone. Where it went, nobody knew.</p>
+
+            <p>Maya eventually recovered, although the trauma stayed with her for months. Years have now passed, and she is living a normal life again. The family rarely speaks about that night.</p>
+
+            <p>But there is one thing they can never forget.</p>
+
+            <p>For years, Maya had pretended to be blind as a joke. On the night of the new moon in 1996, she actually became blind. And whatever entered her body knew exactly how to use it.</p>
+
+            <p>It could not see. It could only hear.</p>
+
+            <p>And somewhere beyond the dark, wooded outskirts of Brookline, perhaps the blind witch is still wandering through the night, listening for another human voice.</p>
+
+            <p>Waiting for someone to answer.</p>
+
+            <a href="english-tales.html" class="back-btn">← Back to English Tales</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

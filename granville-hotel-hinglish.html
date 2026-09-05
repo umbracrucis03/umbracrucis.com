@@ -215,7 +215,7 @@
 
         <!-- AUDIO PLAYER BAR -->
         <div class="audio-player-box">
-            <div class="audio-title"> Listen to Story Narration</div>
+            <div class="audio-title">Listen to Story Narration</div>
             <div class="audio-controls">
                 <button id="playBtn" class="audio-btn" onclick="playStory()">▶ Play</button>
                 <button id="pauseBtn" class="audio-btn" onclick="pauseStory()" disabled>⏸ Pause</button>
@@ -337,25 +337,32 @@
             menu.classList.toggle("active");
         }
 
-        /* --- WEB SPEECH API HORROR NARRATION LOGIC --- */
+        /* --- MOBILE-OPTIMIZED SPEECH SYNTHESIS ENGINE --- */
         let utterance = null;
         const playBtn = document.getElementById('playBtn');
         const pauseBtn = document.getElementById('pauseBtn');
         const stopBtn = document.getElementById('stopBtn');
         const statusText = document.getElementById('status');
 
+        // Warm up speech engine voices for Android/Chrome
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+
         function playStory() {
-            // Resume if currently paused
+            // Resume if paused
             if (window.speechSynthesis.paused && window.speechSynthesis.speaking) {
                 window.speechSynthesis.resume();
                 updateUI('playing');
                 return;
             }
 
-            // Prevent starting multiple speech instances
-            if (window.speechSynthesis.speaking) return;
+            // Cancel any stalled or pending speech audio queue
+            window.speechSynthesis.cancel();
 
-            // Extract pure text from story container (ignoring image captions and HTML tags)
+            // Extract paragraphs & headings text from story container
             const storyContainer = document.getElementById('storyContent');
             const paragraphs = storyContainer.querySelectorAll('p, h2');
             let fullText = "";
@@ -365,16 +372,26 @@
 
             utterance = new SpeechSynthesisUtterance(fullText);
 
-            // Spooky voice adjustments
-            utterance.pitch = 0.5; // Deep tone
-            utterance.rate = 0.85; // Suspenseful pacing
+            // Voice Settings
+            utterance.pitch = 0.6; // Deep atmospheric tone
+            utterance.rate = 0.85; // Suspenseful speed
 
-            // Update UI on start, finish, or error
+            // Voice selection fallback for mobile compatibility
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                const preferredVoice = voices.find(v => v.lang.includes('en') || v.lang.includes('hi'));
+                if (preferredVoice) utterance.voice = preferredVoice;
+            }
+
+            // Event state callbacks
             utterance.onstart = () => updateUI('playing');
             utterance.onend = () => updateUI('stopped');
-            utterance.onerror = () => updateUI('stopped');
+            utterance.onerror = (e) => {
+                console.error("Speech engine error:", e);
+                updateUI('stopped');
+            };
 
-            // Play speech
+            // Start speaking
             window.speechSynthesis.speak(utterance);
         }
 
@@ -413,3 +430,4 @@
     </script>
 </body>
 </html>
+

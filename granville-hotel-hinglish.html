@@ -227,7 +227,7 @@
         <div class="story-content" id="storyContent">
             
             <p>Radhika apni nayi business deal ke liye Lucknow se Kolkata ja rahi thi. Raat kaafi ho chuki thi aur woh bahut thak bhi gayi thi.</p>
-            
+
             <p>Usne apne driver Kotwaal se kaha, “Pass mein jo bhi hotel dikhe, wahan gaadi rok lena.”</p>
 
             <p>“Ji memsahib,” Kotwaal ne jawab diya.</p>
@@ -337,101 +337,111 @@
             menu.classList.toggle("active");
         }
 
-        /* --- MOBILE-ROBUST CHUNKED SPEECH SYNTHESIS ENGINE --- */
+        /* --- INDEX-TRACKING CUSTOM PAUSE/RESUME ENGINE --- */
         const playBtn = document.getElementById('playBtn');
         const pauseBtn = document.getElementById('pauseBtn');
         const stopBtn = document.getElementById('stopBtn');
         const statusText = document.getElementById('status');
 
         let speechQueue = [];
-        let currentUtteranceIndex = 0;
+        let currentIndex = 0;
         let isSpeaking = false;
         let isPaused = false;
 
-        // Force browser to load speech engines asynchronously
         if ('speechSynthesis' in window) {
             window.speechSynthesis.getVoices();
-            window.speechSynthesis.onvoiceschanged = () => {
-                window.speechSynthesis.getVoices();
-            };
+            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
         }
 
         function playStory() {
-            // Resume if paused
-            if (isPaused && window.speechSynthesis.paused) {
-                window.speechSynthesis.resume();
+            if (isSpeaking && !isPaused) return;
+
+            if (isPaused) {
+                // Resume from saved sentence index
                 isPaused = false;
+                isSpeaking = true;
                 updateUI('playing');
+                speakSentence();
                 return;
             }
 
-            // Stop current playback queue
-            stopStory();
-
-            // Fetch paragraph text from story container
+            // Fresh Start: Build queue
+            window.speechSynthesis.cancel();
             const storyContainer = document.getElementById('storyContent');
             const elements = storyContainer.querySelectorAll('p, h2');
             let fullText = "";
 
-            elements.forEach(el => {
-                fullText += el.innerText + " ";
-            });
+            elements.forEach(el => { fullText += el.innerText + " "; });
 
-            // Split into short sentence chunks to fix mobile Chrome cutoff
-            speechQueue = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
-            currentUtteranceIndex = 0;
+            // Normalize text for Hinglish pronunciation
+            let cleanedText = fullText
+                .replace(/Memsahib/g, "Mem saab")
+                .replace(/Kotwaal/g, "Kotwal")
+                .replace(/Radhika/g, "Raadhika")
+                .replace(/chudail/g, "chudael");
+
+            // Split into clean sentence array
+            speechQueue = cleanedText.match(/[^.!?]+[.!?]+/g) || [cleanedText];
+            currentIndex = 0;
 
             if (speechQueue.length > 0) {
+                isSpeaking = true;
+                isPaused = false;
                 updateUI('playing');
-                speakNextChunk();
+                speakSentence();
             }
         }
 
-        function speakNextChunk() {
-            if (currentUtteranceIndex >= speechQueue.length) {
-                updateUI('stopped');
+        function speakSentence() {
+            if (!isSpeaking || isPaused) return;
+
+            if (currentIndex >= speechQueue.length) {
+                stopStory();
                 return;
             }
 
-            const chunkText = speechQueue[currentUtteranceIndex].trim();
-            if (!chunkText) {
-                currentUtteranceIndex++;
-                speakNextChunk();
+            window.speechSynthesis.cancel(); // Clear buffer
+
+            const textToSpeak = speechQueue[currentIndex].trim();
+            if (!textToSpeak) {
+                currentIndex++;
+                speakSentence();
                 return;
             }
 
-            const utterance = new SpeechSynthesisUtterance(chunkText);
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
             utterance.rate = 0.85;
-            utterance.pitch = 0.6;
+            utterance.pitch = 0.7;
 
-            // Assign available Hindi/English mobile voice fallback
             const voices = window.speechSynthesis.getVoices();
             if (voices.length > 0) {
-                const selectedVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('en'));
-                if (selectedVoice) utterance.voice = selectedVoice;
+                const indianVoice = voices.find(v => v.lang.includes('en-IN') || v.lang.includes('hi-IN') || v.lang.includes('hi'));
+                if (indianVoice) utterance.voice = indianVoice;
             }
 
             utterance.onend = () => {
-                if (isSpeaking) {
-                    currentUtteranceIndex++;
-                    speakNextChunk();
+                if (isSpeaking && !isPaused) {
+                    currentIndex++;
+                    speakSentence();
                 }
             };
 
             utterance.onerror = (e) => {
-                console.error("Speech Synthesis Error:", e);
-                currentUtteranceIndex++;
-                speakNextChunk();
+                console.error("Speech Error:", e);
+                if (isSpeaking && !isPaused) {
+                    currentIndex++;
+                    speakSentence();
+                }
             };
 
-            isSpeaking = true;
             window.speechSynthesis.speak(utterance);
         }
 
         function pauseStory() {
-            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-                window.speechSynthesis.pause();
+            if (isSpeaking && !isPaused) {
                 isPaused = true;
+                isSpeaking = false;
+                window.speechSynthesis.cancel(); // Stop current speech immediately
                 updateUI('paused');
             }
         }
@@ -439,7 +449,7 @@
         function stopStory() {
             isSpeaking = false;
             isPaused = false;
-            currentUtteranceIndex = 0;
+            currentIndex = 0;
             speechQueue = [];
             window.speechSynthesis.cancel();
             updateUI('stopped');
@@ -455,7 +465,7 @@
                 playBtn.disabled = false;
                 pauseBtn.disabled = true;
                 stopBtn.disabled = false;
-                statusText.innerText = "Narration paused.";
+                statusText.innerText = "Paused. Tap Play to resume from where you left.";
             } else if (state === 'stopped') {
                 playBtn.disabled = false;
                 pauseBtn.disabled = true;

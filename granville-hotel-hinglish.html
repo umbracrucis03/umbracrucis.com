@@ -337,15 +337,20 @@
             menu.classList.toggle("active");
         }
 
-        /* --- MOBILE-OPTIMIZED SPEECH SYNTHESIS ENGINE --- */
-        let utterance = null;
+        /* --- MOBILE-ROBUST CHUNKED SPEECH SYNTHESIS ENGINE --- */
         const playBtn = document.getElementById('playBtn');
         const pauseBtn = document.getElementById('pauseBtn');
         const stopBtn = document.getElementById('stopBtn');
         const statusText = document.getElementById('status');
 
-        // Warm up speech engine voices for Android/Chrome
+        let speechQueue = [];
+        let currentUtteranceIndex = 0;
+        let isSpeaking = false;
+        let isPaused = false;
+
+        // Force browser to load speech engines asynchronously
         if ('speechSynthesis' in window) {
+            window.speechSynthesis.getVoices();
             window.speechSynthesis.onvoiceschanged = () => {
                 window.speechSynthesis.getVoices();
             };
@@ -353,60 +358,91 @@
 
         function playStory() {
             // Resume if paused
-            if (window.speechSynthesis.paused && window.speechSynthesis.speaking) {
+            if (isPaused && window.speechSynthesis.paused) {
                 window.speechSynthesis.resume();
+                isPaused = false;
                 updateUI('playing');
                 return;
             }
 
-            // Cancel any stalled or pending speech audio queue
-            window.speechSynthesis.cancel();
+            // Stop current playback queue
+            stopStory();
 
-            // Extract paragraphs & headings text from story container
+            // Fetch paragraph text from story container
             const storyContainer = document.getElementById('storyContent');
-            const paragraphs = storyContainer.querySelectorAll('p, h2');
+            const elements = storyContainer.querySelectorAll('p, h2');
             let fullText = "";
-            paragraphs.forEach(p => {
-                fullText += p.innerText + " ";
+
+            elements.forEach(el => {
+                fullText += el.innerText + " ";
             });
 
-            utterance = new SpeechSynthesisUtterance(fullText);
+            // Split into short sentence chunks to fix mobile Chrome cutoff
+            speechQueue = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
+            currentUtteranceIndex = 0;
 
-            // Voice Settings
-            utterance.pitch = 0.6; // Deep atmospheric tone
-            utterance.rate = 0.85; // Suspenseful speed
+            if (speechQueue.length > 0) {
+                updateUI('playing');
+                speakNextChunk();
+            }
+        }
 
-            // Voice selection fallback for mobile compatibility
-            const voices = window.speechSynthesis.getVoices();
-            if (voices.length > 0) {
-                const preferredVoice = voices.find(v => v.lang.includes('en') || v.lang.includes('hi'));
-                if (preferredVoice) utterance.voice = preferredVoice;
+        function speakNextChunk() {
+            if (currentUtteranceIndex >= speechQueue.length) {
+                updateUI('stopped');
+                return;
             }
 
-            // Event state callbacks
-            utterance.onstart = () => updateUI('playing');
-            utterance.onend = () => updateUI('stopped');
-            utterance.onerror = (e) => {
-                console.error("Speech engine error:", e);
-                updateUI('stopped');
+            const chunkText = speechQueue[currentUtteranceIndex].trim();
+            if (!chunkText) {
+                currentUtteranceIndex++;
+                speakNextChunk();
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(chunkText);
+            utterance.rate = 0.85;
+            utterance.pitch = 0.6;
+
+            // Assign available Hindi/English mobile voice fallback
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                const selectedVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('en'));
+                if (selectedVoice) utterance.voice = selectedVoice;
+            }
+
+            utterance.onend = () => {
+                if (isSpeaking) {
+                    currentUtteranceIndex++;
+                    speakNextChunk();
+                }
             };
 
-            // Start speaking
+            utterance.onerror = (e) => {
+                console.error("Speech Synthesis Error:", e);
+                currentUtteranceIndex++;
+                speakNextChunk();
+            };
+
+            isSpeaking = true;
             window.speechSynthesis.speak(utterance);
         }
 
         function pauseStory() {
             if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
                 window.speechSynthesis.pause();
+                isPaused = true;
                 updateUI('paused');
             }
         }
 
         function stopStory() {
-            if (window.speechSynthesis.speaking || window.speechSynthesis.paused) {
-                window.speechSynthesis.cancel();
-                updateUI('stopped');
-            }
+            isSpeaking = false;
+            isPaused = false;
+            currentUtteranceIndex = 0;
+            speechQueue = [];
+            window.speechSynthesis.cancel();
+            updateUI('stopped');
         }
 
         function updateUI(state) {

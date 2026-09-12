@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shadows of the Tamarind Tree - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; letter-spacing: 2px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.1rem; }
+        .story-content h2 { font-family: 'Cinzel', serif; color: #ff4d4d; font-size: 1.4rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 20px; }
+        .story-content p::first-letter { font-family: 'Cinzel', serif; font-size: 2.2rem; color: #ff3333; float: left; line-height: 1; padding-right: 8px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">The Shadows of the Tamarind Tree</h1>
+            <p class="story-meta">HINGLISH TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>Eastern Uttar Pradesh ke shaant aur pichhde ilaqon mein yeh kissa aaj bhi aadhi raat ke sannate mein phus-phusakar sunaya jaata hai.</p>
+
+            <p>Baat kareeb pandrah-bees saal puraani hai. Kumari ek bahut hi seedhi, khoobsurat aur sanskaari ladki thi. Shahar ki pali-badhi hone ke bawajood woh paramparaon ki poori izzat karti thi. Jab uski shaadi paas ke shahar ke rehne wale Sudeep se hui, toh sabne yahi kaha ki donon ki jodi ekdam perfect hai.</p>
+
+            <p>Shaadi ki rasmon ko poora karne ke liye Sudeep aur Kumari gaon aaye. Gaon mein Sudeep ka bada sa khandaan tha—chacha, taau, sasur sab wahi rehte the. Parampara ke mutabiq Kumari sabke saamne ghunghat rakhkar behad saadgi se rehti thi. Do din tak sab kuch bahut achha beeta.</p>
+
+            <p>Teesre din subah kareeb 4:30 baje Kumari ki aankh khul gayi. Usne socha ki 5:30 baje tak sab uth jayenge, toh kyon na woh pehle hi fresh hokar aa jaye taaki baad mein ghar ka kaam sambhal sake. Us zamane mein gaon mein washroom nahi hote the, toh sabhi ko subah-subah kheton ki taraf jaana padta tha.</p>
+
+            <p>Shuruati do dinon mein Kumari apni saas aur dewrani ke saath ek nishchit jagah jaati thi. Ek baar usne aage chalne ko kaha tha, toh uski saas ne saaf mana kar diya tha—"Uttar ki taraf us mod ke paar jaane ki sochna bhi mat. Wahan dar hai. Wo imli ka ped aisi cheezon ka basera hai jo shaant nahi rehti."</p>
+
+            <p>Lekin us subah, Kumari akeli hi nikal padi. Jaldbaazi mein woh ek bahut zaroori baat bhool gayi—gaon mein bade-buzaurg hamesha kehte the ki kheton mein jaate waqt saath mein chaaku ya maachis jaisi lohe ya aag ki cheez zaroor rakhni chahiye, taaki buri shaktiyan door rahein.</p>
+
+            <p>Hawa mein ajeeb sa sannata aur thandak thi. Kachhe raaste par chalte-chhalte Kumari ko laga ki raasta zaroorat se zyada lamba ho raha hai. 10 minute ka raasta 20 minute ka lagne laga. Use ahasaas hua ki shayad woh bhatak gayi hai, toh woh ek ghani jhaadi ke peeche baith gayi.</p>
+
+            <p>Tabhi, sannata cheerti hui ek aawaaz aayi.</p>
+
+            <p>Jhaadiyaan achanak zor-zor se hilne megi. Kumari ne peeche mudkar dekha—kuch nahi tha. Do minute baad phir jhaadiyaan itni zor se hili jaise koi bada jaanwar ho. Woh dar gayi, lekin tabhi itni zayada garmi ke mausam mein achanak uske kaan ke paas se barf jaisi thandi hawa guzri.</p>
+
+            <p>Isse pehle ki woh uth paati, ek adrishya aur bhaari dabaav uske poore shareer par aa gaya. Usne seene par bhayanak bojh mehsus kiya, jaise koi use zameen mein dhakel raha ho. Tabhi upar se uske maathe par ek imli ki sukhi phali aa giri.</p>
+
+            <p>Usne jaise hi upar dekha, uski rooh kaamp gayi.</p>
+
+            <p>Saamne ek shaitaan jaisa bahut lamba saaya khada tha. Uske lambe-lambe pair ped ki phungiyon tak ja rahe the. Usne apni gardan ko bilkul ajeeb angle par neeche moda aur apna chehra Kumari ke chehre ke theek saamne le aaya. Bikhre, gande baal, poori tarah kaali aankhein aur ek khaufnak, bhayanak muskaan!</p>
+
+            <!-- IMAGE 1: First Possession -->
+            <div class="story-image">
+                <img src="1789241429979~2.jpg" alt="Towering entity confronting Kumari near the tamarind tree">
+            </div>
+
+            <p>Kumari ka dimaag yeh khauf bardasht nahi kar saka aur woh wahi behosh ho gayi.</p>
+
+            <h2>The Return</h2>
+
+            <p>Subah ke 6:30 baj chuke the. Ghar mein hadkamp mach gaya ki Kumari kahan gaayab hai. 2 ghante beet gaye aur gaon ke log tarah-tarah ki baatein banane lage.</p>
+
+            <p>Tabhi, saamne kheton ke raaste se ek saaya aata hua dikhai diya.</p>
+
+            <p>Woh Kumari hi thi, lekin uske andar ki Kumari poori tarah khatam ho chuki thi. Sir se ghunghat gaayab tha, kapde fate aur ast-vyast the. Uski chaal kisi hatte-katte pehlwan jaisi mardaana thi. Maathe se khoon ki dhaar beh rahi thi aur aankhon mein sharm nhi, balki ek shikari jaisi khatarnak chamak thi.</p>
+
+            <!-- IMAGE 2: Arrival at Village House -->
+            <div class="story-image">
+                <img src="1789241728397~2.jpg" alt="Kumari returning to the village courtyard with a predatory stare and torn clothes">
+            </div>
+
+            <p>Sudeep apni patni ki haalat dekhkar turant chaddar lekar bhaaga taaki use dhak sake. Lekin jaise hi woh paas pahuncha, Kumari ne bhayanak taaqat se Sudeep ka sir pakda aur apna maatha seedhe Sudeep ke sir par de maara! Ek khaufnak aawaaz ke saath Sudeep ka maatha fat gaya aur woh khoon se lathpath hokar wahi gir pada.</p>
+
+            <p>Kumari ek bhaari, mardaana aawaaz mein zor-zor se hansne lagi. Woh aangan ke beech-o-beech khadi hokar apni aankhon ko ajeeb tareeqe se matkaane lagi.</p>
+
+            <p>Tabhi uski nazar ghar ke paaltu kutte par padi. Usne jhapatkar kutte ki gardan mein apne daant gada diye! Dard aur gusse mein kutte ne bhi Kumari ke haath par zor se kaata. Khoon behne laga, lekin Kumari ke chehre par dard ka ek bhaav tak nahi aaya. Usne ek haath se us bhaari-bharkam kutte ko uthaya aur hawa mein door phenk diya.</p>
+
+            <p>Phir woh andar ke kamre ki taraf badhi aur darwaze ki majboot kundi ko ek hi laat mein ukhaadkar andar ghus gayi aur darwaza band kar liya.</p>
+
+            <p>Andar se ek bhaari aur bhayanak mard ki aawaaz goonji—"Khol ke dekh, agar himmat ba toh!"</p>
+
+            <p>Jab Sudeep ne rote hue poochha ki andar kaun hai, toh aawaazein badalne megi. Kabhi kisi chhote bachhe ki hansne ki aawaaz aati, kabhi kisi aurat ke rone ki, toh kabhi achanak se veena bajne ki taan sunai deti.</p>
+
+            <p>Sudeep ne chilla-chilla kar poochha, "Kaun hai tu? Kya chahta hai humari zindagi se?"</p>
+
+            <p>Andar se ek rooh kaamp dene wali awaaz aayi—"Main Khabees hoon!"</p>
+
+            <p>Gaon walon ko turant samajh aa gaya ki yeh wahi imli ke ped par rehne wala Khabees jinn hai. Sudeep bhaagkar paas ke Maulvi sahab ko bula laaya.</p>
+
+            <p>Maulvi sahab ne aate hi kamre ke darwaze par thapki di aur apni gupt tantra-mantra aur aayaton ka paath shuru kiya. Kaafi mashaqqat ke baad Maulvi sahab ne us saaye ko kuch der ke liye shaant kiya aur taabeez baandha. Kumari andar behosh hokar gir padi.</p>
+
+            <h2>Hanging Upside Down in the Wilderness</h2>
+
+            <p>Kuch dinon baad sab kuch theek maankar Sudeep apni patni ko waapas shahar ke apne flat mein le aaya. Kumari ko us khaufnak ghatna ka 1% bhi yaad nahi tha, bas ek ajeeb si ghabrahat uske dil mein rehti thi.</p>
+
+            <p>Do hafte bade aaram se beete. Phir aayi ek amavas ki kaali raat.</p>
+
+            <p>Raat ke theek 3:00 baje Sudeep ko achanak behad thandi hawa ka ehasaas hua. Bistar ki chaadar apne aap neeche khinch gayi. Kumari bistar par ekdam seedhi baithi thi aur uski gardan khidki ki taraf poori tarah mudi hui thi.</p>
+
+            <p>Sudeep ne jaise hi use chhua, woh mudi. Uski aankhein poori tarah se kaali ho chuki thi—safed hissa poori tarah gaayab tha. Uske gale se kayi aawaazon ka ek bhayanak mishran nikla:</p>
+
+            <p>"Tujhe kya laga, kuch shabdon ke bolne se mera aur iska khoon ka rishta khatam ho jayega?"</p>
+
+            <p>Isse pehle ki Sudeep cheekh paata, ek adrishya taaqat ne use uthakar deewar se de maara aur woh behosh ho gaya. Kumari ne balcony ka kaanch toda aur chauthi manzil se chhalaang lagakar shahar ke kinare bane ghane jungle ki taraf bhaag gayi.</p>
+
+            <p>Sudeep ko jab hosh aaya, toh usne gaon ke logon aur police ki madad se jungle mein chaanbeen shuru ki. Dhoondte-dhoondte jab woh jungle ke bahut andar pahunche, toh unke saath aaye shikari kutte dar ke maare dum dabakar rone lage aur aage badhne se mana kar diya.</p>
+
+            <p>Torch ki roshni jab ek bahut bade aur puraane imli ke ped ke upar padi, toh sabke roongte khade ho gaye.</p>
+
+            <!-- IMAGE 3: Exorcism at Last -->
+            <div class="story-image">
+                <img src="1789242319420.png" alt="Kumari hanging upside down from the tamarind tree in the dark forest">
+            </div>
+
+            <p>Ped ki sabse oonchi aur moti daal se Kumari ulti latki hui thi! Uske pair ajeeb tareeqe se tahni mein uljhe hue the aur uske lambe kaale baal hawa mein latak rahe the. Torch ki roshni padte hi uski aankhein peeli billi ki tarah chamak uthi aur bina kisi hawa ke uska shareer ulta latakkar jhoolne laga.</p>
+
+            <p>"Loha laao! Pavitra jal laao!" Sudeep paaglon ki tarah cheekha.</p>
+
+            <p>Maulvi sahab aur taantrikon ne turant ped ke charon taraf lohe ki keelein thokkar ghera banaya aur mantrochchar shuru kar diya.</p>
+
+            <p>Ped par ulti latki Kumari ka shareer darawni tareeke se mudne laga. Uske muh se aisi bhayanak cheekhein nikal rahi thi ki logon ko apne kaan band karne pade. Uske muh se kaala paani nikal raha tha aur Khabees chilla raha tha:</p>
+
+            <p>"Main iski gardan todkar hi jaunga!"</p>
+
+            <p>"Ghera mat todna! Paath jaari rakho!" Maulvi sahab ne chillate hue pavitra raakh uske ulte latke shareer par phenki.</p>
+
+            <p>Jaise hi raakh uske shareer se takrayi, usmein se dhuwaan nikalne laga. Poora imli ka ped zor-zor se hilne laga, jaise koi toofan aa gaya ho. Taantrikon ka mantra paath aur tez hota gaya.</p>
+
+            <p>Tabhi ek bhayanak kaan phodne wali cheekh ke saath, Kumari ke shareer se ek ghana, kaala saaya bahar nikla aur ped mein samaakar hawa mein gaayab ho gaya.</p>
+
+            <p>Achanak sannata chha gaya. Kumari ka shareer dheela pada aur woh daal se chhootkar neeche giri. Neeche khade logon ne turant kapdon aur kambal ki madad se use zameen par girne se pehle hi thaam liya.</p>
+
+            <p>Woh zinda thi, uski saansein dheere-dheere chal rahi thi aur uski aankhon ka woh khaufnak kaalapan gaayab ho chuka tha. Khabees ko hamesha ke liye bhaga diya gaya tha, peeche chhod gaya tha toh bas imli ke patton se sarsaraati hui ek thandi hawa.</p>
+
+            <a href="attic.html" class="back-btn">← Back to Story's Attic</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+

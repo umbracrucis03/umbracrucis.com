@@ -501,7 +501,6 @@
         /* Age Verification Modal Functions */
         function openAgeModal(event) {
             event.preventDefault();
-            // Reset modal view back to input form if it was showing denied message previously
             document.getElementById("modalBoxContent").querySelector("h3").innerText = "⚠️ आयु प्रतिबंध (16+)";
             document.getElementById("modalText").innerText = "इस कहानी में कुछ दृश्य और परिदृश्य परिपक्व आयु वर्ग (16+) के लिए हैं। कृपया आगे बढ़ने के लिए अपनी सही आयु दर्ज करें:";
             document.getElementById("modalInteractiveArea").innerHTML = `
@@ -528,13 +527,11 @@
             var age = parseInt(ageInput.value);
 
             if (age >= 16) {
-                // Allowed - proceed with horror unlock effects and redirect
                 closeAgeModal();
                 startHorrorEffect({ preventDefault: function(){} }, "tamarind-tree-hindi.html", "card3");
             } else {
-                // Denied - show customized polite message
                 var interactiveArea = document.getElementById("modalInteractiveArea");
-                document.getElementById("modalText").innerText = "Sorry, but you can explore other tales stored in Attic. We wish you join this one at sweet 16.";
+                document.getElementById("modalText").innerText = "क्षमा करें, लेकिन आप attic में संग्रहीत अन्य कहानियों का आनंद ले सकते हैं। हम कामना करते हैं कि आप 16 वर्ष के होने पर इस कहानी से जुड़ें।";
                 interactiveArea.innerHTML = `
                     <div class="modal-buttons" style="margin-top: 15px;">
                         <button class="modal-btn" onclick="closeAgeModal()">Attic वापस जाएं</button>
@@ -545,4 +542,5 @@
     </script>
 </body>
 </html>
+
 

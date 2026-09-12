@@ -19,9 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ------------------------------------------------------------- */
-        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY                  */
-        /* ------------------------------------------------------------- */
+        /* FULL 4-SIDE PULSING RED & BLACK GLOW OVERLAY */
         #spooky-side-glow {
             display: none;
             position: fixed;
@@ -140,9 +138,7 @@
             margin-bottom: 15px; 
         }
 
-        /* ------------------------------------------------------------- */
-        /* STORY CARD & LOCK OVERLAY                                     */
-        /* ------------------------------------------------------------- */
+        /* STORY CARD & LOCK OVERLAY */
         .story-card {
             display: block;
             position: relative;
@@ -174,6 +170,22 @@
             line-height: 1.7;
         }
 
+        /* AGE WARNING BADGE */
+        .age-badge {
+            display: inline-block;
+            background-color: #880000;
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-left: 8px;
+            border: 1px solid #ff0000;
+            vertical-align: middle;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+        }
+
         /* IMAGE OVERLAY WRAPPER */
         .lock-container {
             position: absolute;
@@ -199,7 +211,6 @@
             transition: transform 0.8s cubic-bezier(0.5, 0, 0.7, 1), opacity 0.6s ease;
         }
 
-        /* SPLIT CLIPPING FOR BREAKING ANIMATION */
         .lock-left {
             clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
         }
@@ -208,7 +219,6 @@
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
         }
 
-        /* ANIMATION TRIGGERS ON CLICK */
         .story-card.unlocked .lock-left {
             transform: translate(-50%, -50%) translateX(-220px) translateY(300px) rotate(-45deg);
             opacity: 0;
@@ -256,6 +266,94 @@
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
         }
 
+        /* HINGLISH AGE RESTRICTION MODAL POPUP */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 100000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-box {
+            background-color: #0d0000;
+            border: 2px solid #880000;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 450px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), inset 0 0 15px rgba(100, 0, 0, 0.5);
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-box h3 {
+            font-family: 'Creepster', cursive;
+            color: #ff0000;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px #990000;
+        }
+
+        .modal-box p {
+            color: #d1b4a3;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+        }
+
+        .btn-modal {
+            flex: 1;
+            padding: 12px 0;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-confirm {
+            background-color: #880000;
+            color: #ffffff;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-confirm:hover {
+            background-color: #ff0000;
+            box-shadow: 0 0 18px rgba(255, 0, 0, 0.8);
+        }
+
+        .btn-deny {
+            background-color: #1a1a1a;
+            color: #888888;
+            border: 1px solid #444444;
+        }
+
+        .btn-deny:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
         /* BACK BUTTON & FOOTER */
         .back-btn { 
             display: inline-block; 
@@ -278,6 +376,18 @@
 
     <!-- FULL 4-SIDE RED AND BLACK GLOW OVERLAY -->
     <div id="spooky-side-glow"></div>
+
+    <!-- HINGLISH AGE RESTRICTION MODAL (16+) -->
+    <div class="modal-overlay" id="ageModal">
+        <div class="modal-box">
+            <h3>⚠️ 16+ AGE WARNING</h3>
+            <p>Yeh kahani behad khaufnak aur disturbing content se bhari hui hai. Kya aapki umar <strong>16 saal ya usse zyada</strong> hai?</p>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-confirm" onclick="confirmAge(true)">HAAN, MAIN 16+ HOON</button>
+                <button class="btn-modal btn-deny" onclick="confirmAge(false)">NAHI, WAPAS JAO</button>
+            </div>
+        </div>
+    </div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -332,6 +442,17 @@
             </div>
         </div>
 
+        <!-- STORY 3 CARD - MATCHING YOUR DESIGN DESCRIPTION & 16+ RESTRICTION -->
+        <a href="tamarind-tree-hinglish.html" class="story-card" id="card3" onclick="handleAgeRestrictedSingleStory(event, this.href, 'card3')">
+            <div class="lock-container">
+                <div class="lock-half lock-left"></div>
+                <div class="lock-half lock-right"></div>
+            </div>
+
+            <h2>STORY 3 - THE SHADOWS OF THE TAMARIND TREE <span class="age-badge">16+</span></h2>
+            <p>Purvi Uttar Pradesh ke ek shaant gaon mein shaadi ke baad pahunchi Kumari ek subah anjaane mein uttar disha ki aur nikal padi, jahan imli ke ped par ek khaufnak Khabees ka saaya mandra raha tha...</p>
+        </a>
+
         <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
     </div>
 
@@ -342,6 +463,9 @@
 
     <!-- JS SCRIPT -->
     <script>
+        var pendingStoryUrl = null;
+        var pendingCardId = null;
+
         function toggleMenu() {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
@@ -349,7 +473,7 @@
 
         /* Direct redirect effect for single-part story cards */
         function startHorrorEffect(event, storyUrl, cardId) {
-            event.preventDefault();
+            if (event) event.preventDefault();
 
             var card = document.getElementById(cardId);
             if (card) {
@@ -379,6 +503,33 @@
             }
         }
 
+        /* Age restriction handler for Story 3 (16+) */
+        function handleAgeRestrictedSingleStory(event, storyUrl, cardId) {
+            event.preventDefault();
+
+            var card = document.getElementById(cardId);
+            if (card && card.classList.contains("unlocked")) {
+                window.location.href = storyUrl;
+                return;
+            }
+
+            pendingStoryUrl = storyUrl;
+            pendingCardId = cardId;
+            document.getElementById("ageModal").style.display = "flex";
+        }
+
+        function confirmAge(isAdult) {
+            document.getElementById("ageModal").style.display = "none";
+            if (isAdult && pendingStoryUrl && pendingCardId) {
+                startHorrorEffect(null, pendingStoryUrl, pendingCardId);
+                pendingStoryUrl = null;
+                pendingCardId = null;
+            } else {
+                pendingStoryUrl = null;
+                pendingCardId = null;
+            }
+        }
+
         function playEffects() {
             var audio = document.getElementById("horrorScream");
             if (audio) {
@@ -394,5 +545,4 @@
     </script>
 </body>
 </html>
-
 

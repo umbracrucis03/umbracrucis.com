@@ -250,6 +250,92 @@
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
         }
 
+        /* AGE VERIFICATION MODAL STYLING */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background-color: #0f0000;
+            border: 2px solid #880000;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+            font-family: 'Georgia', serif;
+        }
+        .modal-content h3 {
+            font-family: 'Yatra One', cursive;
+            color: #e60000;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px #990000;
+        }
+        .modal-content p {
+            color: #d1b4a3;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .age-input {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a0000;
+            border: 1px solid #660000;
+            color: #fff;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        .age-input:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .modal-btn {
+            background-color: #660000;
+            color: #fff;
+            border: 1px solid #ff0000;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .modal-btn:hover {
+            background-color: #990000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+        }
+        .modal-btn-secondary {
+            background-color: #222;
+            border-color: #444;
+        }
+        .modal-btn-secondary:hover {
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
         /* BACK BUTTON & FOOTER */
         .back-btn { 
             display: inline-block; 
@@ -272,6 +358,21 @@
 
     <!-- FULL 4-SIDE RED AND BLACK GLOW OVERLAY -->
     <div id="spooky-side-glow"></div>
+
+    <!-- AGE RESTRICTION MODAL -->
+    <div class="modal-overlay" id="ageModal">
+        <div class="modal-content" id="modalBoxContent">
+            <h3>⚠️ आयु प्रतिबंध (16+)</h3>
+            <p id="modalText">इस कहानी में कुछ दृश्य और परिदृश्य परिपक्व आयु वर्ग (16+) के लिए हैं। कृपया आगे बढ़ने के लिए अपनी सही आयु दर्ज करें:</p>
+            <div id="modalInteractiveArea">
+                <input type="number" id="userAgeInput" class="age-input" placeholder="अपनी आयु दर्ज करें (उदा. 18)" min="1" max="120">
+                <div class="modal-buttons">
+                    <button class="modal-btn" onclick="verifyAge()">पुष्टि करें</button>
+                    <button class="modal-btn modal-btn-secondary" onclick="closeAgeModal()">रद्द करें</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
@@ -324,6 +425,17 @@
                     भाग 2 — अंधी चुड़ैल
                 </a>
             </div>
+        </div>
+
+        <!-- STORY 3 CARD WITH AGE GATE -->
+        <div class="story-card" id="card3" onclick="openAgeModal(event)">
+            <div class="lock-container">
+                <div class="lock-half lock-left"></div>
+                <div class="lock-half lock-right"></div>
+            </div>
+
+            <h2>कहानी 3 - इमली के पेड़ का साया</h2>
+            <p>पूर्वी उत्तर प्रदेश के एक शांत गांव में शादी के बाद पहुंची कुमारी एक सुबह अंजाने में उत्तर दिशा की ओर निकल पड़ी, जहां इमली के पेड़ पर एक खौफनाक खबीस का साया मंडरा रहा था...</p>
         </div>
 
         <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
@@ -385,8 +497,52 @@
                 sideGlow.style.display = "block";
             }
         }
+
+        /* Age Verification Modal Functions */
+        function openAgeModal(event) {
+            event.preventDefault();
+            // Reset modal view back to input form if it was showing denied message previously
+            document.getElementById("modalBoxContent").querySelector("h3").innerText = "⚠️ आयु प्रतिबंध (16+)";
+            document.getElementById("modalText").innerText = "इस कहानी में कुछ दृश्य और परिदृश्य परिपक्व आयु वर्ग (16+) के लिए हैं। कृपया आगे बढ़ने के लिए अपनी सही आयु दर्ज करें:";
+            document.getElementById("modalInteractiveArea").innerHTML = `
+                <input type="number" id="userAgeInput" class="age-input" placeholder="अपनी आयु दर्ज करें (उदा. 18)" min="1" max="120">
+                <div class="modal-buttons">
+                    <button class="modal-btn" onclick="verifyAge()">पुष्टि करें</button>
+                    <button class="modal-btn modal-btn-secondary" onclick="closeAgeModal()">रद्द करें</button>
+                </div>
+            `;
+            document.getElementById("ageModal").classList.add("active");
+        }
+
+        function closeAgeModal() {
+            document.getElementById("ageModal").classList.remove("active");
+        }
+
+        function verifyAge() {
+            var ageInput = document.getElementById("userAgeInput");
+            if (!ageInput || ageInput.value.trim() === "") {
+                alert("कृपया अपनी आयु दर्ज करें!");
+                return;
+            }
+
+            var age = parseInt(ageInput.value);
+
+            if (age >= 16) {
+                // Allowed - proceed with horror unlock effects and redirect
+                closeAgeModal();
+                startHorrorEffect({ preventDefault: function(){} }, "tamarind-tree-hindi.html", "card3");
+            } else {
+                // Denied - show customized polite message
+                var interactiveArea = document.getElementById("modalInteractiveArea");
+                document.getElementById("modalText").innerText = "Sorry, but you can explore other tales stored in Attic. We wish you join this one at sweet 16.";
+                interactiveArea.innerHTML = `
+                    <div class="modal-buttons" style="margin-top: 15px;">
+                        <button class="modal-btn" onclick="closeAgeModal()">Attic वापस जाएं</button>
+                    </div>
+                `;
+            }
+        }
     </script>
 </body>
 </html>
-
 

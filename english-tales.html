@@ -53,7 +53,7 @@
             }
         }
 
-        /* TOP NAVIGATION BAR */
+        /* TOP NAVIGATION BAR WITH LOGO SUPPORT */
         .navbar { 
             display: flex; 
             justify-content: space-between; 
@@ -130,7 +130,7 @@
         
         .story-title-page { 
             font-family: 'Creepster', cursive; 
-            font-size: 3.2rem; 
+            font-size: 2.8rem; 
             color: #e60000; 
             letter-spacing: 2px; 
             text-shadow: 0 0 12px #990000, 0 0 5px #ff0000; 
@@ -149,25 +149,25 @@
             margin-bottom: 25px;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.25s ease-in-out;
+            transition: transform 0.2s ease;
             cursor: pointer;
             overflow: hidden;
             min-height: 200px;
         }
         .story-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
         }
         .story-card h2 {
             font-family: 'Cinzel', serif;
             color: #e60000;
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             margin-bottom: 10px;
             text-shadow: 0 0 8px #800000;
         }
         .story-card p {
             color: #d1b4a3;
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* IMAGE OVERLAY WRAPPER */
@@ -240,7 +240,8 @@
             color: #d1b4a3;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-weight: bold;
+            font-size: 0.95rem;
             transition: background-color 0.2s, color 0.2s, border-color 0.2s;
         }
         .part-link:hover {
@@ -363,9 +364,9 @@
     <div class="modal-overlay" id="ageModal">
         <div class="modal-content" id="modalBoxContent">
             <h3>⚠️ Age Restriction (16+)</h3>
-            <p id="modalText">This story contains elements intended for mature audiences. Please enter your age to verify access:</p>
+            <p id="modalText">This story contains scenes and scenarios intended for mature audiences (16+). Please enter your correct age to proceed:</p>
             <div id="modalInteractiveArea">
-                <input type="number" id="userAgeInput" class="age-input" placeholder="Enter your age" min="1" max="120">
+                <input type="number" id="userAgeInput" class="age-input" placeholder="Enter your age (e.g., 18)" min="1" max="120">
                 <div class="modal-buttons">
                     <button class="modal-btn" onclick="verifyAge()">Confirm</button>
                     <button class="modal-btn modal-btn-secondary" onclick="closeAgeModal()">Cancel</button>
@@ -393,36 +394,36 @@
 
     <div class="container">
         <div class="story-header">
-            <h1 class="story-title-page">English Tales</h1>
+            <h1 class="story-title-page">🇬🇧 ENGLISH TALES</h1>
         </div>
 
-        <!-- STORY 1 CARD WITH LOCK EFFECT -->
-        <a href="story1.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
+        <!-- STORY 1 CARD -->
+        <a href="granville-hotel.html" class="story-card" id="card1" onclick="startHorrorEffect(event, this.href, 'card1')">
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
                 <div class="lock-half lock-right"></div>
             </div>
 
-            <h2>Story 1 - Whispers in the Dark</h2>
-            <p>Every night at precisely 3:00 AM, the empty room down the hall echoes with the sound of shuffling footsteps. But tonight, the doorknob slowly began to turn...</p>
+            <h2>STORY 1 — GRANVILLE HOTEL</h2>
+            <p>Radhika booked a room at an isolated highway hotel. The manager gave one strict warning: stay away from Room 333. Curiosity, however, made her look through the keyhole...</p>
         </a>
 
-        <!-- STORY 2 CARD WITH DROPDOWN PARTS -->
+        <!-- STORY 2 CARD -->
         <div class="story-card" id="card2" onclick="toggleStoryParts(event, 'card2')">
             <div class="lock-container">
                 <div class="lock-half lock-left"></div>
                 <div class="lock-half lock-right"></div>
             </div>
 
-            <h2>Story 2 - The Mirror's Gaze ▾</h2>
-            <p>She thought the antique mirror was just a vintage decoration for her new bedroom, until her reflection started moving a split second after she did...</p>
+            <h2>STORY 2 — THE BLIND WITCH OF BROOKLINE ▾</h2>
+            <p>Maya loved pretending to be blind as a joke—until a horrifying fall down the rooftop stairs on a new moon night turned her fake blindness into a deadly reality stalking her family...</p>
 
             <div class="story-parts-dropdown" id="dropdown-card2">
-                <a href="mirror-part1.html" class="part-link" onclick="event.stopPropagation();">
-                    Part 1 — The Reflection
+                <a href="blind-witch-part1.html" class="part-link" onclick="event.stopPropagation();">
+                    RECORD 1 — THE GIRL WHO COULDN’T SEE
                 </a>
-                <a href="mirror-part2.html" class="part-link" onclick="event.stopPropagation();">
-                    Part 2 — The Shattered Truth
+                <a href="blind-witch-part2.html" class="part-link" onclick="event.stopPropagation();">
+                    RECORD 2 — THE BLIND WITCH 
                 </a>
             </div>
         </div>
@@ -434,8 +435,8 @@
                 <div class="lock-half lock-right"></div>
             </div>
 
-            <h2>Story 3 - The Cursed Inheritance</h2>
-            <p>A dilapidated Victorian estate left behind by a forgotten relative holds a dark secret sealed within the basement floorboards—one that should never have been uncovered...</p>
+            <h2>STORY 3 — THE SHADOWS OF THE TAMARIND TREE</h2>
+            <p>In the hushed corners of Eastern Uttar Pradesh, a terrifying tale lingers of an ancient, territorial Jinn inhabiting the dark foliage of an old tamarind tree, waiting for those who wander too close...</p>
         </div>
 
         <a href="attic.html" class="back-btn">← BACK TO STORY'S ATTIC</a>
@@ -528,7 +529,7 @@
 
             if (age >= 16) {
                 closeAgeModal();
-                startHorrorEffect({ preventDefault: function(){} }, "story3.html", "card3");
+                startHorrorEffect({ preventDefault: function(){} }, "tamarind-tree.html", "card3");
             } else {
                 var interactiveArea = document.getElementById("modalInteractiveArea");
                 document.getElementById("modalText").innerText = "Sorry, but you can explore other tales stored in Attic. We wish you join this one at sweet 16.";

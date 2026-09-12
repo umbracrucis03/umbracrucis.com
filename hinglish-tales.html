@@ -364,9 +364,9 @@
     <div class="modal-overlay" id="ageModal">
         <div class="modal-content" id="modalBoxContent">
             <h3>⚠️ AGE RESTRICTION (16+)</h3>
-            <p id="modalText">Is kahani mein aisi scenes aur scenarios hain jo mature audiences (16+) ke liye hain. Please aage badhne ke liye apni sahi age dalein:</p>
+            <p id="modalText">Is kahani mein aise scenes aur scenarios hain jo mature audiences (16+) ke liye hain. Please aage badhne ke liye apni sahi age dalein:</p>
             <div id="modalInteractiveArea">
-                <input type="number" id="userAgeInput" class="age-input" placeholder="Apni umar dalein (e.g., 18)" min="1" max="120">
+                <input type="number" id="userAgeInput" class="age-input" placeholder="Apni age dalein (e.g., 18)" min="1" max="120">
                 <div class="modal-buttons">
                     <button class="modal-btn" onclick="verifyAge()">CONFIRM</button>
                     <button class="modal-btn modal-btn-secondary" onclick="closeAgeModal()">CANCEL</button>
@@ -505,10 +505,10 @@
             
             /* Image 1 Content in Hinglish */
             document.getElementById("modalBoxContent").querySelector("h3").innerText = "⚠️ AGE RESTRICTION (16+)";
-            document.getElementById("modalText").innerText = "Is kahani mein aisi scenes aur scenarios hain jo mature audiences (16+) ke liye hain. Kripya aage badhne ke liye apni sahi umar dalein:";
+            document.getElementById("modalText").innerText = "Is kahani mein aise scenes aur scenarios hain jo mature audiences (16+) ke liye hain. Please aage badhne ke liye apni sahi age dalein:";
             
             document.getElementById("modalInteractiveArea").innerHTML = `
-                <input type="number" id="userAgeInput" class="age-input" placeholder="Apni umar dalein (e.g., 18)" min="1" max="120">
+                <input type="number" id="userAgeInput" class="age-input" placeholder="Apni age dalein (e.g., 18)" min="1" max="120">
                 <div class="modal-buttons">
                     <button class="modal-btn" onclick="verifyAge()">CONFIRM</button>
                     <button class="modal-btn modal-btn-secondary" onclick="closeAgeModal()">CANCEL</button>

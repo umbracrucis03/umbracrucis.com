@@ -503,7 +503,6 @@
         function openAgeModal(event) {
             event.preventDefault();
             
-            /* Image 1 Content in Hinglish */
             document.getElementById("modalBoxContent").querySelector("h3").innerText = "⚠️ AGE RESTRICTION (16+)";
             document.getElementById("modalText").innerText = "Is kahani mein aise scenes aur scenarios hain jo mature audiences (16+) ke liye hain. Please aage badhne ke liye apni sahi age dalein:";
             
@@ -534,13 +533,13 @@
                 closeAgeModal();
                 startHorrorEffect({ preventDefault: function(){} }, "tamarind-tree-hinglish.html", "card3");
             } else {
-                /* Image 2 Content in Hinglish when age < 16 */
                 var interactiveArea = document.getElementById("modalInteractiveArea");
-                document.getElementById("modalText").innerText = "Sorry, lekin aap Attic mein stored baki kahaniyan explore kar sakte hain. Hum chahte hain ki aap apne sweet 16 par is kahani ko join karein.";
+                document.getElementById("modalText").innerText = "Sorry, lekin aap is kahani ko 16 saal ka hone par hi padh sakte hain. Aap isi page ki baki kahaniyan explore kar sakte hain.";
                 
+                /* FIX: Button is updated to call closeAgeModal() to stay on the Hinglish stories page */
                 interactiveArea.innerHTML = `
                     <div class="modal-buttons" style="margin-top: 15px;">
-                        <button class="modal-btn" onclick="window.location.href='attic.html'">BACK TO ATTIC</button>
+                        <button class="modal-btn" onclick="closeAgeModal()">BACK TO STORIES</button>
                     </div>
                 `;
             }

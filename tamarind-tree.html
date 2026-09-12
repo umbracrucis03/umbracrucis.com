@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shadows of the Tamarind Tree - Umbra Crucis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #080808; 
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%); 
+            color: #d1b4a3; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+            padding-bottom: 40px; 
+        }
+
+        /* NAVIGATION BAR */
+        .navbar { display: flex; justify-content: flex-end; align-items: center; padding: 20px 30px; position: relative; z-index: 100; }
+        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 180px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+
+        /* CONTAINER & HEADER */
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .story-header { text-align: center; margin-bottom: 25px; }
+        .story-title { font-family: 'Creepster', cursive; font-size: 2.8rem; color: #e60000; letter-spacing: 2px; text-shadow: 0 0 10px #990000; margin-bottom: 10px; }
+        .story-meta { font-family: 'Cinzel', serif; color: #888; font-size: 0.9rem; letter-spacing: 1px; }
+
+        /* STORY CONTENT */
+        .story-content { background-color: rgba(12, 12, 12, 0.9); border: 1px solid #330000; border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); font-size: 1.1rem; }
+        .story-content h2 { font-family: 'Cinzel', serif; color: #ff4d4d; font-size: 1.4rem; margin: 30px 0 15px 0; border-bottom: 1px solid #440000; padding-bottom: 5px; }
+        .story-content p { margin-bottom: 20px; text-indent: 20px; }
+        .story-content p::first-letter { font-family: 'Cinzel', serif; font-size: 2.2rem; color: #ff3333; float: left; line-height: 1; padding-right: 8px; }
+
+        /* IMAGE STYLING */
+        .story-image { text-align: center; margin: 30px 0; }
+        .story-image img { 
+            width: 100%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 8px; 
+            border: 1px solid #440000; 
+            box-shadow: 0 0 15px rgba(230, 0, 0, 0.35); 
+        }
+
+        /* BACK BUTTON & FOOTER */
+        .back-btn { display: inline-block; margin-top: 25px; color: #ff4d4d; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; }
+        .back-btn:hover { color: #ffffff; text-shadow: 0 0 8px #ff0000; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP MENU -->
+    <nav class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story's Attic</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-header">
+            <h1 class="story-title">The Shadows of the Tamarind Tree</h1>
+            <p class="story-meta">HORROR TALES • WRITTEN BY UMBRA CRUCIS</p>
+        </div>
+
+        <div class="story-content">
+            
+            <p>The memory of it still lingers in the hushed corners of Eastern Uttar Pradesh—a tale whispered only when dusk yields to utter blackness.</p>
+
+            <p>It began years ago in a sleepy village. Kumari was the epitome of grace: quiet, radiant, and deeply attuned to the traditional rhythms of family life. Though raised in the city, she respected the rooted customs of her ancestral home. When she married Sudeep—a respectable, hardworking man from a neighboring town—their union seemed blessed.</p>
+
+            <p>Following their wedding, the couple traveled to Sudeep’s ancestral estate to fulfill post-marital rituals. The vast home was alive with extended family—uncles, aunts, and elders. Out of respect, Kumari maintained the traditional ghunghat, veiling her face in the presence of elders. For two days, harmony reigned.</p>
+
+            <p>On the third morning, at 4:30 AM, Kumari awoke. Knowing the household would stir by daybreak, she decided to slip out early to refresh herself. In those days, indoor plumbing was absent; villagers frequented the vast agricultural fields surrounding the perimeter.</p>
+
+            <p>Previous mornings, she had accompanied her mother-in-law to a designated clearing. On one occasion, Kumari had casually suggested walking further down the pathway, but her mother-in-law had cut her off with pale, sudden severity: "Do not even speak of going past the northern bend. There is a presence there. The tamarind tree belongs to things that do not rest."</p>
+
+            <p>That morning, however, driven by quiet independence, Kumari stepped into the twilight alone. In her rush, she forgot a crucial safeguard: she carried no iron blade or matchbox—traditional wards believed to repel malevolent entities.</p>
+
+            <p>The air was dense and cool. As she walked down the familiar dirt track, the landscape seemed to stretch unnaturally. Ten minutes turned into twenty. The surrounding fields blurred into unfamiliar shadows. Realizing she was lost, she ducked behind a thick cluster of wild bushes to finish quickly and turn back.</p>
+
+            <p>Then, the silence shattered.</p>
+
+            <p>The foliage behind her rustled violently. She turned—nothing. Moments later, a second, furious thrashing tore through the leaves. She froze, suspecting a wild animal. But then, an unnaturally frigid breeze swept past her neck, defying the stifling summer heat.</p>
+
+            <p>Before she could react, an oppressive, unseen force began pressing down on her body, pinning her to the damp earth. Paralyzed, her breathing turned to ragged gasps. A heavy object struck her forehead—a pod from a tamarind tree. She looked up.</p>
+
+            <p>Rising before her was a towering, monstrous entity. Its unnaturally elongated legs reached high into the canopy. The creature bent its torso downward at an impossible angle, bringing its face inches from hers. It possessed matted, greasy hair, hollow void-like eyes, and a mouth stretched into a jagged, unnatural grin.</p>
+
+            <!-- IMAGE 1 -->
+            <div class="story-image">
+                <img src="1000067776.png" alt="Towering entity confronting Kumari near the tamarind tree">
+            </div>
+
+            <p>Kumari’s mind fractured, and darkness swallowed her whole.</p>
+
+            <h2>The Return</h2>
+
+            <p>By 6:30 AM, panic gripped the household. Kumari was missing. Two hours passed, and village elders began whispering cruel assumptions.</p>
+
+            <p>Suddenly, a figure emerged from the high crops.</p>
+
+            <p>It was Kumari, but stripped of all humanity. Her veil was gone; her clothes were torn, disheveled, and revealing. She marched with a heavy, aggressive, masculine stride. A thin line of blood trickled from her hairline, her eyes wild, hollow, and fixed in a predatory stare.</p>
+
+            <!-- IMAGE 2 -->
+            <div class="story-image">
+                <img src="1000067777.png" alt="Kumari returning to the village courtyard with a predatory stare and torn clothes">
+            </div>
+
+            <p>Sudeep rushed forward with a shawl to cover her exposed frame. The moment he reached out, Kumari seized his head with unnatural strength and slammed her forehead violently into his. Sudeep’s skull fractured with a sickening crack, and he collapsed, bleeding onto the dirt.</p>
+
+            <p>Kumari let out a low, guttural chuckle. She strode into the central courtyard, threw her head back, and began contorting her eyes in a grotesque, rhythmic frenzy.</p>
+
+            <p>She lunged at the family’s guard dog. Before the animal could react, she sank her teeth into its neck. The maddened hound snapped back, tearing into her forearm. Blood gushed, yet Kumari did not flinch. Her face remained a frozen, terrifying mask of amusement. With a single flick of her wrist, she hurled the heavy dog across the stone yard.</p>
+
+            <p>She smashed her way into the inner quarters, kicking a heavy wooden door completely off its iron hinges, locking herself within.</p>
+
+            <p>From behind the shattered frame, a demonic, deep male voice boomed in an archaic dialect: "Khol ke dekh, agar himmat hai toh!" ("Open it if you dare!")</p>
+
+            <p>When Sudeep begged to know who was inside, the voices multiplied. A child’s mocking giggle echoed, followed by a woman’s weeping, and then the haunting, spectral chords of an invisible veena.</p>
+
+            <p>Finally, Sudeep screamed into the keyhole, "What are you?!"</p>
+
+            <p>The voice dropped into a terrifying, resonant growl: "I am Khabees!"</p>
+
+            <p>Recognizing the entity—an ancient, territorial Jinn known to inhabit tamarind trees—Sudeep sprinted to fetch the local Islamic scholar, the Maulvi.</p>
+
+            <p>Through relentless recitations of sacred verses, the Maulvi contained the entity, binding it temporarily. Kumari collapsed to the floor, unconscious.</p>
+
+            <h2>Hanging Upside Down in the Wilderness</h2>
+
+            <p>Days later, believing the nightmare had ended, Sudeep moved his wife back to their city apartment. Kumari remembered nothing after entering the fields; only a suffocating sense of dread remained.</p>
+
+            <p>Two weeks passed in quiet recovery until a moonless midnight arrived.</p>
+
+            <p>At 3:00 AM, Sudeep was jolted awake by a freezing draft. The bedsheets were violently yanked off them by an unseen force. Kumari sat rigid beside him, her head tilted at an impossible angle toward the window.</p>
+
+            <p>When Sudeep reached for her, she turned. Her eyes were entirely black—void of whites or irises. A multi-tonal rasp tore from her throat:</p>
+
+            <p>"You thought a few spoken words could sever a blood-pact?"</p>
+
+            <p>Before Sudeep could scream, an invisible force slammed him against the wall, knocking him unconscious. Kumari shattered the glass balcony door and leaped into the night, vanishing into the darkness toward the dense forest reserve at the edge of the city.</p>
+
+            <p>Sudeep regained consciousness and summoned a search team of relatives and local authorities. Tracking her footprints deep into the suffocating wilderness, the search dogs suddenly stopped, whimpering and crouching in sheer terror.</p>
+
+            <p>The searchlights swept upward through the thick foliage of a massive, ancient tamarind tree.</p>
+
+            <p>A collective gasp of horror tore through the group.</p>
+
+            <!-- IMAGE 3 -->
+            <div class="story-image">
+                <img src="1000067778.png" alt="Kumari hanging upside down from the tamarind tree in the dark forest">
+            </div>
+
+            <p>Kumari was hanging upside down from a thick, high branch—her ankles twisted unnaturally around the wood, her hair sweeping the dark air like a curtain of shadows. Her eyes snapped open in the beam of the flashlights, reflecting a sickening yellow light. Her lips curled back into a jagged grin as her body swung rhythmically back and forth without any wind.</p>
+
+            <p>"Bring the iron! Bring the holy water!" Sudeep screamed, his voice breaking.</p>
+
+            <p>The elders and the spiritual practitioner rushed forward, surrounding the base of the tree. They formed a circle, binding the area with holy iron stakes and splashing sanctified oil around the roots. The practitioner began chanting intense, ancient exorcism incantations, his voice ringing through the silent jungle.</p>
+
+            <p>The entity inside Kumari thrashed violently. Suspended upside down, her body began to contort into unnatural, bone-breaking angles. She shrieked—a sound so horrifyingly loud and guttural that the searchers clamped their hands over their ears. The spirit spat black bile, roaring in multiple voices at once:</p>
+
+            <p>"I will break her neck before I leave!"</p>
+
+            <p>"Hold the circle! Do not break the chant!" the practitioner commanded, hurling blessed powders directly at her hanging form.</p>
+
+            <p>Smoke rose from her skin as if touched by fire. The tree itself began to tremble violently, leaves raining down as the entity fought the holy binding. The chants grew louder, faster, and more aggressive. Kumari’s throat bulged, her ribs straining under the supernatural battle taking place within her chest.</p>
+
+            <p>With one final, ear-splitting scream that shattered the night air, a thick shadow detached itself from her body, coiling upward into the dark canopy before dissipating into thin air.</p>
+
+            <p>The tension snapped. Kumari’s limbs went limp, releasing from the branch. The men rushed forward with blankets, catching her bruised, unconscious body just before she hit the ground.</p>
+
+            <p>She was alive, breathing softly, the terrifying blackness completely gone from her eyes. The Khabees was driven out, leaving behind only the cold wind whispering through the leaves of the tamarind tree.</p>
+
+            <a href="attic.html" class="back-btn">← Back to Story's Attic</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+
+

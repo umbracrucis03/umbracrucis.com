@@ -27,7 +27,6 @@
             overflow: visible;
         }
 
-        /* LOGO PROMINENT SIZING */
         .nav-logo {
             display: flex;
             align-items: center;
@@ -46,7 +45,16 @@
             filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
         }
 
-        .menu-icon { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer;
+            padding: 5px; /* Bigger touch target */
+            box-sizing: content-box;
+        }
         .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
         .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 200px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
         .nav-links.active { display: flex; }
@@ -95,6 +103,7 @@
             height: auto;
             display: block;
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
+            will-change: transform;
         }
 
         /* RITUAL WARNING BOX */
@@ -125,18 +134,16 @@
             text-transform: uppercase;
         }
 
-        /* FOOTER */
         footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <!-- TOP MENU -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo">
             <img src="logo.png" alt="Umbra Crucis Logo">
         </a>
-        <div class="menu-icon" onclick="toggleMenu()">
+        <div class="menu-icon" id="menuBtn">
             <span></span><span></span><span></span>
         </div>
         <div class="nav-links" id="navMenu">
@@ -155,7 +162,6 @@
                 A cabinet reserved exclusively for reader-requested and community-favored tales. These are the stories summoned by our audience—handpicked, expanded, and dragged back into the shadows by popular demand.
             </p>
 
-            <!-- CHROMA KEY CANVAS & HIDDEN VIDEO SOURCE -->
             <div class="board-wrapper">
                 <video id="green-video" autoplay loop muted playsinline crossorigin="anonymous" style="display:none;">
                     <source src="closed-sign.mp4" type="video/mp4">
@@ -163,7 +169,6 @@
                 <canvas id="chroma-canvas"></canvas>
             </div>
 
-            <!-- RITUAL WARNING BOX -->
             <div class="ritual-box">
                 <p class="ritual-message">
                     We are currently binding the seals and blessing this cabinet to contain the cursed tales summoned by your demand. The doors remain locked while the ritual completes.
@@ -180,48 +185,68 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("navMenu");
-            menu.classList.toggle("active");
+        // Instant Menu Toggle (Fixes 3-second latency on mobile)
+        const menuBtn = document.getElementById("menuBtn");
+        const navMenu = document.getElementById("navMenu");
+        
+        function toggleMenu(e) {
+            e.preventDefault();
+            navMenu.classList.toggle("active");
         }
+        
+        menuBtn.addEventListener("touchstart", toggleMenu, { passive: false });
+        menuBtn.addEventListener("click", toggleMenu);
 
-        // CHROMA KEY GREEN SCREEN REMOVER
+        // High-Performance 24 FPS Chroma Key Processing
         const video = document.getElementById('green-video');
         const canvas = document.getElementById('chroma-canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-        function processFrame() {
-            if (!video.paused && !video.ended) {
-                if (canvas.width !== video.videoWidth && video.videoWidth > 0) {
-                    canvas.width = video.videoWidth;
-                    canvas.height = video.videoHeight;
-                }
+        let lastFrameTime = 0;
+        const fpsInterval = 1000 / 24; // Limit processing to 24 FPS
 
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const l = frame.data.length / 4;
-
-                for (let i = 0; i < l; i++) {
-                    const r = frame.data[i * 4 + 0];
-                    const g = frame.data[i * 4 + 1];
-                    const b = frame.data[i * 4 + 2];
-
-                    if (g > 90 && r < 120 && b < 120 && g > r * 1.2) {
-                        frame.data[i * 4 + 3] = 0;
-                    }
-                }
-                ctx.putImageData(frame, 0, 0);
-            }
+        function processFrame(now) {
             requestAnimationFrame(processFrame);
+
+            if (video.paused || video.ended) return;
+
+            const elapsed = now - lastFrameTime;
+            if (elapsed < fpsInterval) return; // Skip extra frames to keep CPU cool
+
+            lastFrameTime = now - (elapsed % fpsInterval);
+
+            if (canvas.width !== video.videoWidth && video.videoWidth > 0) {
+                // Scale down internal canvas resolution slightly to boost mobile performance
+                canvas.width = Math.min(video.videoWidth, 480);
+                canvas.height = (video.videoHeight / video.videoWidth) * canvas.width;
+            }
+
+            if (canvas.width === 0) return;
+
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const buf32 = new Uint32Array(frame.data.buffer);
+            const len = buf32.length;
+
+            // Fast 32-bit pixel iteration
+            for (let i = 0; i < len; i++) {
+                const pixel = buf32[i];
+                const r = pixel & 0xFF;
+                const g = (pixel >> 8) & 0xFF;
+                const b = (pixel >> 16) & 0xFF;
+
+                if (g > 90 && r < 120 && b < 120 && g > r * 1.2) {
+                    buf32[i] = 0; // Set pixel to fully transparent
+                }
+            }
+            ctx.putImageData(frame, 0, 0);
         }
 
         video.addEventListener('play', () => {
             requestAnimationFrame(processFrame);
         });
 
-        video.play().then(() => {
-            requestAnimationFrame(processFrame);
-        }).catch(() => {});
+        video.play().catch(() => {});
     </script>
 </body>
 </html>

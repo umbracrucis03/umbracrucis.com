@@ -36,7 +36,7 @@
         }
 
         .nav-logo img {
-            height: 75px;
+            height: 80px;
             width: auto;
             max-width: 260px;
             object-fit: contain;
@@ -81,25 +81,23 @@
             line-height: 1.7;
         }
 
-        /* VIDEO & BOARD DISPLAY */
+        /* CANVAS & CHROMA KEY DISPLAY */
         .board-wrapper {
             margin: 30px auto 20px auto;
             max-width: 320px;
-            overflow: hidden;
             display: flex;
             justify-content: center;
         }
 
-        .board-video {
+        #chroma-canvas {
             width: 100%;
+            max-width: 300px;
             height: auto;
             display: block;
-            /* Filters pure green screen (#00FF00) out visually */
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.9));
-            mix-blend-mode: screen; 
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
         }
 
-        /* WARNING BOX */
+        /* RITUAL WARNING BOX */
         .ritual-box {
             background-color: rgba(25, 5, 5, 0.7);
             border: 1px dashed #660000;
@@ -157,12 +155,12 @@
                 A cabinet reserved exclusively for reader-requested and community-favored tales. These are the stories summoned by our audience—handpicked, expanded, and dragged back into the shadows by popular demand.
             </p>
 
-            <!-- HANGING CLOSED BOARD VIDEO -->
+            <!-- CHROMA KEY CANVAS & HIDDEN VIDEO SOURCE -->
             <div class="board-wrapper">
-                <video autoplay loop muted playsinline class="board-video">
+                <video id="green-video" autoplay loop muted playsinline crossorigin="anonymous" style="display:none;">
                     <source src="closed-sign.mp4" type="video/mp4">
-                    Your browser does not support video play back.
                 </video>
+                <canvas id="chroma-canvas"></canvas>
             </div>
 
             <!-- RITUAL WARNING BOX -->
@@ -186,7 +184,44 @@
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("active");
         }
+
+        // CHROMA KEY GREEN SCREEN REMOVER
+        const video = document.getElementById('green-video');
+        const canvas = document.getElementById('chroma-canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+        function processFrame() {
+            if (!video.paused && !video.ended) {
+                if (canvas.width !== video.videoWidth && video.videoWidth > 0) {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                }
+
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const l = frame.data.length / 4;
+
+                for (let i = 0; i < l; i++) {
+                    const r = frame.data[i * 4 + 0];
+                    const g = frame.data[i * 4 + 1];
+                    const b = frame.data[i * 4 + 2];
+
+                    if (g > 90 && r < 120 && b < 120 && g > r * 1.2) {
+                        frame.data[i * 4 + 3] = 0;
+                    }
+                }
+                ctx.putImageData(frame, 0, 0);
+            }
+            requestAnimationFrame(processFrame);
+        }
+
+        video.addEventListener('play', () => {
+            requestAnimationFrame(processFrame);
+        });
+
+        video.play().then(() => {
+            requestAnimationFrame(processFrame);
+        }).catch(() => {});
     </script>
 </body>
 </html>
-

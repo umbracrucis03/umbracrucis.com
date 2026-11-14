@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Granville Hotel : Rebooted - Grimoire’s Cabinet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -93,38 +93,40 @@
             margin: 0 auto;
         }
 
-        /* PRIME MONARCH TRIBUTE BANNER WITH RED GLOW GOTHIC HEADING */
+        /* GOLDEN SPARKLING TRIBUTE BANNER */
         .monarch-banner {
-            background: linear-gradient(145deg, #140303 0%, #210505 50%, #0a0101 100%);
-            border: 2px solid #800000;
+            background: linear-gradient(145deg, #1f1604 0%, #332305 50%, #120c02 100%);
+            border: 2px solid #ffd700;
             border-radius: 10px;
             padding: 35px 25px;
             margin-bottom: 35px;
             text-align: center;
             position: relative;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(179, 0, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.35), inset 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: goldenSparkleGlow 3s infinite alternate;
+        }
+
+        @keyframes goldenSparkleGlow {
+            0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.25), inset 0 0 15px rgba(255, 215, 0, 0.15); border-color: #d4af37; }
+            100% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.55), inset 0 0 25px rgba(255, 215, 0, 0.35); border-color: #ffee80; }
         }
 
         .royal-crown-icon {
             font-size: 1.8rem;
             margin-bottom: 6px;
-            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
         }
 
-        /* RED GLOWING GOTHIC HEADING */
+        /* BOLD CALLIGRAPHY GLOWING HEADING */
         .monarch-designation {
-            font-family: 'Creepster', cursive;
-            font-size: 2.2rem;
-            color: #ff1a1a;
-            letter-spacing: 2px;
-            text-shadow: 0 0 12px #ff0000, 0 0 25px #990000;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #fff2b2;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 12px #ffd700, 0 0 25px #ffa500, 0 0 40px #ff8c00;
             margin-bottom: 15px;
-            animation: redGothicPulse 2.5s infinite alternate;
-        }
-
-        @keyframes redGothicPulse {
-            0% { text-shadow: 0 0 8px #ff0000, 0 0 15px #800000; }
-            100% { text-shadow: 0 0 20px #ff3333, 0 0 35px #ff0000; }
+            line-height: 1.2;
         }
 
         /* SISTER INSTAGRAM PROFILE BADGE SECTION */
@@ -132,20 +134,20 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: rgba(18, 3, 3, 0.9);
-            border: 1px solid #550000;
+            background: rgba(30, 20, 2, 0.9);
+            border: 1px solid #d4af37;
             padding: 8px 18px 8px 8px;
             border-radius: 50px;
             margin-bottom: 20px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
         }
 
         .insta-profile-box:hover {
-            border-color: #ff3333;
-            background: rgba(35, 5, 5, 0.95);
-            box-shadow: 0 0 18px rgba(255, 0, 0, 0.4);
+            border-color: #ffee80;
+            background: rgba(45, 30, 5, 0.95);
+            box-shadow: 0 0 22px rgba(255, 215, 0, 0.5);
             transform: translateY(-2px);
         }
 
@@ -154,7 +156,7 @@
             height: 42px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #ff1a1a;
+            border: 2px solid #ffd700;
         }
 
         .insta-info {
@@ -172,7 +174,7 @@
         .insta-handle {
             font-family: 'Georgia', serif;
             font-size: 0.8rem;
-            color: #ff6666;
+            color: #ffdf80;
             display: block;
         }
 
@@ -180,13 +182,13 @@
             font-family: 'Georgia', serif;
             font-style: italic;
             font-size: 1rem;
-            color: #d8c2b6;
+            color: #faebd7;
             max-width: 680px;
             margin: 0 auto;
             line-height: 1.65;
         }
 
-        /* SEAL #01 - CLOSED SEAL BOX (CLEAN INITIAL VIEW) */
+        /* SEAL #01 - CLOSED SEAL BOX */
         .seal-box-container {
             background: linear-gradient(180deg, rgba(16, 4, 4, 0.95) 0%, rgba(8, 2, 2, 0.98) 100%);
             border: 2px solid #700000;
@@ -238,7 +240,7 @@
             font-style: italic;
         }
 
-        /* UNLOCKED STORY SECTION (HIDDEN UNTIL SEAL IS CLICKED) */
+        /* UNLOCKED STORY PANEL */
         .story-active-panel {
             display: none;
             background: linear-gradient(180deg, rgba(20, 4, 4, 0.98) 0%, rgba(10, 2, 2, 0.99) 100%);
@@ -258,6 +260,27 @@
 
         .story-active-panel.unlocked {
             display: block;
+        }
+
+        /* BACK TO SEAL BUTTON */
+        .back-to-seal-btn {
+            background: transparent;
+            border: 1px solid #800000;
+            color: #ff6666;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .back-to-seal-btn:hover {
+            background-color: #4d0000;
+            color: #ffffff;
+            border-color: #ff3333;
         }
 
         /* RITUAL GATE (LANGUAGE SELECT + BREAK THE SEAL) */
@@ -429,6 +452,37 @@
             margin-bottom: 18px;
         }
 
+        /* RETURN TO TOP BUTTON */
+        .return-top-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #440000;
+        }
+
+        .return-top-btn {
+            background: linear-gradient(135deg, #4d0000 0%, #800000 100%);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding: 10px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(218, 165, 32, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .return-top-btn:hover {
+            background: linear-gradient(135deg, #800000 0%, #cc0000 100%);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
         /* DIVIDER */
         .cabinet-divider {
             text-align: center;
@@ -496,20 +550,20 @@
     <div class="container">
 
         <!-- CABINET INTRO -->
-        <div class="cabinet-header">
+        <div class="cabinet-header" id="topOfCabinet">
             <h1 class="page-title">GRIMOIRE’S CABINET</h1>
             <p class="description">
                 A locked sanctum reserved exclusively for reader-requested and community-summoned tales—handpicked, expanded, and dragged back into the shadows by popular demand.
             </p>
         </div>
 
-        <!-- PRIME MONARCH TRIBUTE BANNER -->
+        <!-- PRIME MONARCH TRIBUTE BANNER (GOLDEN SPARKLING) -->
         <div class="monarch-banner">
             
-            <!-- Red Glowing Gothic Heading -->
+            <!-- Calligraphy Glowing Heading -->
             <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
 
-            <!-- Sister Instagram Badge Link (Replace URL & Handle as needed) -->
+            <!-- Sister Instagram Badge Link -->
             <a href="https://www.instagram.com/imnot.pravlleka?mdxt=cDJrcjFwbXY4YnQz" target="_blank" class="insta-profile-box">
                 <img src="avatar.jpg" alt="Pravlleka Singh" class="insta-avatar" onerror="this.src='logo.png'">
                 <div class="insta-info">
@@ -532,6 +586,10 @@
 
         <!-- UNLOCKED STORY PANEL (HIDDEN BY DEFAULT) -->
         <div class="story-active-panel" id="storyActivePanel">
+            
+            <!-- Back to Seal Button -->
+            <button class="back-to-seal-btn" onclick="returnToSealBox()">← Back to Cabinet Seal</button>
+
             <div style="text-align: center; margin-bottom: 25px;">
                 <span class="seal-badge-preview">✦ SEAL #01 UNLOCKED ✦</span>
                 <h2 style="font-family: 'Creepster', cursive; font-size: 2.4rem; color: #ff1a1a; text-shadow: 0 0 10px #800000;">Granville Hotel : Rebooted</h2>
@@ -889,13 +947,13 @@
                     <p>Phir, achanak, har taraf sannata chha gaya.</p>
 
                     <h3>Aakhiri Guest Register (The Last Guest Register)</h3>
-                    <p>Agli subah, hotel ke staff ko manager ki laash Room 333 ke bahar padi mili.</p>
+                    <p>Agli subah, hotel ke staff ko manager ki laash Room 333 ke bahار padi mili.</p>
                     <p>Uski aankhein khuli hui thi, uska chehra behad khauf se jama hua tha, aur uske haathon par gehri kharochon ke nishaan the.</p>
-                    <p>Room 333 ke andar ki deewar poori tarah gir chuki تھی۔</p>
+                    <p>Room 333 ke andar ki deewar poori tarah gir chuki thi.</p>
                     <p>Uske peeche, police ko Edward Granville ka kankal mila, jo ek purane कालीन mein lipta hua tha.</p>
-                    <p>Lekin unhe wahan aur kuch nahi mila—kamre ke andar bas teen kursiyan rakhi thi. Hotel ko hamesha ke liye band kar diya gaya.</p>
+                    <p>Lekin unhe wahan aur kuch nahi mila—kamre ke andar bas teen kursiyan rakhi thi. Hotel ko hamesha ke liye band कर दिया गया।</p>
                     <p>Saalon baad, investigators ka ek group is khandahar ho chuki imarat ke itihaas ko record karne wahan aaya. Unhe reception desk par abhi bhi purana guest register pada mila.</p>
-                    <p>Uske zyada tar panne dhool se dhake hue the.</p>
+                    <p>Uske zyada tar panne dhool se dhake hue थे।</p>
                     <p>Lekin aakhiri panne par taazi laal syaahi (ink) se teen naam likhe hue the:</p>
                     <p>Anamika Granville.<br>Edward Granville.<br>Radhika.</p>
                     <p>Unke neeche, kisi ne likha tha:</p>
@@ -903,10 +961,15 @@
                     <p>Jaise hi jaanchkarta wahan se nikalne wale the, unmein se ek ko upar kahin violin bajne ki awaaz sunai di.</p>
                     <p>Usne apni ghadi dekhi.</p>
                     <p>3:13 AM.</p>
-                    <p>Usne dheere se seedhiyon ki taraf देखा।</p>
+                    <p>Usne धीरे से सीढ़ियों की तरफ देखा।</p>
                     <p>Corridor ke aakhiri chhor par, Room 333 ka darwaza khula hua था। वे रूम 333 के अंदर गए। Jaanchkarta thoda dara hua tha kyunki use violin ki awaaz ka koi source nahi dikh raha tha aur kamra poori tarah veeran pada tha. Usne dheere se peeche kadam badhaya, lekin darwaza zor se band ho gaya.</p>
                     <p>Achanak, jaanchkarta ko apne peeche farsh par ek kursi ghaseete jaane ki awaaz sunai di.</p>
                     <p>Aur tabhi, guest register mein ek chautha naam ubhar aaya.</p>
+                </div>
+
+                <!-- RETURN TO TOP BUTTON AT STORY END -->
+                <div class="return-top-container">
+                    <button class="return-top-btn" onclick="scrollToTop()">▲ Return to Top of Cabinet</button>
                 </div>
             </div>
         </div>
@@ -942,7 +1005,18 @@
         // Open Seal Gate when clicking the Seal #01 Box
         function openSealGate() {
             document.getElementById('sealBox').style.display = 'none';
-            document.getElementById('storyActivePanel').classList.add('unlocked');
+            const panel = document.getElementById('storyActivePanel');
+            panel.classList.add('unlocked');
+            panel.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Return from Story Panel back to the Seal Box
+        function returnToSealBox() {
+            document.getElementById('storyActivePanel').classList.remove('unlocked');
+            document.getElementById('storyChamber').classList.remove('unlocked');
+            document.getElementById('ritualGate').style.display = 'block';
+            document.getElementById('sealBox').style.display = 'block';
+            document.getElementById('sealBox').scrollIntoView({ behavior: 'smooth' });
         }
 
         // Language & Seal Logic
@@ -981,6 +1055,11 @@
         function resetLanguageSelection() {
             document.getElementById('storyChamber').classList.remove('unlocked');
             document.getElementById('ritualGate').style.display = 'block';
+        }
+
+        // Smooth Scroll to Top of Cabinet
+        function scrollToTop() {
+            document.getElementById('topOfCabinet').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>

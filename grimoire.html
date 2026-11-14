@@ -65,7 +65,7 @@
         /* CONTAINER */
         .container { width: 92%; max-width: 850px; margin: 20px auto; }
 
-        /* MAIN HEADER SECTION */
+        /* CABINET INTRO */
         .cabinet-header { 
             background-color: rgba(12, 12, 12, 0.85); 
             border: 1px solid #330000; 
@@ -93,153 +93,188 @@
             margin: 0 auto;
         }
 
-        /* PRIME MONARCH TRIBUTE BANNER */
+        /* PRIME MONARCH TRIBUTE BANNER WITH RED GLOW GOTHIC HEADING */
         .monarch-banner {
-            background: linear-gradient(145deg, #160404 0%, #260707 50%, #0d0202 100%);
-            border: 2px solid #b8860b;
+            background: linear-gradient(145deg, #140303 0%, #210505 50%, #0a0101 100%);
+            border: 2px solid #800000;
             border-radius: 10px;
-            padding: 30px 25px;
+            padding: 35px 25px;
             margin-bottom: 35px;
             text-align: center;
             position: relative;
-            box-shadow: 
-                0 0 25px rgba(184, 134, 11, 0.25),
-                inset 0 0 20px rgba(179, 0, 0, 0.35);
-            animation: royalPulse 4s infinite alternate;
-        }
-
-        @keyframes royalPulse {
-            0% {
-                box-shadow: 0 0 18px rgba(184, 134, 11, 0.25), inset 0 0 15px rgba(179, 0, 0, 0.3);
-                border-color: #996515;
-            }
-            100% {
-                box-shadow: 0 0 32px rgba(218, 165, 32, 0.45), inset 0 0 25px rgba(230, 0, 0, 0.5);
-                border-color: #daa520;
-            }
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(179, 0, 0, 0.2);
         }
 
         .royal-crown-icon {
             font-size: 1.8rem;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.7));
-        }
-
-        .monarch-designation {
-            font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: #ffd700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
             margin-bottom: 6px;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
         }
 
-        .monarch-name {
+        /* RED GLOWING GOTHIC HEADING */
+        .monarch-designation {
+            font-family: 'Creepster', cursive;
+            font-size: 2.2rem;
+            color: #ff1a1a;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px #ff0000, 0 0 25px #990000;
+            margin-bottom: 15px;
+            animation: redGothicPulse 2.5s infinite alternate;
+        }
+
+        @keyframes redGothicPulse {
+            0% { text-shadow: 0 0 8px #ff0000, 0 0 15px #800000; }
+            100% { text-shadow: 0 0 20px #ff3333, 0 0 35px #ff0000; }
+        }
+
+        /* SISTER INSTAGRAM PROFILE BADGE SECTION */
+        .insta-profile-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(18, 3, 3, 0.9);
+            border: 1px solid #550000;
+            padding: 8px 18px 8px 8px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.15);
+        }
+
+        .insta-profile-box:hover {
+            border-color: #ff3333;
+            background: rgba(35, 5, 5, 0.95);
+            box-shadow: 0 0 18px rgba(255, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .insta-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff1a1a;
+        }
+
+        .insta-info {
+            text-align: left;
+        }
+
+        .insta-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 0.95rem;
+            font-weight: bold;
             color: #ffffff;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+            display: block;
+        }
+
+        .insta-handle {
+            font-family: 'Georgia', serif;
+            font-size: 0.8rem;
+            color: #ff6666;
+            display: block;
         }
 
         .monarch-tribute {
             font-family: 'Georgia', serif;
             font-style: italic;
             font-size: 1rem;
-            color: #e6ccb2;
+            color: #d8c2b6;
             max-width: 680px;
             margin: 0 auto;
             line-height: 1.65;
         }
 
-        /* SEAL #01 - CURATOR'S PRIVILEGE CARD */
-        .seal-one-card {
-            background: linear-gradient(180deg, rgba(22, 4, 4, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
-            border: 2px solid #800000;
-            border-top: 3px solid #daa520;
+        /* SEAL #01 - CLOSED SEAL BOX (CLEAN INITIAL VIEW) */
+        .seal-box-container {
+            background: linear-gradient(180deg, rgba(16, 4, 4, 0.95) 0%, rgba(8, 2, 2, 0.98) 100%);
+            border: 2px solid #700000;
             border-radius: 10px;
-            padding: 35px 25px;
+            padding: 30px 20px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        .badges-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 22px;
+        .seal-box-container:hover {
+            border-color: #ff1a1a;
+            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.35);
+            transform: translateY(-3px);
         }
 
-        .privilege-tag {
+        .seal-badge-preview {
             display: inline-block;
             background: linear-gradient(90deg, #4d0000, #800000, #4d0000);
-            border: 1px solid #daa520;
+            border: 1px solid #ffd700;
             color: #ffd700;
             font-family: 'Cinzel', serif;
             font-size: 0.78rem;
             font-weight: bold;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             padding: 5px 16px;
             border-radius: 20px;
             text-transform: uppercase;
-            box-shadow: 0 0 12px rgba(218, 165, 32, 0.3);
+            margin-bottom: 12px;
         }
 
-        .seal-horror-badge {
-            display: inline-block;
-            background-color: rgba(15, 0, 0, 0.9);
-            border: 1px solid #cc0000;
-            color: #ff4d4d;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            padding: 8px 18px;
-            border-radius: 4px;
-            text-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
-            box-shadow: inset 0 0 10px rgba(204, 0, 0, 0.3);
-        }
-
-        .story-title {
+        .seal-box-title {
             font-family: 'Creepster', cursive;
-            font-size: 2.6rem;
-            color: #ff1a1a;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 12px #800000;
+            font-size: 2.2rem;
+            color: #ff3333;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px #800000;
         }
 
-        .story-hook {
-            font-family: 'Georgia', serif;
+        .seal-click-prompt {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #a68a7c;
+            letter-spacing: 1px;
             font-style: italic;
-            color: #bfa393;
-            font-size: 1.02rem;
-            margin-bottom: 28px;
-            max-width: 620px;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        /* UNLOCKED STORY SECTION (HIDDEN UNTIL SEAL IS CLICKED) */
+        .story-active-panel {
+            display: none;
+            background: linear-gradient(180deg, rgba(20, 4, 4, 0.98) 0%, rgba(10, 2, 2, 0.99) 100%);
+            border: 2px solid #990000;
+            border-top: 3px solid #ffd700;
+            border-radius: 10px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(179, 0, 0, 0.4);
+            animation: fadeInPanel 0.5s ease forwards;
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .story-active-panel.unlocked {
+            display: block;
         }
 
         /* RITUAL GATE (LANGUAGE SELECT + BREAK THE SEAL) */
         .ritual-gate {
-            background-color: rgba(15, 3, 3, 0.85);
+            background-color: rgba(12, 2, 2, 0.85);
             border: 1px dashed #660000;
             border-radius: 8px;
             padding: 25px 20px;
             max-width: 550px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .step-label {
             font-family: 'Cinzel', serif;
             font-size: 0.9rem;
-            color: #daa520;
+            color: #ffd700;
             letter-spacing: 1.5px;
             margin-bottom: 14px;
             text-transform: uppercase;
@@ -304,21 +339,15 @@
             text-transform: uppercase;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 10px rgba(218, 165, 32, 0.5);
             animation: sealPulse 1.5s infinite alternate;
-            transition: transform 0.2s ease;
         }
 
         .break-seal-btn.visible {
             display: inline-block;
         }
 
-        .break-seal-btn:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #a30000 0%, #ff0000 50%, #800000 100%);
-        }
-
         @keyframes sealPulse {
-            0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5), 0 0 6px rgba(218, 165, 32, 0.4); }
-            100% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), 0 0 15px rgba(218, 165, 32, 0.8); }
+            0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); }
         }
 
         .hint-text {
@@ -327,23 +356,17 @@
             font-style: italic;
         }
 
-        /* REVEALED STORY READING CHAMBER */
+        /* READING CHAMBER */
         .story-chamber {
             display: none;
             text-align: left;
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px solid #4d0000;
-            animation: fadeInStory 0.8s ease forwards;
         }
 
         .story-chamber.unlocked {
             display: block;
-        }
-
-        @keyframes fadeInStory {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .chamber-topbar {
@@ -406,7 +429,7 @@
             margin-bottom: 18px;
         }
 
-        /* FUTURE COMMUNITY SUBMISSIONS DIVIDER */
+        /* DIVIDER */
         .cabinet-divider {
             text-align: center;
             margin: 45px 0 25px 0;
@@ -482,26 +505,39 @@
 
         <!-- PRIME MONARCH TRIBUTE BANNER -->
         <div class="monarch-banner">
+            
+            <!-- Red Glowing Gothic Heading -->
             <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
-            <div class="monarch-name">Pravlleka Singh</div>
+
+            <!-- Sister Instagram Badge Link (Replace URL & Handle as needed) -->
+            <a href="https://www.instagram.com/imnot.pravlleka?mdxt=cDJrcjFwbXY4YnQz" target="_blank" class="insta-profile-box">
+                <img src="avatar.jpg" alt="Pravlleka Singh" class="insta-avatar" onerror="this.src='logo.png'">
+                <div class="insta-info">
+                    <span class="insta-name">Pravlleka Singh</span>
+                    <span class="insta-handle">@Pravlleka_Singh</span>
+                </div>
+            </a>
+
             <p class="monarch-tribute">
                 “Before the locks were forged and the shadows given a voice, one vision sparked this archive into existence. By royal decree of the dark, the very first vault of Grimoire’s Cabinet belongs eternally to its initiator—the architect who unlocked the forbidden.”
             </p>
         </div>
 
-        <!-- SEAL #01: GRANVILLE HOTEL : REBOOTED -->
-        <div class="seal-one-card">
-            <div class="badges-container">
-                <span class="privilege-tag">✦ Curator’s Privilege ✦</span>
-                <span class="seal-horror-badge">Prime Monarch and Arch-Curator of Umbra Crucis — SEAL #01</span>
+        <!-- INITIAL CLOSED SEAL BOX (CLICK TO REVEAL GATEWAY) -->
+        <div class="seal-box-container" id="sealBox" onclick="openSealGate()">
+            <span class="seal-badge-preview">✦ Curator’s Privilege ✦</span>
+            <h2 class="seal-box-title">SEAL #01 : GRANVILLE HOTEL : REBOOTED</h2>
+            <p class="seal-click-prompt">Click here to approach the lock and select your language...</p>
+        </div>
+
+        <!-- UNLOCKED STORY PANEL (HIDDEN BY DEFAULT) -->
+        <div class="story-active-panel" id="storyActivePanel">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <span class="seal-badge-preview">✦ SEAL #01 UNLOCKED ✦</span>
+                <h2 style="font-family: 'Creepster', cursive; font-size: 2.4rem; color: #ff1a1a; text-shadow: 0 0 10px #800000;">Granville Hotel : Rebooted</h2>
             </div>
 
-            <h2 class="story-title">Granville Hotel : Rebooted</h2>
-            <p class="story-hook">
-                The inaugural curse unsealed from the Cabinet’s deepest shelf. Choose your tongue below to approach the lock.
-            </p>
-
-            <!-- STEP 1 & 2: LANGUAGE SELECTION & BREAK THE SEAL -->
+            <!-- LANGUAGE SELECTION & BREAK THE SEAL GATE -->
             <div class="ritual-gate" id="ritualGate">
                 <div class="step-label">Step I — Choose Your Language</div>
                 <div class="lang-selector">
@@ -512,17 +548,17 @@
 
                 <div class="break-seal-wrapper">
                     <span class="hint-text" id="sealHint">Select a language above to awaken the seal...</span>
-                    <button class="break-seal-btn" id="breakSealBtn" onclick="breakTheSeal()">
-                        Break the Seal
+                    <button class="break-seal-btn" id="breakSealBtn" onclick="breakTheseal()">
+                        Break the Seal & Enter
                     </button>
                 </div>
             </div>
 
-            <!-- STEP 3: UNLOCKED STORY CHAMBER -->
+            <!-- UNLOCKED STORY READING CHAMBER -->
             <div class="story-chamber" id="storyChamber">
                 <div class="chamber-topbar">
-                    <span class="active-lang-label" id="currentLangDisplay">SEAL #01 BROKEN • READING IN ENGLISH</span>
-                    <button class="switch-lang-btn" onclick="resetSeal()">Change Language</button>
+                    <span class="active-lang-label" id="currentLangDisplay">SEAL #01 ACTIVE • READING IN ENGLISH</span>
+                    <button class="switch-lang-btn" onclick="resetLanguageSelection()">Change Language</button>
                 </div>
 
                 <!-- ENGLISH STORY -->
@@ -745,9 +781,9 @@
                     <p>सालों बाद, जांचकर्ताओं का एक समूह इस खंडहर हो चुकी इमारत के इतिहास को दर्ज करने वहाँ आया। उन्हें रिसेप्शन डेस्क पर अभी भी पुराना गेस्ट रजिस्टर पड़ा मिला।</p>
                     <p>उसके ज़्यादातर पन्ने धूल से ढके हुए थे।</p>
                     <p>लेकिन आखिरी पन्ने पर ताज़ी लाल स्याही से तीन नाम लिखे हुए थे:</p>
-                    <p>अनामिका ग्रैनविले।<br>एडवर्ड ग्रैनविले।<br>राधिका।</p>
+                    <p>अनामिका ग्रैनविले。<br>एडवर्ड ग्रैनविले。<br>राधिका。</p>
                     <p>उनके नीचे, किसी ने लिखा था:</p>
-                    <p>हम अब साथ हैं।</p>
+                    <p>हम अब साथ हैं。</p>
                     <p>जैसे ही जांचकर्ता वहाँ से निकलने वाले थे, उनमें से एक को ऊपर कहीं वायलिन बजने की आवाज़ सुनाई दी।</p>
                     <p>उसने अपनी घड़ी देखी।</p>
                     <p>3:13 AM.</p>
@@ -855,8 +891,8 @@
                     <h3>Aakhiri Guest Register (The Last Guest Register)</h3>
                     <p>Agli subah, hotel ke staff ko manager ki laash Room 333 ke bahar padi mili.</p>
                     <p>Uski aankhein khuli hui thi, uska chehra behad khauf se jama hua tha, aur uske haathon par gehri kharochon ke nishaan the.</p>
-                    <p>Room 333 ke andar ki deewar poori tarah gir chuki thi.</p>
-                    <p>Uske peeche, police ko Edward Granville ka kankal mila, jo ek purane kaleen mein lipta hua tha.</p>
+                    <p>Room 333 ke andar ki deewar poori tarah gir chuki تھی۔</p>
+                    <p>Uske peeche, police ko Edward Granville ka kankal mila, jo ek purane कालीन mein lipta hua tha.</p>
                     <p>Lekin unhe wahan aur kuch nahi mila—kamre ke andar bas teen kursiyan rakhi thi. Hotel ko hamesha ke liye band kar diya gaya.</p>
                     <p>Saalon baad, investigators ka ek group is khandahar ho chuki imarat ke itihaas ko record karne wahan aaya. Unhe reception desk par abhi bhi purana guest register pada mila.</p>
                     <p>Uske zyada tar panne dhool se dhake hue the.</p>
@@ -867,8 +903,8 @@
                     <p>Jaise hi jaanchkarta wahan se nikalne wale the, unmein se ek ko upar kahin violin bajne ki awaaz sunai di.</p>
                     <p>Usne apni ghadi dekhi.</p>
                     <p>3:13 AM.</p>
-                    <p>Usne dheere se seedhiyon ki taraf dekha.</p>
-                    <p>Corridor ke aakhiri chhor par, Room 333 ka darwaza khula hua था। Woh Room 333 ke andar gaye. Jaanchkarta thoda dara hua tha kyunki use violin ki awaaz ka koi source nahi dikh raha tha aur kamra poori tarah veeran pada tha. Usne dheere se peeche kadam badhaya, lekin darwaza zor se band ho gaya.</p>
+                    <p>Usne dheere se seedhiyon ki taraf देखा।</p>
+                    <p>Corridor ke aakhiri chhor par, Room 333 ka darwaza khula hua था। वे रूम 333 के अंदर गए। Jaanchkarta thoda dara hua tha kyunki use violin ki awaaz ka koi source nahi dikh raha tha aur kamra poori tarah veeran pada tha. Usne dheere se peeche kadam badhaya, lekin darwaza zor se band ho gaya.</p>
                     <p>Achanak, jaanchkarta ko apne peeche farsh par ek kursi ghaseete jaane ki awaaz sunai di.</p>
                     <p>Aur tabhi, guest register mein ek chautha naam ubhar aaya.</p>
                 </div>
@@ -903,6 +939,12 @@
         menuBtn.addEventListener("touchstart", toggleMenu, { passive: false });
         menuBtn.addEventListener("click", toggleMenu);
 
+        // Open Seal Gate when clicking the Seal #01 Box
+        function openSealGate() {
+            document.getElementById('sealBox').style.display = 'none';
+            document.getElementById('storyActivePanel').classList.add('unlocked');
+        }
+
         // Language & Seal Logic
         let chosenLanguage = null;
 
@@ -917,7 +959,7 @@
             breakBtn.classList.add('visible');
         }
 
-        function breakTheSeal() {
+        function breakTheseal() {
             if (!chosenLanguage) return;
 
             document.getElementById('ritualGate').style.display = 'none';
@@ -929,14 +971,14 @@
             document.getElementById('story-' + chosenLanguage).classList.add('active');
 
             const labels = {
-                english: "SEAL #01 BROKEN • READING IN ENGLISH",
-                hindi: "SEAL #01 BROKEN • हिंदी में पढ़ रहे हैं",
-                hinglish: "SEAL #01 BROKEN • READING IN HINGLISH"
+                english: "SEAL #01 ACTIVE • READING IN ENGLISH",
+                hindi: "SEAL #01 ACTIVE • हिंदी में पढ़ रहे हैं",
+                hinglish: "SEAL #01 ACTIVE • READING IN HINGLISH"
             };
             document.getElementById('currentLangDisplay').textContent = labels[chosenLanguage];
         }
 
-        function resetSeal() {
+        function resetLanguageSelection() {
             document.getElementById('storyChamber').classList.remove('unlocked');
             document.getElementById('ritualGate').style.display = 'block';
         }

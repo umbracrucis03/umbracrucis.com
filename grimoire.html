@@ -111,16 +111,28 @@
             filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
         }
 
-        /* CALLIGRAPHY HEADING */
+        /* INTENSELY GLOWING CALLIGRAPHY HEADING */
         .monarch-designation {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
+            font-size: 3.4rem;
             font-weight: bold;
-            color: #fff2b2;
+            color: #fffbdd;
             letter-spacing: 1.5px;
-            text-shadow: 0 0 12px #ffd700, 0 0 25px #ffa500;
+            text-shadow: 0 0 10px #ffea00, 0 0 20px #ffb700, 0 0 35px #ff8c00, 0 0 50px #ff4500;
             margin-bottom: 20px;
             line-height: 1.2;
+            animation: textGlowPulse 2s infinite alternate;
+        }
+
+        @keyframes textGlowPulse {
+            0% {
+                text-shadow: 0 0 8px #ffea00, 0 0 18px #ffb700, 0 0 30px #ff8c00, 0 0 45px #ff4500;
+                transform: scale(1);
+            }
+            100% {
+                text-shadow: 0 0 14px #ffffff, 0 0 25px #ffea00, 0 0 40px #ffb700, 0 0 60px #ff6600;
+                transform: scale(1.02);
+            }
         }
 
         /* RED INSTAGRAM BADGE BOX (POPS WITH RED BACKGROUND & BOUNDARY) */
@@ -182,7 +194,7 @@
             line-height: 1.65;
         }
 
-        /* SEAL #01 - CLICKABLE LINK BOX */
+        /* SEAL #01 - DIRECTS TO NEW DEDICATED REBOOT PAGE */
         .seal-box-link {
             display: block;
             text-decoration: none;
@@ -310,7 +322,8 @@
 
         <!-- PRIME MONARCH TRIBUTE BANNER -->
         <div class="monarch-banner">
-        <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
+            
+            <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
 
             <!-- Sister Instagram Badge (Red Pop Box) -->
             <a href="https://www.instagram.com/imnot.pravlleka?mdxt=cDJrcjFwbXY4YnQz" target="_blank" class="insta-profile-box">
@@ -326,8 +339,8 @@
             </p>
         </div>
 
-        <!-- SEAL #01: DIRECTS TO DEDICATED PAGE -->
-        <a href="granville-hotel.html" class="seal-box-link">
+        <!-- SEAL #01: DIRECTS TO THE NEW REBOOT PAGE -->
+        <a href="granville-hotel-rebooted.html" class="seal-box-link">
             <span class="seal-badge-preview">✦ Curator’s Privilege ✦</span>
             <h2 class="seal-box-title">SEAL #01 : GRANVILLE HOTEL : REBOOTED</h2>
             <p class="seal-click-prompt">Click here to approach the lock and select your language...</p>

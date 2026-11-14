@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grimoire’s Cabinet - Umbra Crucis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>Granville Hotel : Rebooted - Grimoire’s Cabinet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -13,7 +13,8 @@
             color: #d1b4a3;
             font-family: 'Georgia', serif;
             line-height: 1.8;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
+            overflow-x: hidden;
         }
 
         /* NAVIGATION BAR */
@@ -52,86 +53,400 @@
             width: 30px; 
             height: 21px; 
             cursor: pointer;
-            padding: 5px; /* Bigger touch target */
+            padding: 5px;
             box-sizing: content-box;
         }
         .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
-        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 200px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 200px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); z-index: 101; }
         .nav-links.active { display: flex; }
         .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
         .nav-links a:hover { color: #ff0000; background-color: rgba(40, 0, 0, 0.5); }
 
         /* CONTAINER */
-        .container { width: 90%; max-width: 800px; margin: 30px auto; }
-        section { 
+        .container { width: 92%; max-width: 850px; margin: 20px auto; }
+
+        /* MAIN HEADER SECTION */
+        .cabinet-header { 
             background-color: rgba(12, 12, 12, 0.85); 
             border: 1px solid #330000; 
             border-radius: 8px; 
-            padding: 40px 20px; 
+            padding: 35px 20px; 
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); 
-            text-align: center; 
+            text-align: center;
+            margin-bottom: 35px;
         }
 
-        /* HEADINGS & TEXT */
         h1.page-title { 
             font-family: 'Creepster', cursive; 
             font-size: 3rem; 
             color: #e60000; 
             letter-spacing: 2px; 
-            margin-bottom: 25px; 
+            margin-bottom: 15px; 
             text-shadow: 0 0 10px #990000; 
         }
 
         .description {
             font-size: 1.05rem;
             color: #cccccc;
-            margin-bottom: 25px;
             line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* CANVAS & CHROMA KEY DISPLAY */
-        .board-wrapper {
-            margin: 30px auto 20px auto;
-            max-width: 320px;
+        /* PRIME MONARCH TRIBUTE BANNER */
+        .monarch-banner {
+            background: linear-gradient(145deg, #160404 0%, #260707 50%, #0d0202 100%);
+            border: 2px solid #b8860b;
+            border-radius: 10px;
+            padding: 30px 25px;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            box-shadow: 
+                0 0 25px rgba(184, 134, 11, 0.25),
+                inset 0 0 20px rgba(179, 0, 0, 0.35);
+            animation: royalPulse 4s infinite alternate;
+        }
+
+        @keyframes royalPulse {
+            0% {
+                box-shadow: 0 0 18px rgba(184, 134, 11, 0.25), inset 0 0 15px rgba(179, 0, 0, 0.3);
+                border-color: #996515;
+            }
+            100% {
+                box-shadow: 0 0 32px rgba(218, 165, 32, 0.45), inset 0 0 25px rgba(230, 0, 0, 0.5);
+                border-color: #daa520;
+            }
+        }
+
+        .royal-crown-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.7));
+        }
+
+        .monarch-designation {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+            margin-bottom: 6px;
+        }
+
+        .monarch-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .monarch-tribute {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #e6ccb2;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        /* SEAL #01 - CURATOR'S PRIVILEGE CARD */
+        .seal-one-card {
+            background: linear-gradient(180deg, rgba(22, 4, 4, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+            border: 2px solid #800000;
+            border-top: 3px solid #daa520;
+            border-radius: 10px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(139, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        .badges-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .privilege-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #4d0000, #800000, #4d0000);
+            border: 1px solid #daa520;
+            color: #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 2.5px;
+            padding: 5px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(218, 165, 32, 0.3);
+        }
+
+        .seal-horror-badge {
+            display: inline-block;
+            background-color: rgba(15, 0, 0, 0.9);
+            border: 1px solid #cc0000;
+            color: #ff4d4d;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
+            box-shadow: inset 0 0 10px rgba(204, 0, 0, 0.3);
+        }
+
+        .story-title {
+            font-family: 'Creepster', cursive;
+            font-size: 2.6rem;
+            color: #ff1a1a;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 12px #800000;
+        }
+
+        .story-hook {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #bfa393;
+            font-size: 1.02rem;
+            margin-bottom: 28px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* RITUAL GATE (LANGUAGE SELECT + BREAK THE SEAL) */
+        .ritual-gate {
+            background-color: rgba(15, 3, 3, 0.85);
+            border: 1px dashed #660000;
+            border-radius: 8px;
+            padding: 25px 20px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .step-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #daa520;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .lang-selector {
             display: flex;
             justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
         }
 
-        #chroma-canvas {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
-            will-change: transform;
-        }
-
-        /* RITUAL WARNING BOX */
-        .ritual-box {
-            background-color: rgba(25, 5, 5, 0.7);
-            border: 1px dashed #660000;
-            border-radius: 6px;
-            padding: 25px 20px;
-            margin: 20px auto 10px auto;
-            max-width: 100%;
-        }
-
-        .ritual-message {
-            font-family: 'Georgia', serif;
-            font-size: 1.05rem;
+        .lang-btn {
+            background-color: #140404;
             color: #d1b4a3;
-            margin-bottom: 15px;
-            line-height: 1.6;
+            border: 1px solid #660000;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: bold;
+            padding: 10px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        .ritual-warning {
+        .lang-btn:hover {
+            border-color: #ff3333;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+
+        .lang-btn.selected {
+            background-color: #660000;
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+            transform: scale(1.04);
+        }
+
+        .break-seal-wrapper {
+            margin-top: 10px;
+            min-height: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .break-seal-btn {
+            display: none;
+            background: linear-gradient(135deg, #800000 0%, #cc0000 50%, #660000 100%);
+            color: #ffffff;
+            border: 2px solid #ffd700;
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: #ff0000;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            font-size: 1.05rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
             text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 10px rgba(218, 165, 32, 0.5);
+            animation: sealPulse 1.5s infinite alternate;
+            transition: transform 0.2s ease;
+        }
+
+        .break-seal-btn.visible {
+            display: inline-block;
+        }
+
+        .break-seal-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #a30000 0%, #ff0000 50%, #800000 100%);
+        }
+
+        @keyframes sealPulse {
+            0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5), 0 0 6px rgba(218, 165, 32, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), 0 0 15px rgba(218, 165, 32, 0.8); }
+        }
+
+        .hint-text {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* REVEALED STORY READING CHAMBER */
+        .story-chamber {
+            display: none;
+            text-align: left;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #4d0000;
+            animation: fadeInStory 0.8s ease forwards;
+        }
+
+        .story-chamber.unlocked {
+            display: block;
+        }
+
+        @keyframes fadeInStory {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chamber-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: rgba(30, 5, 5, 0.7);
+            border: 1px solid #440000;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .active-lang-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: #ffd700;
+            letter-spacing: 1px;
+        }
+
+        .switch-lang-btn {
+            background: transparent;
+            border: 1px solid #800000;
+            color: #ff6666;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .switch-lang-btn:hover {
+            background-color: #4d0000;
+            color: #ffffff;
+        }
+
+        .story-content {
+            display: none;
+            font-size: 1.08rem;
+            color: #dcd0c8;
+            line-height: 1.9;
+        }
+
+        .story-content.active {
+            display: block;
+        }
+
+        .story-content h3 {
+            font-family: 'Cinzel', serif;
+            color: #ff4d4d;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            border-bottom: 1px solid #330000;
+            padding-bottom: 6px;
+        }
+
+        .story-content p {
+            margin-bottom: 18px;
+        }
+
+        /* FUTURE COMMUNITY SUBMISSIONS DIVIDER */
+        .cabinet-divider {
+            text-align: center;
+            margin: 45px 0 25px 0;
+            position: relative;
+        }
+
+        .cabinet-divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #660000, transparent);
+            z-index: 1;
+        }
+
+        .cabinet-divider span {
+            position: relative;
+            z-index: 2;
+            background-color: #090303;
+            padding: 6px 18px;
+            border: 1px solid #440000;
+            border-radius: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #a68a7c;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .future-seals-placeholder {
+            background-color: rgba(12, 12, 12, 0.75);
+            border: 1px dashed #330000;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            color: #887368;
+            font-style: italic;
+            font-size: 0.98rem;
         }
 
         footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
@@ -139,6 +454,7 @@
 </head>
 <body>
 
+    <!-- TOP NAVIGATION -->
     <nav class="navbar">
         <a href="index.html" class="nav-logo">
             <img src="logo.png" alt="Umbra Crucis Logo">
@@ -155,29 +471,198 @@
     </nav>
 
     <div class="container">
-        <section>
-            <h1 class="page-title">GRIMOIRE’S CABINET</h1>
 
+        <!-- CABINET INTRO -->
+        <div class="cabinet-header">
+            <h1 class="page-title">GRIMOIRE’S CABINET</h1>
             <p class="description">
-                A cabinet reserved exclusively for reader-requested and community-favored tales. These are the stories summoned by our audience—handpicked, expanded, and dragged back into the shadows by popular demand.
+                A locked sanctum reserved exclusively for reader-requested and community-summoned tales—handpicked, expanded, and dragged back into the shadows by popular demand.
+            </p>
+        </div>
+
+        <!-- PRIME MONARCH TRIBUTE BANNER -->
+        <div class="monarch-banner">
+            <div class="royal-crown-icon">👑🗝️</div>
+            <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
+            <div class="monarch-name">Pravlleka Singh</div>
+            <p class="monarch-tribute">
+                “Before the locks were forged and the shadows given a voice, one vision sparked this archive into existence. By royal decree of the dark, the very first vault of Grimoire’s Cabinet belongs eternally to its initiator—the architect who unlocked the forbidden.”
+            </p>
+        </div>
+
+        <!-- SEAL #01: GRANVILLE HOTEL : REBOOTED -->
+        <div class="seal-one-card">
+            <div class="badges-container">
+                <span class="privilege-tag">✦ Curator’s Privilege ✦</span>
+                <span class="seal-horror-badge">Prime Monarch and Arch-Curator of Umbra Crucis — SEAL #01</span>
+            </div>
+
+            <h2 class="story-title">Granville Hotel : Rebooted</h2>
+            <p class="story-hook">
+                The inaugural curse unsealed from the Cabinet’s deepest shelf. Choose your tongue below to approach the lock.
             </p>
 
-            <div class="board-wrapper">
-                <video id="green-video" autoplay loop muted playsinline crossorigin="anonymous" style="display:none;">
-                    <source src="closed-sign.mp4" type="video/mp4">
-                </video>
-                <canvas id="chroma-canvas"></canvas>
+            <!-- STEP 1 & 2: LANGUAGE SELECTION & BREAK THE SEAL -->
+            <div class="ritual-gate" id="ritualGate">
+                <div class="step-label">Step I — Choose Your Language</div>
+                <div class="lang-selector">
+                    <button class="lang-btn" onclick="selectLanguage('english', this)">English</button>
+                    <button class="lang-btn" onclick="selectLanguage('hindi', this)">हिंदी (Hindi)</button>
+                    <button class="lang-btn" onclick="selectLanguage('hinglish', this)">Hinglish</button>
+                </div>
+
+                <div class="break-seal-wrapper">
+                    <span class="hint-text" id="sealHint">Select a language above to awaken the seal...</span>
+                    <button class="break-seal-btn" id="breakSealBtn" onclick="breakTheSeal()">
+                        🔥 Break the Seal
+                    </button>
+                </div>
             </div>
 
-            <div class="ritual-box">
-                <p class="ritual-message">
-                    We are currently binding the seals and blessing this cabinet to contain the cursed tales summoned by your demand. The doors remain locked while the ritual completes.
-                </p>
-                <p class="ritual-warning">
-                    Whatever you do, do not attempt to force them open.
-                </p>
+            <!-- STEP 3: UNLOCKED STORY CHAMBER -->
+            <div class="story-chamber" id="storyChamber">
+                <div class="chamber-topbar">
+                    <span class="active-lang-label" id="currentLangDisplay">SEAL #01 BROKEN • READING IN ENGLISH</span>
+                    <button class="switch-lang-btn" onclick="resetSeal()">Change Language</button>
+                </div>
+
+                <!-- ENGLISH STORY -->
+                <div class="story-content active" id="story-english">
+                    <h3>The Forgotten History</h3>
+                    <p>After Radhika's death, Kotwaal refused to leave the hotel without knowing what had happened to his employer. He confronted the manager, demanding an explanation.</p>
+                    <p>For a few moments, the manager remained silent. Then he slowly locked the reception door, pulled out an old photograph from a drawer, and placed it on the counter.</p>
+                    <p>It showed a beautiful young woman holding a violin. She was dressed in a white saree, with long black hair falling over her shoulders.</p>
+                    <p>"Her name was Anamika," the manager whispered. "She was the wife of Granville Hotel's original owner, Edward Granville. This hotel was built in 1946, and Room 333 was their private room." Kotwaal stared at the photograph.</p>
+                    <p>"What happened to her?"</p>
+                    <p>The manager swallowed hard before continuing.</p>
+                    <p>"Anamika was an exceptional violinist. Every night, at exactly 3:13 AM, she would sit beside the window and play the same melody for her husband. But one night, Edward disappeared. Nobody ever found him."</p>
+                    <p>"Then what happened to Anamika?"</p>
+                    <p>The manager lowered his voice.</p>
+                    <p>"Three days later, the hotel staff found her dead inside Room 333. She was sitting on a chair, holding her violin. Her eyes were wide open, and her face was covered in blood. But the strangest thing was that there wasn't a single wound on her body."</p>
+
+                    <h3>The Three Red Threads</h3>
+                    <p>The manager continued.</p>
+                    <p>"After her death, terrible things began happening. Guests staying in rooms opposite 333 started hearing violin music at 3:13 AM. Some claimed they saw a woman standing inside their rooms. Others were found dead with their eyes completely red."</p>
+                    <p>The hotel was eventually closed for several years.</p>
+                    <p>Before reopening it, the owners called a priest to investigate. He ordered the management to seal Room 333 with three padlocks and three red threads.</p>
+                    <p>But he left one final warning:</p>
+                    <p>"Never look through the keyhole. Whatever you see inside is not what is actually in that room. And if the room appears completely red, it means she has finally seen you."</p>
+                    <p>Kotwaal's entire body went cold.</p>
+                    <p>"Then... what happened to Radhika?"</p>
+                    <p>The manager looked towards the staircase.</p>
+                    <p>"She saw Anamika's eyes."</p>
+
+                    <h3>The Man Behind the Wall</h3>
+                    <p>Kotwaal took Radhika's body for the last rites and left the hotel immediately. That night, at exactly 3:13 AM, the manager was sitting alone at the reception when the hotel telephone suddenly rang.</p>
+                    <p>He picked it up.</p>
+                    <p>A woman's voice whispered:</p>
+                    <p>"Where is my husband?"</p>
+                    <p>The manager's face turned pale.</p>
+                    <p>The manager dropped the receiver.</p>
+                    <p>A few seconds later, the same violin melody began playing from the third floor very loudly.</p>
+                    <p>Terrified, the manager rushed upstairs with a flashlight. As he approached Room 333, he noticed something unusual.</p>
+                    <p>All three red threads had snapped.</p>
+                    <p>The padlocks were hanging loosely, and the door was slightly open. He pushed it gently.</p>
+                    <p>Inside, everything was covered in dust. The old chair stood in the middle of the room, and the violin rested beside it.</p>
+                    <p>But something else caught his attention.</p>
+                    <p>A section of the wall behind the chair had begun to crack.</p>
+                    <p>The manager slowly approached it.</p>
+                    <p>And then he heard a familiar voice.</p>
+                    <p>"Edward..."</p>
+                    <p>It was Anamika's voice.</p>
+                    <p>Suddenly, a loud knock came from behind the wall.</p>
+                    <p>THUD!</p>
+                    <p>The manager stumbled backwards.</p>
+                    <p>Another knock followed.</p>
+                    <p>THUD! THUD!</p>
+                    <p>He knew exactly what was hidden behind that wall.</p>
+                    <p>Because he was the one who had put it there.</p>
+
+                    <h3>The Sinful Secret</h3>
+                    <p>Forty years earlier, the manager had worked as a young accountant at Granville Hotel.</p>
+                    <p>He had always envied Edward's wealth and position. One night, during a heated argument over the hotel's ownership, he murdered Edward inside Room 333.</p>
+                    <p>He wrapped Edward's body in a carpet and secretly concealed it behind a newly constructed section of the room's wall.</p>
+                    <p>Nobody ever discovered the truth. But Anamika had witnessed the crime while the manager was hiding Edward's body.</p>
+                    <p>Before she could actually think to expose him, the same night the manager poisoned her and staged her death as a mysterious incident.</p>
+                    <p>He believed he had buried the evidence forever. But he was wrong.</p>
+                    <p>Anamika died, but her spirit never left Room 333.</p>
+                    <p>Every night at 3:13 AM, she played the violin, waiting for the moment when the wall hiding her husband's body would finally be opened.</p>
+                    <p>The manager had kept the room sealed for decades, not to protect the guests from a witch...</p>
+                    <p>But to protect himself from the truth.</p>
+
+                    <h3>The Three Spirits</h3>
+                    <p>The manager desperately tried to leave the room.</p>
+                    <p>But the door slammed shut.</p>
+                    <p>The violin began playing on its own.</p>
+                    <p>From the corner of the room, a woman in a white saree slowly emerged.</p>
+                    <p>It was Anamika.</p>
+                    <p>Her long hair covered her face, and her fingers were stained with dark blood.</p>
+                    <p>The manager fell to his knees.</p>
+                    <p>"Please! Forgive me! I didn't mean to..."</p>
+                    <p>Anamika slowly raised her head.</p>
+                    <p>"Where is my husband?"</p>
+                    <p>Before he could answer, a second figure appeared beside the broken wall.</p>
+                    <p>It was Edward.</p>
+                    <p>His face was horribly disfigured, his clothes covered in dust, and his neck twisted at an unnatural angle.</p>
+                    <p>The manager screamed.</p>
+                    <p>But there was one more person standing behind them.</p>
+                    <p>Radhika.</p>
+                    <p>Her face was pale, her eyes blood-red, and her feet were covered in dust.</p>
+                    <p>The manager stared at her in disbelief.</p>
+                    <p>"How... how are you here?"</p>
+                    <p>Radhika slowly smiled.</p>
+                    <p>"You told me there was a witch trapped inside this room."</p>
+                    <p>She moved closer. "But you never told me that there was a murderer standing outside it." The manager began crawling towards the door.</p>
+                    <p>Anamika lifted her violin and started playing.</p>
+                    <p>Edward stepped forward.</p>
+                    <p>And Radhika whispered:</p>
+                    <p>"You buried their bodies, but you forgot that the dead never forget."</p>
+                    <p>The three spirits surrounded him.</p>
+                    <p>A blood-curdling scream echoed through the hotel.</p>
+                    <p>Then, suddenly, everything went silent.</p>
+
+                    <h3>The Last Guest Register</h3>
+                    <p>The following morning, the hotel staff found the manager's body lying outside Room 333.</p>
+                    <p>His eyes were wide open, his face frozen in absolute terror, and his hands were covered in deep scratches.</p>
+                    <p>The wall inside Room 333 had completely collapsed.</p>
+                    <p>Behind it, police discovered Edward Granville's skeletal remains, wrapped in an old carpet.</p>
+                    <p>But they found nothing else—just three chairs stood inside the room. The hotel was permanently shut down.</p>
+                    <p>Years later, a group of investigators visited the abandoned building to document its history. They found the old guest register still lying on the reception desk.</p>
+                    <p>Most of its pages were covered in dust.</p>
+                    <p>But the final page had three names written in fresh red ink:</p>
+                    <p>Anamika Granville.<br>Edward Granville.<br>Radhika.</p>
+                    <p>Beneath them, someone had written:</p>
+                    <p>We are together now.</p>
+                    <p>Just as the investigators were about to leave, one of them heard a violin playing somewhere upstairs.</p>
+                    <p>He checked his watch.</p>
+                    <p>3:13 AM.</p>
+                    <p>He slowly looked towards the staircase.</p>
+                    <p>At the far end of the corridor, Room 333 stood open. They went inside Room 333. The investigator was a little afraid as he could not see the source of the violin sound as the room was completely abandoned. He slowly stepped backwards, but the door slammed shut.</p>
+                    <p>Suddenly, the investigator heard a chair being dragged across the floor behind him.</p>
+                    <p>And then, a fourth name appeared in the guest register.</p>
+                </div>
+
+                <!-- HINDI STORY SLOT -->
+                <div class="story-content" id="story-hindi">
+                    <p><em>[Hindi translation of "Granville Hotel : Rebooted" goes here. Send it whenever you are ready and it will be updated!]</em></p>
+                </div>
+
+                <!-- HINGLISH STORY SLOT -->
+                <div class="story-content" id="story-hinglish">
+                    <p><em>[Hinglish translation of "Granville Hotel : Rebooted" goes here. Send it whenever you are ready and it will be updated!]</em></p>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <!-- DIVIDER FOR LATER COMMUNITY SUBMISSIONS -->
+        <div class="cabinet-divider">
+            <span>Subsequent Seals of the Cabinet</span>
+        </div>
+
+        <div class="future-seals-placeholder">
+            Seals #02 and beyond remain bound in darkness—awaiting future tales summoned by the readers of Umbra Crucis.
+        </div>
+
     </div>
 
     <footer>
@@ -185,7 +670,7 @@
     </footer>
 
     <script>
-        // Instant Menu Toggle (Fixes 3-second latency on mobile)
+        // Instant Mobile Menu Toggle
         const menuBtn = document.getElementById("menuBtn");
         const navMenu = document.getElementById("navMenu");
         
@@ -197,56 +682,43 @@
         menuBtn.addEventListener("touchstart", toggleMenu, { passive: false });
         menuBtn.addEventListener("click", toggleMenu);
 
-        // High-Performance 24 FPS Chroma Key Processing
-        const video = document.getElementById('green-video');
-        const canvas = document.getElementById('chroma-canvas');
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        // Language & Seal Logic
+        let chosenLanguage = null;
 
-        let lastFrameTime = 0;
-        const fpsInterval = 1000 / 24; // Limit processing to 24 FPS
+        function selectLanguage(lang, btnElement) {
+            chosenLanguage = lang;
 
-        function processFrame(now) {
-            requestAnimationFrame(processFrame);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('selected'));
+            btnElement.classList.add('selected');
 
-            if (video.paused || video.ended) return;
-
-            const elapsed = now - lastFrameTime;
-            if (elapsed < fpsInterval) return; // Skip extra frames to keep CPU cool
-
-            lastFrameTime = now - (elapsed % fpsInterval);
-
-            if (canvas.width !== video.videoWidth && video.videoWidth > 0) {
-                // Scale down internal canvas resolution slightly to boost mobile performance
-                canvas.width = Math.min(video.videoWidth, 480);
-                canvas.height = (video.videoHeight / video.videoWidth) * canvas.width;
-            }
-
-            if (canvas.width === 0) return;
-
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const buf32 = new Uint32Array(frame.data.buffer);
-            const len = buf32.length;
-
-            // Fast 32-bit pixel iteration
-            for (let i = 0; i < len; i++) {
-                const pixel = buf32[i];
-                const r = pixel & 0xFF;
-                const g = (pixel >> 8) & 0xFF;
-                const b = (pixel >> 16) & 0xFF;
-
-                if (g > 90 && r < 120 && b < 120 && g > r * 1.2) {
-                    buf32[i] = 0; // Set pixel to fully transparent
-                }
-            }
-            ctx.putImageData(frame, 0, 0);
+            document.getElementById('sealHint').style.display = 'none';
+            const breakBtn = document.getElementById('breakSealBtn');
+            breakBtn.classList.add('visible');
         }
 
-        video.addEventListener('play', () => {
-            requestAnimationFrame(processFrame);
-        });
+        function breakTheSeal() {
+            if (!chosenLanguage) return;
 
-        video.play().catch(() => {});
+            document.getElementById('ritualGate').style.display = 'none';
+
+            const chamber = document.getElementById('storyChamber');
+            chamber.classList.add('unlocked');
+
+            document.querySelectorAll('.story-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('story-' + chosenLanguage).classList.add('active');
+
+            const labels = {
+                english: "SEAL #01 BROKEN • READING IN ENGLISH",
+                hindi: "SEAL #01 BROKEN • हिंदी में पढ़ रहे हैं",
+                hinglish: "SEAL #01 BROKEN • READING IN HINGLISH"
+            };
+            document.getElementById('currentLangDisplay').textContent = labels[chosenLanguage];
+        }
+
+        function resetSeal() {
+            document.getElementById('storyChamber').classList.remove('unlocked');
+            document.getElementById('ritualGate').style.display = 'block';
+        }
     </script>
 </body>
 </html>

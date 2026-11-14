@@ -86,6 +86,16 @@
             border-color: #ff3333;
         }
 
+        .cabinet-category-tag {
+            font-family: 'Creepster', cursive;
+            font-size: 1.1rem;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(218, 165, 32, 0.6);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
         .seal-badge-preview {
             display: inline-block;
             background: linear-gradient(90deg, #4d0000, #800000, #4d0000);
@@ -211,6 +221,7 @@
             margin-top: 10px;
             min-height: 56px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
@@ -239,6 +250,22 @@
         @keyframes sealPulse {
             0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5); }
             100% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); }
+        }
+
+        .loading-seal-text {
+            display: none;
+            font-family: 'Cinzel', serif;
+            color: #ff3333;
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 1px;
+            animation: fadeInOut 1s infinite alternate;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeInOut {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
         }
 
         .hint-text {
@@ -355,6 +382,9 @@
 </head>
 <body id="topOfPage">
 
+    <!-- Hidden Audio Element for your seal-sound.mp3 file -->
+    <audio id="sealAudio" src="seal-sound.mp3" preload="auto"></audio>
+
     <nav class="navbar">
         <a href="index.html" class="nav-logo">
             <img src="logo.png" alt="Umbra Crucis Logo">
@@ -376,15 +406,16 @@
             <a href="grimoire.html" class="back-to-cabinet-btn">← Back to Cabinet</a>
 
             <div style="text-align: center; margin-bottom: 25px;">
+                <div class="cabinet-category-tag">Grimoire’s Cabinet</div>
                 <span class="seal-badge-preview">✦ SEAL #01 ✦</span>
-                <h2 style="font-family: 'Creepster', cursive; font-size: 2.4rem; color: #ff1a1a; text-shadow: 0 0 10px #800000;">Granville Hotel : Rebooted</h2>
+                <!-- Dynamic Title Header -->
+                <h2 id="storyTitleHeading" style="font-family: 'Creepster', cursive; font-size: 2.4rem; color: #ff1a1a; text-shadow: 0 0 10px #800000;">Granville Hotel : Rebooted</h2>
             </div>
 
             <!-- PREQUEL / FIRST PART BANNER -->
             <div class="prequel-banner-card">
                 <h4>Before the Reboot...</h4>
                 <p>Catch up on the original chilling events that preceded the awakening of Room 333.</p>
-                <!-- REPLACE href="granville-hotel.html" with your actual first-part link if different -->
                 <a href="granville-hotel.html" target="_blank" class="prequel-link-btn">Read Part I (Original Story) →</a>
             </div>
 
@@ -402,6 +433,7 @@
                     <button class="break-seal-btn" id="breakSealBtn" onclick="breakTheseal()">
                         Break the Seal & Enter
                     </button>
+                    <span class="loading-seal-text" id="loadingSealText">Breaker of seals... Unlocking the shadows (4s)...</span>
                 </div>
             </div>
 
@@ -616,7 +648,7 @@
                     <p>"तुमने मुझसे कहा था कि इस कमरे के अंदर एक चुड़ैल कैद है।"</p>
                     <p>वह और करीब आई। "लेकिन तुमने मुझे यह कभी नहीं बताया कि इसके बाहर एक कातिल खड़ा है।" मैनेजर दरवाज़े की तरफ रेंगने लगा।</p>
                     <p>अनामिका ने अपना वायलिन उठाया और बजाना शुरू कर दिया।</p>
-                    <p>एडवर्ड आगे बढ़ा।</p>
+                    <p>Edward आगे बढ़ा।</p>
                     <p>और राधिका ने सरगोशी की:</p>
                     <p>"तुमने उनकी लाशें तो दफना दीं, लेकिन तुम यह भूल गए कि मुर्दे कभी नहीं भूलते।"</p>
                     <p>तीनों आत्माओं ने उसे घेर लिया।</p>
@@ -742,7 +774,7 @@
                     <h3>Aakhiri Guest Register (The Last Guest Register)</h3>
                     <p>Agli subah, hotel ke staff ko manager ki laash Room 333 ke bahar padi mili.</p>
                     <p>Uski aankhein khuli hui thi, uska chehra behad khauf se jama hua tha, aur uske haathon par gehri kharochon ke nishaan the.</p>
-                    <p>Room 333 ke andar ki deewar poori tarah gir chuki thi.</p>
+                    <p>Room 333 ke andar ki deewar poori tarah gir chuki تھی۔</p>
                     <p>Uske peeche, police ko Edward Granville ka kankal mila, jo ek purane कालीन mein lipta hua tha.</p>
                     <p>Lekin unhe wahan aur kuch nahi mila—kamre ke andar bas teen kursiyan rakhi thi. Hotel ko hamesha ke liye band कर दिया गया।</p>
                     <p>Saalon baad, investigators ka ek group is khandahar ho chuki imarat ke itihaas ko record karne wahan aaya. Unhe reception desk par abhi bhi purana guest register pada mila.</p>
@@ -757,7 +789,7 @@
                     <p>Usne धीरे से सीढ़ियों की तरफ देखा।</p>
                     <p>Corridor ke aakhiri chhor par, Room 333 ka darwaza khula हुआ था। वे रूम 333 के अंदर गए। Jaanchkarta thoda dara hua tha kyunki use violin ki awaaz ka koi source nahi dikh raha tha aur kamra poori tarah veeran pada tha. Usne dheere se peeche kadam badhaya, lekin darwaza zor se band ho gaya.</p>
                     <p>Achanak, jaanchkarta ko apne peeche farsh par ek kursi ghaseete jaane ki awaaz sunai di.</p>
-                    <p>Aur tabhi, guest register mein ek chautha naam ubhar aaya.</p>
+                    <p>Aur तभी, guest register mein ek chautha naam ubhar aaya.</p>
                 </div>
 
                 <!-- RETURN TO TOP BUTTON -->
@@ -795,25 +827,60 @@
             breakBtn.classList.add('visible');
         }
 
+        // Play custom seal-sound.mp3 for 4 seconds before entering
         function breakTheseal() {
             if (!chosenLanguage) return;
-            document.getElementById('ritualGate').style.display = 'none';
-            const chamber = document.getElementById('storyChamber');
-            chamber.classList.add('unlocked');
-            document.querySelectorAll('.story-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('story-' + chosenLanguage).classList.add('active');
 
-            const labels = {
-                english: "SEAL #01 ACTIVE • READING IN ENGLISH",
-                hindi: "SEAL #01 ACTIVE • हिंदी में पढ़ रहे हैं",
-                hinglish: "SEAL #01 ACTIVE • READING IN HINGLISH"
-            };
-            document.getElementById('currentLangDisplay').textContent = labels[chosenLanguage];
+            const breakBtn = document.getElementById('breakSealBtn');
+            const loadingText = document.getElementById('loadingSealText');
+            const sealAudio = document.getElementById('sealAudio');
+            
+            breakBtn.style.display = 'none';
+            loadingText.style.display = 'block';
+
+            // Play the repository audio file
+            if (sealAudio) {
+                sealAudio.currentTime = 0;
+                sealAudio.play().catch(err => console.log("Audio play prevented or blocked:", err));
+            }
+
+            // Wait 4 seconds for the audio to play, then unlock the reading chamber
+            setTimeout(() => {
+                document.getElementById('ritualGate').style.display = 'none';
+                loadingText.style.display = 'none';
+
+                const chamber = document.getElementById('storyChamber');
+                chamber.classList.add('unlocked');
+
+                document.querySelectorAll('.story-content').forEach(el => el.classList.remove('active'));
+                document.getElementById('story-' + chosenLanguage).classList.add('active');
+
+                // Dynamic Title Change: Hindi font heading when Hindi is selected
+                const titleHeading = document.getElementById('storyTitleHeading');
+                if (chosenLanguage === 'hindi') {
+                    titleHeading.textContent = "ग्रेनविले होटल : रीबूटेड";
+                } else {
+                    titleHeading.textContent = "Granville Hotel : Rebooted";
+                }
+
+                const labels = {
+                    english: "SEAL #01 ACTIVE • READING IN ENGLISH",
+                    hindi: "SEAL #01 ACTIVE • हिंदी में पढ़ रहे हैं",
+                    hinglish: "SEAL #01 ACTIVE • READING IN HINGLISH"
+                };
+                document.getElementById('currentLangDisplay').textContent = labels[chosenLanguage];
+            }, 4000); // Exactly 4 seconds delay matching your audio
         }
 
         function resetLanguageSelection() {
             document.getElementById('storyChamber').classList.remove('unlocked');
             document.getElementById('ritualGate').style.display = 'block';
+            document.getElementById('breakSealBtn').style.display = 'inline-block';
+            const sealAudio = document.getElementById('sealAudio');
+            if (sealAudio) {
+                sealAudio.pause();
+                sealAudio.currentTime = 0;
+            }
         }
 
         function scrollToTop() {

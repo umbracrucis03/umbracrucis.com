@@ -93,16 +93,28 @@
             margin: 0 auto;
         }
 
-        /* GOLDEN SPARKLING TRIBUTE BANNER */
+        /* GOLDEN SPARKLING TRIBUTE BANNER WITH INTENSE SIDE GLOW */
         .monarch-banner {
             background: linear-gradient(145deg, #1f1604 0%, #332305 50%, #120c02 100%);
-            border: 2px solid #ffd700;
-            border-radius: 10px;
+            border: 3px solid #ffd700;
+            border-radius: 12px;
             padding: 35px 25px;
             margin-bottom: 35px;
             text-align: center;
             position: relative;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.35), inset 0 0 20px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 25px #ffd700, 0 0 50px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.4);
+            animation: monarchGlowPulse 2s infinite alternate;
+        }
+
+        @keyframes monarchGlowPulse {
+            0% {
+                border-color: #d4af37;
+                box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255, 215, 0, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.2);
+            }
+            100% {
+                border-color: #fff6a8;
+                box-shadow: 0 0 35px #ffe066, 0 0 70px rgba(255, 215, 0, 0.8), inset 0 0 30px rgba(255, 215, 0, 0.6);
+            }
         }
 
         .royal-crown-icon {
@@ -111,31 +123,19 @@
             filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
         }
 
-        /* INTENSELY GLOWING CALLIGRAPHY HEADING */
+        /* CALLIGRAPHY HEADING */
         .monarch-designation {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.4rem;
+            font-size: 3.2rem;
             font-weight: bold;
-            color: #fffbdd;
+            color: #fff2b2;
             letter-spacing: 1.5px;
-            text-shadow: 0 0 10px #ffea00, 0 0 20px #ffb700, 0 0 35px #ff8c00, 0 0 50px #ff4500;
+            text-shadow: 0 0 12px #ffd700, 0 0 25px #ffa500;
             margin-bottom: 20px;
             line-height: 1.2;
-            animation: textGlowPulse 2s infinite alternate;
         }
 
-        @keyframes textGlowPulse {
-            0% {
-                text-shadow: 0 0 8px #ffea00, 0 0 18px #ffb700, 0 0 30px #ff8c00, 0 0 45px #ff4500;
-                transform: scale(1);
-            }
-            100% {
-                text-shadow: 0 0 14px #ffffff, 0 0 25px #ffea00, 0 0 40px #ffb700, 0 0 60px #ff6600;
-                transform: scale(1.02);
-            }
-        }
-
-        /* RED INSTAGRAM BADGE BOX (POPS WITH RED BACKGROUND & BOUNDARY) */
+        /* RED INSTAGRAM BADGE BOX */
         .insta-profile-box {
             display: inline-flex;
             align-items: center;
@@ -194,7 +194,7 @@
             line-height: 1.65;
         }
 
-        /* SEAL #01 - DIRECTS TO NEW DEDICATED REBOOT PAGE */
+        /* SEAL #01 - CLICKABLE LINK BOX */
         .seal-box-link {
             display: block;
             text-decoration: none;
@@ -320,7 +320,7 @@
             </p>
         </div>
 
-        <!-- PRIME MONARCH TRIBUTE BANNER -->
+        <!-- PRIME MONARCH TRIBUTE BANNER WITH INTENSE GLOW -->
         <div class="monarch-banner">
             
             <div class="monarch-designation">Prime Monarch and Arch-Curator of Umbra Crucis</div>
@@ -339,8 +339,8 @@
             </p>
         </div>
 
-        <!-- SEAL #01: DIRECTS TO THE NEW REBOOT PAGE -->
-        <a href="granville-hotel-rebooted.html" class="seal-box-link">
+        <!-- SEAL #01: REDIRECTS TO THE REBOOTED STORY PAGE -->
+        <a href="granville-hotel-reboot.html" class="seal-box-link">
             <span class="seal-badge-preview">✦ Curator’s Privilege ✦</span>
             <h2 class="seal-box-title">SEAL #01 : GRANVILLE HOTEL : REBOOTED</h2>
             <p class="seal-click-prompt">Click here to approach the lock and select your language...</p>

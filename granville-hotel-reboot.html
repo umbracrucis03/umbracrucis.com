@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granville Hotel : Rebooted - Grimoire’s Cabinet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #080808;
+            background-image: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
+            color: #d1b4a3;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+        }
+
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 30px; 
+            position: relative; 
+            z-index: 100; 
+        }
+
+        .nav-logo img {
+            height: 80px;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+            transform: scale(2.2);
+            transform-origin: left center;
+            display: block;
+            filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7));
+        }
+
+        .menu-icon { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            width: 30px; 
+            height: 21px; 
+            cursor: pointer;
+            padding: 5px;
+            box-sizing: content-box;
+        }
+        .menu-icon span { display: block; height: 3px; width: 100%; background-color: #e60000; border-radius: 3px; box-shadow: 0 0 5px #ff0000; }
+        .nav-links { display: none; position: absolute; top: 60px; right: 30px; background-color: rgba(15, 0, 0, 0.95); border: 1px solid #660000; border-radius: 5px; flex-direction: column; width: 200px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); z-index: 101; }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #d1b4a3; text-decoration: none; padding: 12px 20px; border-bottom: 1px solid #2a0000; font-family: 'Cinzel', serif; }
+        .nav-links a:hover { color: #ff0000; background-color: rgba(40, 0, 0, 0.5); }
+
+        .container { width: 92%; max-width: 850px; margin: 20px auto; }
+
+        .story-active-panel {
+            background: linear-gradient(180deg, rgba(20, 4, 4, 0.98) 0%, rgba(10, 2, 2, 0.99) 100%);
+            border: 2px solid #990000;
+            border-top: 3px solid #ffd700;
+            border-radius: 10px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(179, 0, 0, 0.4);
+        }
+
+        .back-to-cabinet-btn {
+            background: transparent;
+            border: 1px solid #800000;
+            color: #ff6666;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .back-to-cabinet-btn:hover {
+            background-color: #4d0000;
+            color: #ffffff;
+            border-color: #ff3333;
+        }
+
+        .seal-badge-preview {
+            display: inline-block;
+            background: linear-gradient(90deg, #4d0000, #800000, #4d0000);
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 5px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* PREQUEL / FIRST PART BANNER */
+        .prequel-banner-card {
+            background: linear-gradient(135deg, rgba(30, 5, 5, 0.95) 0%, rgba(15, 2, 2, 0.95) 100%);
+            border: 1px solid #b30000;
+            border-left: 4px solid #ff3333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(153, 0, 0, 0.3);
+        }
+
+        .prequel-banner-card h4 {
+            font-family: 'Cinzel', serif;
+            color: #ff6666;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .prequel-banner-card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
+        .prequel-link-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #660000, #990000);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .prequel-link-btn:hover {
+            background: linear-gradient(90deg, #800000, #cc0000);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* RITUAL GATE */
+        .ritual-gate {
+            background-color: rgba(12, 2, 2, 0.85);
+            border: 1px dashed #660000;
+            border-radius: 8px;
+            padding: 25px 20px;
+            max-width: 550px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .step-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #ffd700;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .lang-selector {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .lang-btn {
+            background-color: #140404;
+            color: #d1b4a3;
+            border: 1px solid #660000;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: bold;
+            padding: 10px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .lang-btn:hover {
+            border-color: #ff3333;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+
+        .lang-btn.selected {
+            background-color: #660000;
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+            transform: scale(1.04);
+        }
+
+        .break-seal-wrapper {
+            margin-top: 10px;
+            min-height: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .break-seal-btn {
+            display: none;
+            background: linear-gradient(135deg, #800000 0%, #cc0000 50%, #660000 100%);
+            color: #ffffff;
+            border: 2px solid #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 10px rgba(218, 165, 32, 0.5);
+            animation: sealPulse 1.5s infinite alternate;
+        }
+
+        .break-seal-btn.visible {
+            display: inline-block;
+        }
+
+        @keyframes sealPulse {
+            0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); }
+        }
+
+        .hint-text {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* READING CHAMBER */
+        .story-chamber {
+            display: none;
+            text-align: left;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #4d0000;
+        }
+
+        .story-chamber.unlocked {
+            display: block;
+        }
+
+        .chamber-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: rgba(30, 5, 5, 0.7);
+            border: 1px solid #440000;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .active-lang-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: #ffd700;
+            letter-spacing: 1px;
+        }
+
+        .switch-lang-btn {
+            background: transparent;
+            border: 1px solid #800000;
+            color: #ff6666;
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .switch-lang-btn:hover {
+            background-color: #4d0000;
+            color: #ffffff;
+        }
+
+        .story-content {
+            display: none;
+            font-size: 1.08rem;
+            color: #dcd0c8;
+            line-height: 1.9;
+        }
+
+        .story-content.active {
+            display: block;
+        }
+
+        .story-content h3 {
+            font-family: 'Cinzel', serif;
+            color: #ff4d4d;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            border-bottom: 1px solid #330000;
+            padding-bottom: 6px;
+        }
+
+        .story-content p {
+            margin-bottom: 18px;
+        }
+
+        .return-top-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #440000;
+        }
+
+        .return-top-btn {
+            background: linear-gradient(135deg, #4d0000 0%, #800000 100%);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding: 10px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(218, 165, 32, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .return-top-btn:hover {
+            background: linear-gradient(135deg, #800000 0%, #cc0000 100%);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.85rem; margin-top: 30px; }
+    </style>
+</head>
+<body id="topOfPage">
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Umbra Crucis Logo">
+        </a>
+        <div class="menu-icon" id="menuBtn">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navMenu">
+            <a href="index.html">About Us</a>
+            <a href="attic.html">Story Attic</a>
+            <a href="grimoire.html">Grimoire’s Cabinet</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="story-active-panel">
+            
+            <a href="grimoire.html" class="back-to-cabinet-btn">← Back to Cabinet</a>
+
+            <div style="text-align: center; margin-bottom: 25px;">
+                <span class="seal-badge-preview">✦ SEAL #01 ✦</span>
+                <h2 style="font-family: 'Creepster', cursive; font-size: 2.4rem; color: #ff1a1a; text-shadow: 0 0 10px #800000;">Granville Hotel : Rebooted</h2>
+            </div>
+
+            <!-- PREQUEL / FIRST PART BANNER -->
+            <div class="prequel-banner-card">
+                <h4>Before the Reboot...</h4>
+                <p>Catch up on the original chilling events that preceded the awakening of Room 333.</p>
+                <!-- REPLACE href="granville-hotel.html" with your actual first-part link if different -->
+                <a href="granville-hotel.html" target="_blank" class="prequel-link-btn">Read Part I (Original Story) →</a>
+            </div>
+
+            <!-- LANGUAGE SELECTION GATE -->
+            <div class="ritual-gate" id="ritualGate">
+                <div class="step-label">Step I — Choose Your Language</div>
+                <div class="lang-selector">
+                    <button class="lang-btn" onclick="selectLanguage('english', this)">English</button>
+                    <button class="lang-btn" onclick="selectLanguage('hindi', this)">हिंदी (Hindi)</button>
+                    <button class="lang-btn" onclick="selectLanguage('hinglish', this)">Hinglish</button>
+                </div>
+
+                <div class="break-seal-wrapper">
+                    <span class="hint-text" id="sealHint">Select a language above to awaken the seal...</span>
+                    <button class="break-seal-btn" id="breakSealBtn" onclick="breakTheseal()">
+                        Break the Seal & Enter
+                    </button>
+                </div>
+            </div>
+
+            <!-- STORY CHAMBER -->
+            <div class="story-chamber" id="storyChamber">
+                <div class="chamber-topbar">
+                    <span class="active-lang-label" id="currentLangDisplay">SEAL #01 ACTIVE • READING IN ENGLISH</span>
+                    <button class="switch-lang-btn" onclick="resetLanguageSelection()">Change Language</button>
+                </div>
+
+                <!-- ENGLISH STORY -->
+                <div class="story-content active" id="story-english">
+                    <h3>The Forgotten History</h3>
+                    <p>After Radhika's death, Kotwaal refused to leave the hotel without knowing what had happened to his employer. He confronted the manager, demanding an explanation.</p>
+                    <p>For a few moments, the manager remained silent. Then he slowly locked the reception door, pulled out an old photograph from a drawer, and placed it on the counter.</p>
+                    <p>It showed a beautiful young woman holding a violin. She was dressed in a white saree, with long black hair falling over her shoulders.</p>
+                    <p>"Her name was Anamika," the manager whispered. "She was the wife of Granville Hotel's original owner, Edward Granville. This hotel was built in 1946, and Room 333 was their private room." Kotwaal stared at the photograph.</p>
+                    <p>"What happened to her?"</p>
+                    <p>The manager swallowed hard before continuing.</p>
+                    <p>"Anamika was an exceptional violinist. Every night, at exactly 3:13 AM, she would sit beside the window and play the same melody for her husband. But one night, Edward disappeared. Nobody ever found him."</p>
+                    <p>"Then what happened to Anamika?"</p>
+                    <p>The manager lowered his voice.</p>
+                    <p>"Three days later, the hotel staff found her dead inside Room 333. She was sitting on a chair, holding her violin. Her eyes were wide open, and her face was covered in blood. But the strangest thing was that there wasn't a single wound on her body."</p>
+
+                    <h3>The Three Red Threads</h3>
+                    <p>The manager continued.</p>
+                    <p>"After her death, terrible things began happening. Guests staying in rooms opposite 333 started hearing violin music at 3:13 AM. Some claimed they saw a woman standing inside their rooms. Others were found dead with their eyes completely red."</p>
+                    <p>The hotel was eventually closed for several years.</p>
+                    <p>Before reopening it, the owners called a priest to investigate. He ordered the management to seal Room 333 with three padlocks and three red threads.</p>
+                    <p>But he left one final warning:</p>
+                    <p>"Never look through the keyhole. Whatever you see inside is not what is actually in that room. And if the room appears completely red, it means she has finally seen you."</p>
+                    <p>Kotwaal's entire body went cold.</p>
+                    <p>"Then... what happened to Radhika?"</p>
+                    <p>The manager looked towards the staircase.</p>
+                    <p>"She saw Anamika's eyes."</p>
+
+                    <h3>The Man Behind the Wall</h3>
+                    <p>Kotwaal took Radhika's body for the last rites and left the hotel immediately. That night, at exactly 3:13 AM, the manager was sitting alone at the reception when the hotel telephone suddenly rang.</p>
+                    <p>He picked it up.</p>
+                    <p>A woman's voice whispered:</p>
+                    <p>"Where is my husband?"</p>
+                    <p>The manager's face turned pale.</p>
+                    <p>The manager dropped the receiver.</p>
+                    <p>A few seconds later, the same violin melody began playing from the third floor very loudly.</p>
+                    <p>Terrified, the manager rushed upstairs with a flashlight. As he approached Room 333, he noticed something unusual.</p>
+                    <p>All three red threads had snapped.</p>
+                    <p>The padlocks were hanging loosely, and the door was slightly open. He pushed it gently.</p>
+                    <p>Inside, everything was covered in dust. The old chair stood in the middle of the room, and the violin rested beside it.</p>
+                    <p>But something else caught his attention.</p>
+                    <p>A section of the wall behind the chair had begun to crack.</p>
+                    <p>The manager slowly approached it.</p>
+                    <p>And then he heard a familiar voice.</p>
+                    <p>"Edward..."</p>
+                    <p>It was Anamika's voice.</p>
+                    <p>Suddenly, a loud knock came from behind the wall.</p>
+                    <p>THUD!</p>
+                    <p>The manager stumbled backwards.</p>
+                    <p>Another knock followed.</p>
+                    <p>THUD! THUD!</p>
+                    <p>He knew exactly what was hidden behind that wall.</p>
+                    <p>Because he was the one who had put it there.</p>
+
+                    <h3>The Sinful Secret</h3>
+                    <p>Forty years earlier, the manager had worked as a young accountant at Granville Hotel.</p>
+                    <p>He had always envied Edward's wealth and position. One night, during a heated argument over the hotel's ownership, he murdered Edward inside Room 333.</p>
+                    <p>He wrapped Edward's body in a carpet and secretly concealed it behind a newly constructed section of the room's wall.</p>
+                    <p>Nobody ever discovered the truth. But Anamika had witnessed the crime while the manager was hiding Edward's body.</p>
+                    <p>Before she could actually think to expose him, the same night the manager poisoned her and staged her death as a mysterious incident.</p>
+                    <p>He believed he had buried the evidence forever. But he was wrong.</p>
+                    <p>Anamika died, but her spirit never left Room 333.</p>
+                    <p>Every night at 3:13 AM, she played the violin, waiting for the moment when the wall hiding her husband's body would finally be opened.</p>
+                    <p>The manager had kept the room sealed for decades, not to protect the guests from a witch...</p>
+                    <p>But to protect himself from the truth.</p>
+
+                    <h3>The Three Spirits</h3>
+                    <p>The manager desperately tried to leave the room.</p>
+                    <p>But the door slammed shut.</p>
+                    <p>The violin began playing on its own.</p>
+                    <p>From the corner of the room, a woman in a white saree slowly emerged.</p>
+                    <p>It was Anamika.</p>
+                    <p>Her long hair covered her face, and her fingers were stained with dark blood.</p>
+                    <p>The manager fell to his knees.</p>
+                    <p>"Please! Forgive me! I didn't mean to..."</p>
+                    <p>Anamika slowly raised her head.</p>
+                    <p>"Where is my husband?"</p>
+                    <p>Before he could answer, a second figure appeared beside the broken wall.</p>
+                    <p>It was Edward.</p>
+                    <p>His face was horribly disfigured, his clothes covered in dust, and his neck twisted at an unnatural angle.</p>
+                    <p>The manager screamed.</p>
+                    <p>But there was one more person standing behind them.</p>
+                    <p>Radhika.</p>
+                    <p>Her face was pale, her eyes blood-red, and her feet were covered in dust.</p>
+                    <p>The manager stared at her in disbelief.</p>
+                    <p>"How... how are you here?"</p>
+                    <p>Radhika slowly smiled.</p>
+                    <p>"You told me there was a witch trapped inside this room."</p>
+                    <p>She moved closer. "But you never told me that there was a murderer standing outside it." The manager began crawling towards the door.</p>
+                    <p>Anamika lifted her violin and started playing.</p>
+                    <p>Edward stepped forward.</p>
+                    <p>And Radhika whispered:</p>
+                    <p>"You buried their bodies, but you forgot that the dead never forget."</p>
+                    <p>The three spirits surrounded him.</p>
+                    <p>A blood-curdling scream echoed through the hotel.</p>
+                    <p>Then, suddenly, everything went silent.</p>
+
+                    <h3>The Last Guest Register</h3>
+                    <p>The following morning, the hotel staff found the manager's body lying outside Room 333.</p>
+                    <p>His eyes were wide open, his face frozen in absolute terror, and his hands were covered in deep scratches.</p>
+                    <p>The wall inside Room 333 had completely collapsed.</p>
+                    <p>Behind it, police discovered Edward Granville's skeletal remains, wrapped in an old carpet.</p>
+                    <p>But they found nothing else—just three chairs stood inside the room. The hotel was permanently shut down.</p>
+                    <p>Years later, a group of investigators visited the abandoned building to document its history. They found the old guest register still lying on the reception desk.</p>
+                    <p>Most of its pages were covered in dust.</p>
+                    <p>But the final page had three names written in fresh red ink:</p>
+                    <p>Anamika Granville.<br>Edward Granville.<br>Radhika.</p>
+                    <p>Beneath them, someone had written:</p>
+                    <p>We are together now.</p>
+                    <p>Just as the investigators were about to leave, one of them heard a violin playing somewhere upstairs.</p>
+                    <p>He checked his watch.</p>
+                    <p>3:13 AM.</p>
+                    <p>He slowly looked towards the staircase.</p>
+                    <p>At the far end of the corridor, Room 333 stood open. They went inside Room 333. The investigator was a little afraid as he could not see the source of the violin sound as the room was completely abandoned. He slowly stepped backwards, but the door slammed shut.</p>
+                    <p>Suddenly, the investigator heard a chair being dragged across the floor behind him.</p>
+                    <p>And then, a fourth name appeared in the guest register.</p>
+                </div>
+
+                <!-- HINDI STORY -->
+                <div class="story-content" id="story-hindi">
+                    <h3>भूला हुआ इतिहास (The Forgotten History)</h3>
+                    <p>राधिका की मौत के बाद, कोतवाल ने बिना यह जाने होटल छोड़ने से मना कर दिया कि उसकी मालकिन के साथ क्या हुआ था। उसने मैनेजर का सामना किया और उससे पूरी बात बताने के लिए कहा।</p>
+                    <p>कुछ पल के लिए मैनेजर खामोश रहा। फिर उसने धीरे से रिसेप्शन का दरवाज़ा लॉक किया, दराज़ से एक पुरानी तस्वीर निकाली, और काउंटर पर रख दी।</p>
+                    <p>उस तस्वीर में एक खूबसूरत जवान औरत वायलिन पकड़े हुए खड़ी थी। उसने सफ़ेद साड़ी पहनी थी, और उसके लंबे काले बाल उसके कंधों पर बिखरे हुए थे।</p>
+                    <p>"इसका नाम अनामिका था," मैनेजर ने धीमी आवाज़ में कहा। "वह ग्रैनविले होटल के असली मालिक, एडवर्ड ग्रैनविले की पत्नी थी। यह होटल 1946 में बना था, और रूम 333 उनका निजी कमरा था।" कोतवाल तस्वीर को घूरता रहा।</p>
+                    <p>"उसके साथ क्या हुआ?"</p>
+                    <p>मैनेजर ने थूक निगलते हुए आगे बताना शुरू किया।</p>
+                    <p>"अनामिका एक बेहद शानदार वायलिन वादक थी। हर रात, ठीक 3:13 AM बजे, वह खिड़की के पास बैठकर अपने पति के लिए वही धुन बजाया करती थी। लेकिन एक रात, एडवर्ड अचानक गायब हो गया। किसी को वह कभी नहीं मिला।"</p>
+                    <p>"फिर अनामिका का क्या हुआ?"</p>
+                    <p>मैनेजर ने अपनी आवाज़ और धीमी कर ली।</p>
+                    <p>"तीन दिन बाद, होटल के स्टाफ को रूम 333 के अंदर उसकी लाश मिली। वह एक कुर्सी पर बैठी थी, और उसके हाथ में उसका वायलिन था। उसकी आँखें खुली हुई थीं, और उसका चेहरा खून से लथपथ था। लेकिन सबसे अजीब बात यह थी कि उसके शरीर पर एक भी चोट का निशान नहीं था।"</p>
+
+                    <h3>तीन लाल धागे (The Three Red Threads)</h3>
+                    <p>मैनेजर ने अपनी बात जारी रखी।</p>
+                    <p>"उसकी मौत के बाद, होटल में भयानक घटनाएं होने लगीं। रूम 333 के सामने वाले कमरों में रहने वाले मेहमानों को रात 3:13 AM बजे वायलिन की आवाज़ सुनाई देने लगी। कुछ लोगों ने दावा किया कि उन्होंने अपने कमरे के अंदर एक औरत को खड़े देखा है। कुछ लोग मरे हुए पाए गए, जिनकी आँखें पूरी तरह लाल थीं।"</p>
+                    <p>आखिरकार होटल को कई सालों के लिए बंद कर दिया गया।</p>
+                    <p>इसे दोबारा खोलने से पहले, मालिकों ने जांच के लिए एक पुजारी को बुलाया। पुजारी ने प्रबंधन को रूम 333 को तीन तालों और तीन लाल धागों से सील करने का आदेश दिया।</p>
+                    <p>लेकिन जाते-जाते उसने एक आखिरी चेतावनी दी:</p>
+                    <p>"कभी भी कीहोल (ताले के छेद) से अंदर मत देखना। तुम्हें अंदर जो भी दिखाई देगा, वह असल में उस कमरे में नहीं है। और अगर कमरा पूरी तरह लाल दिखाई दे, तो समझ जाना कि उसने आखिरकार तुम्हें देख लिया है।"</p>
+                    <p>कोतवाल का पूरा शरीर ठंडा पड़ गया।</p>
+                    <p>"तो... राधिका के साथ क्या हुआ?"</p>
+                    <p>मैनेजर ने सीढ़ियों की तरफ देखा।</p>
+                    <p>"उसने अनामिका की आँखें देख ली थीं।"</p>
+
+                    <h3>दीवार के पीछे वाला आदमी (The Man Behind the Wall)</h3>
+                    <p>कोतवाल अंतिम संस्कार के लिए राधिका की लाश लेकर तुरंत होटल से चला गया। उसी रात, ठीक 3:13 AM बजे, मैनेजर रिसेप्शन पर अकेला बैठा था जब अचानक होटल का टेलीफोन बज उठा।</p>
+                    <p>उसने फोन उठाया।</p>
+                    <p>एक औरत की आवाज़ में सरगोशी हुई:</p>
+                    <p>"मेरा पति कहाँ है?"</p>
+                    <p>मैनेजर का चेहरा पीला पड़ गया।</p>
+                    <p>उसके हाथ से रिसीवर छूट गया।</p>
+                    <p>कुछ ही सेकंड बाद, तीसरी मंज़िल से वही वायलिन की धुन बहुत ज़ोर से बजने लगी।</p>
+                    <p>डरा हुआ मैनेजर फ्लैशलाइट लेकर ऊपर की तरफ दौड़ा। जैसे ही वह रूम 333 के पास पहुँचा, उसने कुछ अजीब देखा।</p>
+                    <p>तीनों लाल धागे टूट चुके थे।</p>
+                    <p>ताले ढीले लटक रहे थे, और दरवाज़ा थोड़ा सा खुला हुआ था। उसने धीरे से दरवाज़े को धक्का दिया।</p>
+                    <p>अंदर हर चीज़ धूल से ढकी हुई थी। पुरानी कुर्सी कमरे के बीचों-बीच रखी थी, और उसके बगल में वायलिन पड़ा था।</p>
+                    <p>लेकिन एक और चीज़ ने उसका ध्यान खींचा।</p>
+                    <p>कुर्सी के पीछे वाली दीवार के एक हिस्से में दरार पड़ने लगी थी।</p>
+                    <p>मैनेजर धीरे-धीरे उसके पास गया।</p>
+                    <p>और तभी उसे एक जानी-पहचानी आवाज़ सुनाई दी।</p>
+                    <p>"एडवर्ड..."</p>
+                    <p>यह अनामिका की आवाज़ थी।</p>
+                    <p>अचानक, दीवार के पीछे से एक ज़ोर की दस्तक की आवाज़ आई।</p>
+                    <p>थड! (THUD!)</p>
+                    <p>मैनेजर लड़खड़ाकर पीछे हटा।</p>
+                    <p>एक और दस्तक हुई।</p>
+                    <p>थड! थड! (THUD! THUD!)</p>
+                    <p>वह अच्छी तरह जानता था कि उस दीवार के पीछे क्या छिपा है।</p>
+                    <p>क्योंकि वही था जिसने उसे वहाँ रखा था।</p>
+
+                    <h3>पाप भरा राज़ (The Sinful Secret)</h3>
+                    <p>चालीस साल पहले, मैनेजर ग्रैनविले होटल में एक जवान अकाउंटेंट के तौर पर काम करता था।</p>
+                    <p>उसे हमेशा एडवर्ड की दौलत और ओहदे से जलन होती थी। एक रात, होटल के मालिकाना हक को लेकर हुई एक तीखी बहस के दौरान, उसने रूम 333 के अंदर एडवर्ड का खून कर दिया।</p>
+                    <p>उसने एडवर्ड की लाश को एक कालीन में लपेटा और चुपके से कमरे की दीवार के एक नए बनाए गए हिस्से के पीछे चुनवा दिया।</p>
+                    <p>किसी को कभी सच्चाई का पता नहीं चला। लेकिन जब मैनेजर एडवर्ड की लाश छिपा रहा था, तब अनामिका ने उसे यह जुर्म करते हुए देख लिया था।</p>
+                    <p>इससे पहले कि वह उसे बेनकाब करने के बारे में सोच भी पाती, उसी रात मैनेजर ने उसे ज़हर दे दिया और उसकी मौत को एक रहस्यमयी घटना का रूप दे दिया।</p>
+                    <p>उसे लगा कि उसने सबूत हमेशा के लिए दफना दिए हैं। लेकिन वह गलत था।</p>
+                    <p>अनामिका मर गई, पर उसकी आत्मा ने कभी रूम 333 नहीं छोड़ा।</p>
+                    <p>हर रात 3:13 AM बजे, वह वायलिन बजाती थी, उस पल का इंतज़ार करते हुए जब उसके पति की लाश छिपाने वाली दीवार आखिरकार खुलेगी।</p>
+                    <p>मैनेजर ने दशकों तक उस कमरे को सील करके रखा था, मेहमानों को किसी चुड़ैल से बचाने के लिए नहीं...</p>
+                    <p>बल्कि खुद को सच्चाई से बचाने के लिए।</p>
+
+                    <h3>तीन आत्माएं (The Three Spirits)</h3>
+                    <p>मैनेजर ने कमरे से बाहर निकलने की बेहद कोशिश की।</p>
+                    <p>लेकिन दरवाज़ा ज़ोर से बंद हो गया।</p>
+                    <p>वायलिन अपने आप बजने लगा।</p>
+                    <p>कमरे के कोने से, सफ़ेद साड़ी पहने एक औरत धीरे-धीरे बाहर निकली।</p>
+                    <p>वह अनामिका थी।</p>
+                    <p>उसके लंबे बाल उसके चेहरे को ढके हुए थे, और उसकी उंगलियां गहरे खून से रंगी हुई थीं।</p>
+                    <p>मैनेजर अपने घुटनों पर गिर पड़ा।</p>
+                    <p>"प्लीज़! मुझे माफ़ कर दो! मेरा वह मतलब नहीं था..."</p>
+                    <p>अनामिका ने धीरे से अपना सिर उठाया।</p>
+                    <p>"मेरा पति कहाँ है?"</p>
+                    <p>इससे पहले कि वह जवाब दे पाता, टूटी हुई दीवार के पास एक दूसरी आकृति दिखाई दी।</p>
+                    <p>वह एडवर्ड था।</p>
+                    <p>उसका चेहरा बुरी तरह बिगड़ा हुआ था, उसके कपड़े धूल से सने थे, और उसकी गर्दन एक अजीब से कोण पर मुड़ी हुई थी।</p>
+                    <p>मैनेजर चीख पड़ा।</p>
+                    <p>लेकिन उनके पीछे एक और इंसान खड़ा था।</p>
+                    <p>राधिका।</p>
+                    <p>उसका चेहरा सफ़ेद पड़ चुका था, उसकी आँखें खून की तरह लाल थीं, और उसके पैर धूल से भरे थे।</p>
+                    <p>मैनेजर अविश्वास से उसे घूरता रहा।</p>
+                    <p>"तुम... तुम यहाँ कैसे?"</p>
+                    <p>राधिका धीरे से मुस्कुराई।</p>
+                    <p>"तुमने मुझसे कहा था कि इस कमरे के अंदर एक चुड़ैल कैद है।"</p>
+                    <p>वह और करीब आई। "लेकिन तुमने मुझे यह कभी नहीं बताया कि इसके बाहर एक कातिल खड़ा है।" मैनेजर दरवाज़े की तरफ रेंगने लगा।</p>
+                    <p>अनामिका ने अपना वायलिन उठाया और बजाना शुरू कर दिया।</p>
+                    <p>एडवर्ड आगे बढ़ा।</p>
+                    <p>और राधिका ने सरगोशी की:</p>
+                    <p>"तुमने उनकी लाशें तो दफना दीं, लेकिन तुम यह भूल गए कि मुर्दे कभी नहीं भूलते।"</p>
+                    <p>तीनों आत्माओं ने उसे घेर लिया।</p>
+                    <p>पूरे होटल में एक खून जमा देने वाली चीख गूँज उठी।</p>
+                    <p>फिर, अचानक, हर तरफ सन्नाटा छा गया।</p>
+
+                    <h3>आखिरी गेस्ट रजिस्टर (The Last Guest Register)</h3>
+                    <p>अगली सुबह, होटल के स्टाफ को मैनेजर की लाश रूम 333 के बाहर पड़ी मिली।</p>
+                    <p>उसकी आँखें खुली हुई थीं, उसका चेहरा बेहद खौफ से जमा हुआ था, और उसके हाथों पर गहरी खरोंचों के निशान थे।</p>
+                    <p>रूम 333 के अंदर की दीवार पूरी तरह गिर चुकी थी।</p>
+                    <p>उसके पीछे, पुलिस को एडवर्ड ग्रैनविले का कंकाल मिला, जो एक पुराने कालीन में लिपटा हुआ था।</p>
+                    <p>लेकिन उन्हें वहाँ और कुछ नहीं मिला—कमरे के अंदर बस तीन कुर्सियाँ रखी थीं। होटल को हमेशा के लिए बंद कर दिया गया।</p>
+                    <p>सालों बाद, जांचकर्ताओं का एक समूह इस खंडहर हो चुकी इमारत के इतिहास को दर्ज करने वहाँ आया। उन्हें रिसेप्शन डेस्क पर अभी भी पुराना गेस्ट रजिस्टर पड़ा मिला।</p>
+                    <p>उसके ज़्यादातर पन्ने धूल से ढके हुए थे।</p>
+                    <p>लेकिन आखिरी पन्ने पर ताज़ी लाल स्याही से तीन नाम लिखे हुए थे:</p>
+                    <p>अनामिका ग्रैनविले。<br>एडवर्ड ग्रैनविले。<br>राधिका。</p>
+                    <p>उनके नीचे, किसी ने लिखा था:</p>
+                    <p>हम अब साथ हैं。</p>
+                    <p>जैसे ही जांचकर्ता वहाँ से निकलने वाले थे, उनमें से एक को ऊपर कहीं वायलिन बजने की आवाज़ सुनाई दी।</p>
+                    <p>उसने अपनी घड़ी देखी।</p>
+                    <p>3:13 AM.</p>
+                    <p>उसने धीरे से सीढ़ियों की तरफ देखा।</p>
+                    <p>गलियारे के आखिरी छोर पर, रूम 333 का दरवाज़ा खुला हुआ था। वे रूम 333 के अंदर गए। जांचकर्ता थोड़ा डरा हुआ था क्योंकि उसे वायलिन की आवाज़ का कोई स्रोत नहीं दिख रहा था और कमरा पूरी तरह वीरान पड़ा था। उसने धीरे से पीछे कदम बढ़ाया, लेकिन दरवाज़ा ज़ोर से बंद हो गया।</p>
+                    <p>अचानक, जांचकर्ता को अपने पीछे फर्श पर एक कुर्सी घसीटे जाने की आवाज़ सुनाई दी।</p>
+                    <p>और तभी, गेस्ट रजिस्टर में एक चौथा नाम उभर आया।</p>
+                </div>
+
+                <!-- HINGLISH STORY -->
+                <div class="story-content" id="story-hinglish">
+                    <h3>Bhoola Hua Itihaas (The Forgotten History)</h3>
+                    <p>Radhika ki maut ke baad, Kotwaal ne bina ye jaane hotel chorne se mana kar diya ki uski maalkin ke saath kya hua tha. Usne manager ka saamna kiya aur usse poori baat batane ke liye kaha.</p>
+                    <p>Kuch pal ke liye manager khamosh raha. Phir usne dheere se reception ka darwaza lock kiya, drawer se ek purani tasveer nikali, aur counter par rakh di.</p>
+                    <p>Us tasveer mein ek khoobsurat jawan aurat violin pakde hue khadi thi. Usne safed saree pehni thi, aur uske lambe kaale baal uske kandhon par bikhre hue the.</p>
+                    <p>"Iska naam Anamika tha," manager ne dheemi awaaz mein kaha. "Woh Granville Hotel ke asli maalik, Edward Granville ki patni thi. Yeh hotel 1946 mein bana tha, aur Room 333 unka private kamra tha." Kotwaal tasveer ko ghoorta raha.</p>
+                    <p>"Uske saath kya hua?"</p>
+                    <p>Manager ne thook nigalte hue aage batana shuru kiya.</p>
+                    <p>"Anamika ek behad shandaar violinist thi. Har raat, theek 3:13 AM baje, woh khidki ke paas baithkar apne pati ke liye wahi dhun bajaya karti thi. Lekin ek raat, Edward achanak gayab ho gaya. Kisi ko woh kabhi nahi mila."</p>
+                    <p>"Phir Anamika ka kya hua?"</p>
+                    <p>Manager ne apni awaaz aur dheemi kar li.</p>
+                    <p>"Teen din baad, hotel ke staff ko Room 333 ke andar uski laash mili. Woh ek kursi par baithi thi, aur uske haath mein uska violin tha. Uski aankhein khuli hui thi, aur uska chehra khoon se lathpath tha. Lekin sabse ajeeb baat yeh thi ki uske sharir par ek bhi chot ka nishaan nahi tha."</p>
+
+                    <h3>Teen Laal Dhaage (The Three Red Threads)</h3>
+                    <p>Manager ne apni baat jaari rakhi.</p>
+                    <p>"Uski maut ke baad, hotel mein bhayanak ghatnayein hone lagi. Room 333 ke saamne wale kamron mein rehne wale mehmaano ko raat 3:13 AM baje violin ki awaaz sunai dene lagi. Kuch logon ne daawa kiya ki unhone apne kamre ke andar ek aurat ko khade dekha hai. Kuch log mare hue paaye gaye, jinki aankhein poori tarah laal thi."</p>
+                    <p>Aakhirkar hotel ko kayi saalon ke liye band kar diya gaya.</p>
+                    <p>Ise dobara kholne se pehle, maalikon ne jaanch ke liye ek pujari ko bulaya. Pujari ne management ko Room 333 ko teen taalon (padlocks) aur teen laal dhaagon se seal karne ka aadesh diya.</p>
+                    <p>Lekin jaate-jaate usne ek aakhiri chetavani di:</p>
+                    <p>"Kabhi bhi keyhole (taale ke chhed) se andar mat dekhna. Tumhe andar jo bhi dikhai dega, woh asal mein us kamre mein nahi hai. Aur agar kamra poori tarah laal dikhai de, toh samajh jaana ki usne aakhirkar tumhe dekh liya hai."</p>
+                    <p>Kotwaal ka poora sharir thanda pad gaya.</p>
+                    <p>"Toh... Radhika ke saath kya hua?"</p>
+                    <p>Manager ne seedhiyon ki taraf dekha.</p>
+                    <p>"Usne Anamika ki aankhein dekh li thi."</p>
+
+                    <h3>Deewar Ke Peeche Wala Aadmi (The Man Behind the Wall)</h3>
+                    <p>Kotwaal antim sanskar ke liye Radhika ki laash lekar turant hotel se chala gaya. Usi raat, theek 3:13 AM baje, manager reception par akela baitha tha jab achanak hotel ka telephone baj utha.</p>
+                    <p>Usne phone uthaya.</p>
+                    <p>Ek aurat ki awaaz aai:</p>
+                    <p>"Mera pati kahan hai?"</p>
+                    <p>Manager ka chehra peela pad gaya.</p>
+                    <p>Uske haath se receiver chhoot gaya.</p>
+                    <p>Kuch hi second baad, teesri manzil se wahi violin ki dhun bahut zor se bajne lagi.</p>
+                    <p>Dara hua manager flashlight lekar upar ki taraf dauda. Jaise hi woh Room 333 ke paas pahuncha, usne kuch ajeeb dekha.</p>
+                    <p>Teeno laal dhaage toot chuke the.</p>
+                    <p>Taale dheele latak rahe the, aur darwaza thoda sa khula hua tha. Usne dheere se darwaze ko dhakka diya.</p>
+                    <p>Andar har cheez dhool se dhaki hui thi. Purani kursi kamre ke beechon-beech rakhi thi, aur uske bagal mein violin pada tha.</p>
+                    <p>Lekin ek aur cheez ne uska dhyan khincha.</p>
+                    <p>Kursi ke peeche wali deewar ke ek hisse mein daraar padne lagi thi.</p>
+                    <p>Manager dheere-dheere uske paas gaya.</p>
+                    <p>Aur tabhi use ek jaani-pehchani awaaz sunai di.</p>
+                    <p>"Edward..."</p>
+                    <p>Yeh Anamika ki awaaz thi.</p>
+                    <p>Achanak, deewar ke peeche se ek zor ki dastak (knock) ki awaaz aayi.</p>
+                    <p>THUD!</p>
+                    <p>Manager ladkhadakar peeche hata.</p>
+                    <p>Ek aur dastak hui.</p>
+                    <p>THUD! THUD!</p>
+                    <p>Woh achhi tarah jaanta tha ki us deewar ke peeche kya chhupa hai.</p>
+                    <p>Kyunki wahi tha jisne use wahan rakha tha.</p>
+
+                    <h3>Paap Bhara Raaz (The Sinful Secret)</h3>
+                    <p>Chaalis saal pehle, manager Granville Hotel mein ek jawan accountant ke taur par kaam karta tha.</p>
+                    <p>Use hamesha Edward ki daulat aur ohde se jalan hoti thi. Ek raat, hotel ke malikana haq ko lekar hui ek teekhi behas ke dauran, usne Room 333 ke andar Edward ka khoon kar diya.</p>
+                    <p>Usne Edward ki laash ko ek kaleen (carpet) mein lapeta aur chupke se kamre ki deewar ke ek naye banaye gaye hisse ke peeche chunwa diya.</p>
+                    <p>Kisi ko kabhi sachai ka pata nahi chala. Lekin jab manager Edward ki laash chhupa raha tha, tab Anamika ne use yeh jurm karte hue dekh liya tha.</p>
+                    <p>Isse pehle ki woh use benaqab karne ke baare mein soch bhi paati, usi raat manager ne use zeher de diya aur uski maut ko ek rahasyamayi ghatna ka roop de diya.</p>
+                    <p>Use laga ki usne saboot hamesha ke liye dafna diye hain. Lekin woh galat tha.</p>
+                    <p>Anamika mar gayi, par uski aatma ne kabhi Room 333 nahi chhoda.</p>
+                    <p>Har raat 3:13 AM baje, woh violin bajati thi, us pal ka intezar karte hue jab uske pati ki laash chhupane wali deewar aakhirkar khulegi.</p>
+                    <p>Manager ne dashakon tak us kamre ko seal karke rakha tha, mehmaano ko kisi chudail se bachane ke liye nahi...</p>
+                    <p>Balki khud ko sachai se bachane ke liye.</p>
+
+                    <h3>Teen Aatmayein (The Three Spirits)</h3>
+                    <p>Manager ne kamre se bahar nikalne ki behad koshish ki.</p>
+                    <p>Lekin darwaza zor se band ho gaya.</p>
+                    <p>Violin apne aap bajne laga.</p>
+                    <p>Kamre ke kone se, safed saree pehne ek aurat dheere-dheere bahar nikli.</p>
+                    <p>Woh Anamika thi.</p>
+                    <p>Uske lambe baal uske chehre ko dhake hue the, aur uski ungliyan gehre khoon se rangi hui thi.</p>
+                    <p>Manager apne ghutnon par gir pada.</p>
+                    <p>"Please! Mujhe maaf kar do! Mera woh matlab nahi tha..."</p>
+                    <p>Anamika ne dheere se apna sir uthaya.</p>
+                    <p>"Mera pati kahan hai?"</p>
+                    <p>Isse pehle ki woh jawab de paata, tooti hui deewar ke paas ek doosri aakriti dikhai di.</p>
+                    <p>Woh Edward tha.</p>
+                    <p>Uska chehra buri tarah bigda hua tha, uske kapde dhool se sane the, aur uski gardan ek ajeeb se angle par mudi hui thi.</p>
+                    <p>Manager cheekh pada.</p>
+                    <p>Lekin unke peeche ek aur insaan khada tha.</p>
+                    <p>Radhika.</p>
+                    <p>Uska chehra safed pad chuka tha, uski aankhein khoon ki tarah laal thi, aur uske pair dhool se bhare the.</p>
+                    <p>Manager avishwas se use ghoorta raha.</p>
+                    <p>"Tum... tum yahan kaise?"</p>
+                    <p>Radhika dheere se muskurai.</p>
+                    <p>"Tumne mujhse kaha tha ki is kamre ke andar ek chudail kaid hai."</p>
+                    <p>Woh aur kareeb aayi. "Lekin tumne mujhe yeh kabhi nahi bataya ki iske bahar ek kaatil khada hai." Manager darwaze ki taraf rengne laga.</p>
+                    <p>Anamika ne apna violin uthaya aur bajana shuru kar diya.</p>
+                    <p>Edward aage badha.</p>
+                    <p>Aur Radhika ne phir bola:</p>
+                    <p>"Tumne unki laashein toh dafna di, lekin tum yeh bhool gaye ki murde kabhi nahi bhoolte."</p>
+                    <p>Teeno aatmaon ne use gher liya.</p>
+                    <p>Poore hotel mein ek khoon jama dene wali cheekh goonj uthi.</p>
+                    <p>Phir, achanak, har taraf sannata chha gaya.</p>
+
+                    <h3>Aakhiri Guest Register (The Last Guest Register)</h3>
+                    <p>Agli subah, hotel ke staff ko manager ki laash Room 333 ke bahar padi mili.</p>
+                    <p>Uski aankhein khuli hui thi, uska chehra behad khauf se jama hua tha, aur uske haathon par gehri kharochon ke nishaan the.</p>
+                    <p>Room 333 ke andar ki deewar poori tarah gir chuki thi.</p>
+                    <p>Uske peeche, police ko Edward Granville ka kankal mila, jo ek purane कालीन mein lipta hua tha.</p>
+                    <p>Lekin unhe wahan aur kuch nahi mila—kamre ke andar bas teen kursiyan rakhi thi. Hotel ko hamesha ke liye band कर दिया गया।</p>
+                    <p>Saalon baad, investigators ka ek group is khandahar ho chuki imarat ke itihaas ko record karne wahan aaya. Unhe reception desk par abhi bhi purana guest register pada mila.</p>
+                    <p>Uske zyada tar panne dhool se dhake hue थे।</p>
+                    <p>Lekin aakhiri panne par taazi laal syaahi (ink) से teen naam likhe hue the:</p>
+                    <p>Anamika Granville.<br>Edward Granville.<br>Radhika.</p>
+                    <p>Unke neeche, kisi ne likha tha:</p>
+                    <p>Hum ab saath hain.</p>
+                    <p>Jaise hi jaanchkarta wahan se nikalne wale the, unmein se ek ko upar kahin violin bajne ki awaaz sunai di.</p>
+                    <p>Usne apni ghadi dekhi.</p>
+                    <p>3:13 AM.</p>
+                    <p>Usne धीरे से सीढ़ियों की तरफ देखा।</p>
+                    <p>Corridor ke aakhiri chhor par, Room 333 ka darwaza khula हुआ था। वे रूम 333 के अंदर गए। Jaanchkarta thoda dara hua tha kyunki use violin ki awaaz ka koi source nahi dikh raha tha aur kamra poori tarah veeran pada tha. Usne dheere se peeche kadam badhaya, lekin darwaza zor se band ho gaya.</p>
+                    <p>Achanak, jaanchkarta ko apne peeche farsh par ek kursi ghaseete jaane ki awaaz sunai di.</p>
+                    <p>Aur tabhi, guest register mein ek chautha naam ubhar aaya.</p>
+                </div>
+
+                <!-- RETURN TO TOP BUTTON -->
+                <div class="return-top-container">
+                    <button class="return-top-btn" onclick="scrollToTop()">▲ Return to Top</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 UMBRA CRUCIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const navMenu = document.getElementById("navMenu");
+        
+        function toggleMenu(e) {
+            e.preventDefault();
+            navMenu.classList.toggle("active");
+        }
+        
+        menuBtn.addEventListener("touchstart", toggleMenu, { passive: false });
+        menuBtn.addEventListener("click", toggleMenu);
+
+        let chosenLanguage = null;
+
+        function selectLanguage(lang, btnElement) {
+            chosenLanguage = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('selected'));
+            btnElement.classList.add('selected');
+            document.getElementById('sealHint').style.display = 'none';
+            const breakBtn = document.getElementById('breakSealBtn');
+            breakBtn.classList.add('visible');
+        }
+
+        function breakTheseal() {
+            if (!chosenLanguage) return;
+            document.getElementById('ritualGate').style.display = 'none';
+            const chamber = document.getElementById('storyChamber');
+            chamber.classList.add('unlocked');
+            document.querySelectorAll('.story-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('story-' + chosenLanguage).classList.add('active');
+
+            const labels = {
+                english: "SEAL #01 ACTIVE • READING IN ENGLISH",
+                hindi: "SEAL #01 ACTIVE • हिंदी में पढ़ रहे हैं",
+                hinglish: "SEAL #01 ACTIVE • READING IN HINGLISH"
+            };
+            document.getElementById('currentLangDisplay').textContent = labels[chosenLanguage];
+        }
+
+        function resetLanguageSelection() {
+            document.getElementById('storyChamber').classList.remove('unlocked');
+            document.getElementById('ritualGate').style.display = 'block';
+        }
+
+        function scrollToTop() {
+            document.getElementById('topOfPage').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
